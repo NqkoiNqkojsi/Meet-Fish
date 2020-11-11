@@ -1,2 +1,2 @@
-# SocialFishing
+# Fesh&Meet
 Hackaton project
