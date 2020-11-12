@@ -63,14 +63,17 @@ if(isset($_REQUEST["a"]) && isset($_REQUEST["b"])){//update the offer when someo
 }
 //****************************************************************************************************************************
 if(isset($_REQUEST["c"]) && isset($_REQUEST["d"])){// get the content for the places dropdown
-	if($c==false){// if it's backward
+	/*if($c==false){// if it's backward
 		//$d=$d-4;
 	}
 	$send=$d.",".count($towns);//the starth of the response text with the first needed index and the array lenght
 	for($loop=0;$loop<=4;$loop++){
 		$send=$send.",".$towns[$loop+$d];//add the towns
 	}
-	echo $send;
+	echo $send;*/
+	$send_towns=array_slice($towns,$d,4);
+	$myJSON = json_encode($send_towns);
+	echo $myJSON;
 }
 //******************************************************************************************************************************
 if(isset($_REQUEST["e"]) && isset($_REQUEST["f"])){//delete an appearance in offer
