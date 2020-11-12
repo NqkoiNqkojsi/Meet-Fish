@@ -9,25 +9,27 @@ var currentScrollPos = window.pageYOffset;
   prevScrollpos = currentScrollPos;
 }
 //********************************************
-function Page_Turn(f, g, h, m){//flip the pages of the dropdown with AJAX
+function Page_Turn(f, g, h, m) {//flip the pages of the dropdown with AJAX
+	//f-true:napred,false:nazad; g-the first city number; h-is it the glav button; m-is it index:true or it comes from /Fishing:false
 	console.log("NACALO*********************************************************************************");
 	var i;
 	var suobshten="";
 	var nach=0;
 	var go="Fishing/ajax_to_db.php";
-	var add="true)";
+	var add="true)";//write the end of the Dom: the adress m-index
 	if(m==false){
 		go="ajax_to_db.php";
-		add="false)";
+		add = "false)";//write the end of the Dom: the adress m-not index
 	}
 	var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
 				var res = JSON.parse(this.responseText);//get a JSON array
-				console.log("proverka 1:"+g)
+				console.log("proverka g:" + g.toString())
 				nach=g;//get the place from where to start counting
-				i=nach;
-				suobshten=this.responseText;
+				i = nach;
+				suobshten = this.responseText.toString();
+				console.log("suobshten: "+ suobshten)
 				for(; i<=nach+3; i++){
 					var mqs=i-nach+1;
 					var id="town"+mqs.toString();//make the string to find the link
@@ -43,9 +45,9 @@ function Page_Turn(f, g, h, m){//flip the pages of the dropdown with AJAX
 				}
 				console.log(suobshten);
 				//show or hide buttons
-				backBut=document.getElementById("back_butt");
-				forBut=document.getElementById("for_butt");
-				glavBut=document.getElementById("dropbtn");
+				backBut=document.getElementById("back_butt");//Nazad
+				forBut=document.getElementById("for_butt");//Napred
+				glavBut=document.getElementById("dropbtn");//Otvori
 				var even="";
 				if(h==false){
 					if(f==true){
