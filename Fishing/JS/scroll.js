@@ -25,7 +25,7 @@ function Page_Turn(f, g, h, m){//flip the pages of the dropdown with AJAX
             if (this.readyState == 4 && this.status == 200) {
 				var res = JSON.parse(this.responseText);//get a JSON array
 				console.log("proverka 1:"+g)
-				nach=parseInt(res[0]);//get the place from where to start counting
+				nach=g;//get the place from where to start counting
 				i=nach;
 				suobshten=this.responseText;
 				for(; i<=nach+3; i++){
