@@ -11,8 +11,9 @@ function Page_Show(Element, m) { //m-is it index:true or it comes from /Fishing:
 		if (m == true) {//check if it is the index page
 			link = "index.php?place=" + (i+position);//prepare the href
 		} else {
-			link = "../index.php?place=" + open[i];
+			link = "../index.php?place=" + (i + position);
 		}
+		console.log("att:" + att);
 		document.getElementById(att).innerHTML = open[i];//make the text in the links
 		document.getElementById(att).setAttribute("href", link);//set the href
 	}
