@@ -1,6 +1,7 @@
 <?php
 // Start the session
 session_start();
+include "logging.php";
 $f=false;
 $g=true;
 $mess="Nothing";
@@ -53,6 +54,7 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 				$row["Attend"]=$row["Attend"].",".$last_id;
 			}
 			$sql = "UPDATE customer SET Exp=".$row['Exp'].", Attend='".$row["Attend"]."' WHERE ID=".$_SESSION["user_ID"];
+			console_log($sql);
 			if (mysqli_query($conn, $sql)) {
 			} else {
 				echo "Error updating record: " . mysqli_error($conn);

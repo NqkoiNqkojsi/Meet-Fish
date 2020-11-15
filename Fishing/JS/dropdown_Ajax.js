@@ -6,12 +6,12 @@ function Page_Show(Element, m) { //m-is it index:true or it comes from /Fishing:
 	console.log("Pokazvane na stranica");
 	var i = 0;
 	for (i; i < 4; i++) {
-		var att = "town".$i.toString();//reference the id of the dropdown elements
+		var att = "town"+i.toString();//reference the id of the dropdown elements
 		var link;
 		if (m == true) {//check if it is the index page
-			link = "index.php?place=" + (i+position);//prepare the href
+			link = "index.php?place=" + (i + position).toString();//prepare the href
 		} else {
-			link = "../index.php?place=" + (i + position);
+			link = "../index.php?place=" + (i + position).toString();
 		}
 		console.log("att:" + att);
 		document.getElementById(att).innerHTML = open[i];//make the text in the links
