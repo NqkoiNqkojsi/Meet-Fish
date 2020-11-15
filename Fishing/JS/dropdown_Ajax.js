@@ -49,6 +49,12 @@ function Page_Turn(f, m) {//flip the pages of the dropdown with AJAX
 			Page_Show('myDropdown', true);
 		}
 	};
+	var go = "Fishing/ajax_to_db.php";
+	var add = "true)";
+	if (m == false) {
+		go = "ajax_to_db.php";
+		add = "false)";
+	}
 	console.log("f=" + f.toString() + ";d=" + position.toString());
 	xmlhttp.open("GET", go + "?c=" + f.toString() + "&d=" + position.toString(), true);
 	xmlhttp.send();
