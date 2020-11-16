@@ -26,7 +26,10 @@ function Page_Turn(f, m) {//flip the pages of the dropdown with AJAX
 	xmlhttp.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
 			var res = JSON.parse(this.responseText);//get a JSON array
-			array_replace(open, res);
+			res.forEach(function (entry, index) {//function for getting the new array
+				console.log("new arr" + index + ":" + entry);
+				open[index] = entry;
+            });
 			if (f == true) {
 				position = position + 4;
 			} else {

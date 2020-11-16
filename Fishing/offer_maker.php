@@ -56,11 +56,11 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 			$sql = "UPDATE customer SET Exp=".$row['Exp'].", Attend='".$row["Attend"]."' WHERE ID=".$_SESSION["user_ID"];
 			console_log($sql);
 			if (mysqli_query($conn, $sql)) {
+				header("Location: ../index.php");
+				die();
 			} else {
 				echo "Error updating record: " . mysqli_error($conn);
 			}
-			header("Location: ../index.php");
-			die();
 		}else{/*Show a error message if the submit is incorrect*/
 	        $mess="Има някаква грешката с твойта оферта!";
 	        $g=false;
