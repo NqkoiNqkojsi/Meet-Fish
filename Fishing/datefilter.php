@@ -4,7 +4,6 @@ if($_SERVER['REQUEST_URI']=="/index.php"){
     $date=new DateTime();
     $date1=new DateTime();
     $date1->modify('+2 months');
-    console_log($date1);
 ?>
 <div class="dropdown" style="display: block;">
 	<button class="dropbtn" onclick="Show('myDropdown3')">По дата</button>
