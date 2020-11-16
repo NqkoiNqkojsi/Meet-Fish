@@ -11,13 +11,14 @@ var currentScrollPos = window.pageYOffset;
 //********************************************
 
 window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn')) {
-      console.log("pressed dropbtn")
+    if (!event.target.matches('.dropbtn') && !event.target.matches('.dropdown-item') {
     var dropdowns = document.getElementsByClassName("dropdown-content");
     var i;
     var itm=document.getElementById("dtBox");
     for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
+        var openDropdown = dropdowns[i];
+        console.log("openDropdown:" + openDropdown.classList.contains('show').toString())
+        console.log("itm:" + itm.style.display.toString())
       if (openDropdown.classList.contains('show') && itm.style.display === "none") {
         openDropdown.classList.remove('show');
       }

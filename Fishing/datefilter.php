@@ -22,7 +22,7 @@ if($_SERVER['REQUEST_URI']=="/index.php" || $_SERVER['REQUEST_URI']=="/Stelyo_Br
 
 <script src="Fishing/JS/data_picker.js"></script>
 <?php
-}else if($_SERVER['REQUEST_URI']=="/Fishing/offer_maker.php" || $_SERVER['REQUEST_URI']=="/Stelyo_Branch/offer_maker.php"){
+}else if($_SERVER['REQUEST_URI']=="/Fishing/offer_maker.php" || $_SERVER['REQUEST_URI']=="/Stelyo_Branch/Fishing/offer_maker.php"){
     console_log($_SERVER['REQUEST_URI']);
     $date=new DateTime();
     $date1=new DateTime();
