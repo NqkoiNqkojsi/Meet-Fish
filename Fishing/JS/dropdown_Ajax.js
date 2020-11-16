@@ -1,7 +1,7 @@
 ﻿// JavaScript source code
 var open = Array();
 open = ["Бургас", "Созопол", "Несебър", "Варна"];
-var position = 0;
+var position = 4;
 function Page_Show(Element, m) { //m-is it index:true or it comes from /Fishing:false; Element-the dropdown
 	console.log("Pokazvane na stranica");
 	var i = 0;
@@ -39,11 +39,11 @@ function Page_Turn(f, m) {//flip the pages of the dropdown with AJAX
 			backBut = document.getElementById("back_butt");//Nazad
 			forBut = document.getElementById("for_butt");//Napred
 			var even = "";
-			if (position == 0) {//check if they are needed
+			if (position == 4) {//check if they are needed
 				backBut.style.display = "none";
 			} else {
 				backBut.style.display = "block";
-				if (position + 1 >= 24) {
+				if (position + 1 >= 20) {
 					forBut.style.display = "none";
 				} else {
 					forBut.style.display = "block";
