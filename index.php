@@ -79,7 +79,7 @@ include "Fishing/towns.php";
 				<button class="dropdown-item" id="for_butt" onclick="Page_Turn(true, true)" style="background-color:#17252A; color:#FEFFFF; display:block;">Напред</button>
 			</div>
 		</div>
-		<?php include "Fishing/datefilter.php" ; ?>
+		<?php include "Fishing/datefilter.php"; ?>
 		<a href="Fishing/offer_maker.php">Направете оферта</a>
 		<?php
 			if(!isset($_SESSION["user_ID"])){
