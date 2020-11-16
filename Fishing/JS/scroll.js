@@ -26,6 +26,6 @@ window.onclick = function(event) {
 }
 //Show Hidden elements
 function Page_Show(Element) {
-    console.log("Pokazvane na stranica");
+    console.log("Pokazvane na element");
     document.getElementById(Element).classList.toggle("show");
 }

@@ -61,7 +61,7 @@ include "Fishing/towns.php";
 	<div class="navbar" id="navbar">
 		<a href="index.php">Начало</a>
 		<div class="dropdown" style="display: block;">
-			<button class="dropbtn" onclick="Show('myDropdown1', true)">Времето</button>
+			<button class="dropbtn" onclick="Page_Show('myDropdown1')">Времето</button>
 			<div id="myDropdown1" style="" class="dropdown-content">
 				<?php include "Fishing/weat_wid.php"; ?>
 			</div>

@@ -8,7 +8,7 @@ if($_SERVER['REQUEST_URI']=="/index.php" || $_SERVER['REQUEST_URI']=="/Stelyo_Br
     console_log($date1);
 ?>
 <div class="dropdown" style="display: block;">
-	<button class="dropbtn" onclick="Show('myDropdown3')">По дата</button>
+	<button class="dropbtn" onclick="Page_Show('myDropdown3')">По дата</button>
 	<div id="myDropdown3" class="dropdown-content" style="width:590%;">
 	        <p>От-до: </p>
 		<form class="form-inline" action="index.php" style="display: flex; flex-flow: row wrap; align-items: center;" method="post">
