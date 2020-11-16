@@ -11,7 +11,7 @@ var currentScrollPos = window.pageYOffset;
 //********************************************
 
 window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn') && !event.target.matches('.dropdown-item') {
+    if (!event.target.matches('.dropbtn') && !event.target.matches('.dropdown-item')) {
     var dropdowns = document.getElementsByClassName("dropdown-content");
     var i;
     var itm=document.getElementById("dtBox");
