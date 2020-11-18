@@ -19,14 +19,14 @@ window.onclick = function(event) {
         var openDropdown = dropdowns[i];
         console.log("openDropdown:" + openDropdown.classList.contains('show').toString())
         console.log("itm:" + itm.style.display.toString())
-      if (openDropdown.classList.contains('show') && itm.style.display === "none") {
+      if (openDropdown.classList.contains('show')) {
         openDropdown.classList.remove('show');
       }
     }
   }
 }
 //Show Hidden elements
-function Page_Show(Element) {
-    console.log("Pokazvane na element");
+function DR_Show(Element) {
+    console.log("Pokazvane na element DR");
     document.getElementById(Element).classList.toggle("show");
 }

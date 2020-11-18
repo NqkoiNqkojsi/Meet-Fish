@@ -1,9 +1,10 @@
 ﻿// JavaScript source code
 var open = Array();
 open = ["Бургас", "Созопол", "Несебър", "Варна"];
-var position = 4;
+var position = 0;
 function Page_Show(Element, m) { //m-is it index:true or it comes from /Fishing:false; Element-the dropdown
 	console.log("Pokazvane na stranica");
+	console.log("position=" + position.toString());
 	var i = 0;
 	for (i; i < 4; i++) {
 		var att = "town"+i.toString();//reference the id of the dropdown elements
@@ -13,7 +14,6 @@ function Page_Show(Element, m) { //m-is it index:true or it comes from /Fishing:
 		} else {
 			link = "../index.php?place=" + (i + position).toString();
 		}
-		console.log("att:" + att);
 		document.getElementById(att).innerHTML = open[i];//make the text in the links
 		document.getElementById(att).setAttribute("href", link);//set the href
 	}
@@ -30,20 +30,15 @@ function Page_Turn(f, m) {//flip the pages of the dropdown with AJAX
 				console.log("new arr" + index + ":" + entry);
 				open[index] = entry;
             });
-			if (f == true) {
-				position = position + 4;
-			} else {
-				position = position - 4;
-            }
 			//show or hide buttons
 			backBut = document.getElementById("back_butt");//Nazad
 			forBut = document.getElementById("for_butt");//Napred
 			var even = "";
-			if (position == 4) {//check if they are needed
+			if (position == 0) {//check if they are needed
 				backBut.style.display = "none";
 			} else {
 				backBut.style.display = "block";
-				if (position + 1 >= 20) {
+				if (position + 1 >= 24) {
 					forBut.style.display = "none";
 				} else {
 					forBut.style.display = "block";
@@ -52,6 +47,11 @@ function Page_Turn(f, m) {//flip the pages of the dropdown with AJAX
 			Page_Show('myDropdown', true);
 		}
 	};
+	if (f == true) {//what is the position
+		position = position + 4;
+	} else {
+		position = position - 4;
+	}
 	var go = "Fishing/ajax_to_db.php";
 	var add = "true)";
 	if (m == false) {

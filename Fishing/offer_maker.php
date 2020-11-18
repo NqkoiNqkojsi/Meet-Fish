@@ -59,8 +59,11 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 				//header("Location: ../index.php");
 				//die();
 				$sql=$sql.";  izprashta";
+				error_log("sql:".$sql, 3, "/Log_files/my-errors.log");
 				console_log( $sql );
 			} else {
+				error_log("sql:".$sql, 3, "/Log_files/my-errors.log");
+				error_log("error:".mysqli_error($conn), 3, "/Log_files/my-errors.log");
 				echo "Error updating record: " . mysqli_error($conn);
 			}
 		}else{/*Show a error message if the submit is incorrect*/

@@ -8,7 +8,7 @@ if($_SERVER['REQUEST_URI']=="/index.php" || $_SERVER['REQUEST_URI']=="/Stelyo_Br
     console_log($date1);
 ?>
 <div class="dropdown" style="display: block;">
-	<button class="dropbtn" onclick="Page_Show('myDropdown3')">По дата</button>
+	<button class="dropbtn" onclick="DR_Show('myDropdown3')">По дата</button>
 	<div id="myDropdown3" class="dropdown-content" style="width:590%;">
 	        <p>От-до: </p>
 		<form class="form-inline" action="index.php" style="display: flex; flex-flow: row wrap; align-items: center;" method="post">
@@ -20,7 +20,7 @@ if($_SERVER['REQUEST_URI']=="/index.php" || $_SERVER['REQUEST_URI']=="/Stelyo_Br
 	</div>
 </div>
 
-<script src="Fishing/JS/data_picker.js"></script>
+<script src="JS/data_picker.js"></script>
 <?php
 }else if($_SERVER['REQUEST_URI']=="/Fishing/offer_maker.php" || $_SERVER['REQUEST_URI']=="/Stelyo_Branch/Fishing/offer_maker.php"){
     console_log($_SERVER['REQUEST_URI']);
