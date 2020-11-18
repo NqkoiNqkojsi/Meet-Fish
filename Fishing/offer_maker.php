@@ -59,6 +59,8 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 				$sql=$sql.";  izprashta";
 				error_log("sql:".$sql, 3, "/Log_files/sql.log");
 				console_log( $sql );
+				header("location:../index.php");
+                die();
 			} else {
 				error_log("sql:".$sql.";  izprashta", 3, "/Log_files/sql.log");
 				error_log("error:".mysqli_error($conn), 3, "/Log_files/sql.log");
@@ -82,9 +84,9 @@ include "navbar.php";
 	<br>
 <?php
 $direct=getcwd();
+console_log($direct."/Sign_Up.php");
+console_log($direct."/offer_maker.php");
 if(!isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
-	console_log($direct."/Sign_Up.php");
-	console_log($direct."/offer_maker.php");
 ?>
 	<h1 style="color:#E85A4F;">Моля запишете се или влезте в профила си за да пуснете оферта</h1>
 	<button class="button" onclick="window.location.replace(<?php echo $direct."/Sign_Up.php"; ?>);">Запешете се/Влезте в профила си</button>
