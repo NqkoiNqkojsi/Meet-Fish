@@ -81,8 +81,8 @@ include "navbar.php";
 	</div>
 	<br>
 <?php
+$direct=getcwd();
 if(!isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
-    $direct=getcwd();
 	console_log($direct."/Sign_Up.php");
 	console_log($direct."/offer_maker.php");
 ?>
@@ -97,7 +97,7 @@ if(!isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 ?>
     <h3 style="color:#E85A4F;"><?php echo $mess; ?></h3>
 <?php } ?>    
-	<form action=<?php echo $direct."/offer_maker.php"; ?> method="post">
+	<form action=<?php echo $_SERVER['REQUEST_URI']; ?> method="post">
 	<div class="row">
 		<div class="col-25">
 			<label for="time">Кога ще ходите за риба?</label>
