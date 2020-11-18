@@ -40,8 +40,11 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 				$chng1."', '".$chng2."', ".$g.", '".strip_tags($_POST['boat_num'])."', ".$_POST['seat'].", ".$h.")";
 			if (mysqli_query($conn, $sql)) {
 				$last_id=mysqli_insert_id($conn);
+				console_log($sql."; *****Izprashta*****");
 			} else {
 				$mess=$mess."<br>". "Error: " . $sql . "<br>" . mysqli_error($conn);
+				console_log($sql."; greshka");
+				console_log($mess);
 			}
 			$mess=$mess."<br>".$sql;
 			$sql="SELECT ID, Exp, Attend FROM customer WHERE ID=".$_SESSION["user_ID"];
@@ -54,17 +57,16 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 				$row["Attend"]=$row["Attend"].",".$last_id;
 			}
 			$sql = "UPDATE customer SET Exp=".$row['Exp'].", Attend='".$row["Attend"]."' WHERE ID=".$_SESSION["user_ID"];
-			console_log($sql);
 			if (mysqli_query($conn, $sql)) {
 				$sql=$sql.";  izprashta";
-				error_log("sql:".$sql, 3, "/Log_files/sql.log");
+				//error_log("sql:".$sql, 3, "/Log_files/sql.log");
 				console_log( $sql );
 				//header("location:../index.php");
                 //die();
 			} else {
 				error_log("sql:".$sql.";  izprashta", 3, "/Log_files/sql.log");
 				error_log("error:".mysqli_error($conn), 3, "/Log_files/sql.log");
-				console_log_log( "Error updating record: " . mysqli_error($conn));
+				console_log( "Error updating record: " . mysqli_error($conn));
 			}
 		}else{/*Show a error message if the submit is incorrect*/
 	        $mess="Има някаква грешката с твойта оферта!";
