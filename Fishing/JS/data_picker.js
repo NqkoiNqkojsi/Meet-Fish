@@ -2,7 +2,9 @@ $(document).ready(function()
  {
    
     $("#dtBox").DateTimePicker({
-        dateFormat: "dd-MM-yyyy",
+        dateFormat: "yyyy-MM-dd",
     });
-    $("#dtBox1").DateTimePicker();
+    $("#dtBox1").DateTimePicker({
+        minuteInterval: 10
+    });
  });
