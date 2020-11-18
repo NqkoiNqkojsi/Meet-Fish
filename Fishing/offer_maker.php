@@ -36,9 +36,9 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 			$place=intval($_POST['place'])-1;
 			$last_id;
 			$date=date_format($_POST['time'],"Y-m-d H:i:s");
-			console_log($_POST['time']);
+			console_log($date);
 			$sql = "INSERT INTO offer (ID, Sender, Time, Place, Location, Info, Use_Boat, Ship, Free, Prof) ".
-				"VALUES (0, ".$_SESSION["user_ID"].", '".$_POST['time']."', ".$place.", '".
+				"VALUES (0, ".$_SESSION["user_ID"].", '".$date."', ".$place.", '".
 				$chng1."', '".$chng2."', ".$g.", '".strip_tags($_POST['boat_num'])."', ".$_POST['seat'].", ".$h.")";
 			if (mysqli_query($conn, $sql)) {
 				$last_id=mysqli_insert_id($conn);
