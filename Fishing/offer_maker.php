@@ -59,12 +59,12 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 				$sql=$sql.";  izprashta";
 				error_log("sql:".$sql, 3, "/Log_files/sql.log");
 				console_log( $sql );
-				header("location:../index.php");
-                die();
+				//header("location:../index.php");
+                //die();
 			} else {
 				error_log("sql:".$sql.";  izprashta", 3, "/Log_files/sql.log");
 				error_log("error:".mysqli_error($conn), 3, "/Log_files/sql.log");
-				echo "Error updating record: " . mysqli_error($conn);
+				console_log_log( "Error updating record: " . mysqli_error($conn));
 			}
 		}else{/*Show a error message if the submit is incorrect*/
 	        $mess="Има някаква грешката с твойта оферта!";
