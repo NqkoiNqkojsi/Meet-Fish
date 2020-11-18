@@ -59,8 +59,6 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 				$sql=$sql.";  izprashta";
 				error_log("sql:".$sql, 3, "/Log_files/sql.log");
 				console_log( $sql );
-				//header("Location: ../index.php");
-				//die();
 			} else {
 				error_log("sql:".$sql.";  izprashta", 3, "/Log_files/sql.log");
 				error_log("error:".mysqli_error($conn), 3, "/Log_files/sql.log");
@@ -84,9 +82,12 @@ include "navbar.php";
 	<br>
 <?php
 if(!isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
+    $direct=getcwd();
+	console_log($direct."/Sign_Up.php");
+	console_log($direct."/offer_maker.php");
 ?>
 	<h1 style="color:#E85A4F;">Моля запишете се или влезте в профила си за да пуснете оферта</h1>
-	<button class="button" onclick="window.location.replace('/Fishing/Sign_Up.php');">Запешете се/Влезте в профила си</button>
+	<button class="button" onclick="window.location.replace(<?php echo $direct."/Sign_Up.php"; ?>);">Запешете се/Влезте в профила си</button>
 <?php
 }else{
 ?>
@@ -96,7 +97,7 @@ if(!isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 ?>
     <h3 style="color:#E85A4F;"><?php echo $mess; ?></h3>
 <?php } ?>    
-	<form action="/Fishing/offer_maker.php" method="post">
+	<form action=<?php echo $direct."/offer_maker.php"; ?> method="post">
 	<div class="row">
 		<div class="col-25">
 			<label for="time">Кога ще ходите за риба?</label>
