@@ -1,6 +1,7 @@
 <?php
 // Start the session
 session_start();
+include "logging.php";
 $f=false;
 $g=true;
 $mess="Nothing";
@@ -34,13 +35,20 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 			$chng2=hndlcms($_POST['info'], true);
 			$place=intval($_POST['place'])-1;
 			$last_id;
+			$new_date=date_create_from_format("d-m-Y H:i", $_POST['time']);
+			$new_date=date_format($new_date,"Y-m-d H:i:s");
+			console_log($_POST['time']."; type:".gettype($_POST['time']));
+			console_log("new_date:".$new_date."; type:".gettype($new_date));
 			$sql = "INSERT INTO offer (ID, Sender, Time, Place, Location, Info, Use_Boat, Ship, Free, Prof) ".
-				"VALUES (0, ".$_SESSION["user_ID"].", '".$_POST['time']."', ".$place.", '".
+				"VALUES (0, ".$_SESSION["user_ID"].", '".$new_date."', ".$place.", '".
 				$chng1."', '".$chng2."', ".$g.", '".strip_tags($_POST['boat_num'])."', ".$_POST['seat'].", ".$h.")";
 			if (mysqli_query($conn, $sql)) {
 				$last_id=mysqli_insert_id($conn);
+				console_log($sql."; *****Izprashta*****");
 			} else {
 				$mess=$mess."<br>". "Error: " . $sql . "<br>" . mysqli_error($conn);
+				console_log($sql."; greshka");
+				console_log($mess);
 			}
 			$mess=$mess."<br>".$sql;
 			$sql="SELECT ID, Exp, Attend FROM customer WHERE ID=".$_SESSION["user_ID"];
@@ -54,11 +62,16 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 			}
 			$sql = "UPDATE customer SET Exp=".$row['Exp'].", Attend='".$row["Attend"]."' WHERE ID=".$_SESSION["user_ID"];
 			if (mysqli_query($conn, $sql)) {
+				$sql=$sql.";  izprashta";
+				//error_log("sql:".$sql, 3, "/Log_files/sql.log");
+				console_log( $sql );
+				//header("location:../index.php");
+                //die();
 			} else {
-				echo "Error updating record: " . mysqli_error($conn);
+				error_log("sql:".$sql.";  izprashta", 3, "/Log_files/sql.log");
+				error_log("error:".mysqli_error($conn), 3, "/Log_files/sql.log");
+				console_log( "Error updating record: " . mysqli_error($conn));
 			}
-			header("Location: ../index.php");
-			die();
 		}else{/*Show a error message if the submit is incorrect*/
 	        $mess="Има някаква грешката с твойта оферта!";
 	        $g=false;
@@ -76,10 +89,13 @@ include "navbar.php";
 	</div>
 	<br>
 <?php
+$direct=getcwd();
+console_log($direct."/Sign_Up.php");
+console_log($direct."/offer_maker.php");
 if(!isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 ?>
 	<h1 style="color:#E85A4F;">Моля запишете се или влезте в профила си за да пуснете оферта</h1>
-	<button class="button" onclick="window.location.replace('/Fishing/Sign_Up.php');">Запешете се/Влезте в профила си</button>
+	<button class="button" onclick="window.location.replace(<?php echo $direct."/Sign_Up.php"; ?>);">Запешете се/Влезте в профила си</button>
 <?php
 }else{
 ?>
@@ -89,7 +105,7 @@ if(!isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 ?>
     <h3 style="color:#E85A4F;"><?php echo $mess; ?></h3>
 <?php } ?>    
-	<form action="/Fishing/offer_maker.php" method="post">
+	<form action=<?php echo $_SERVER['REQUEST_URI']; ?> method="post">
 	<div class="row">
 		<div class="col-25">
 			<label for="time">Кога ще ходите за риба?</label>

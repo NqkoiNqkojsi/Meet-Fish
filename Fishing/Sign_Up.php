@@ -2,6 +2,7 @@
 // Start the session
 session_start();
 session_unset();
+include "logging.php";
 include "conn.php";
 include "towns.php";
 $f=true;

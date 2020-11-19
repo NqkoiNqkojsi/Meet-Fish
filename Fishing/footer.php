@@ -7,7 +7,7 @@ $url= $_SERVER['REQUEST_URI'];
         <div class="row">
             <div class="col-sm-3">
                 <?php
-                    if($url=="/index.php"){     //make it for index
+                if(basename($url)=="index.php"){     //make it for index
                 ?>
                 <a href="www.meetandfish.online" target="_blank">
                     <img src="/Fishing/Img/logo2.png" alt="Logo" style="width:84px;height:84px;border:0;">

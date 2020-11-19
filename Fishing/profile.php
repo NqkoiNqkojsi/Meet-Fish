@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "logging.php";
 include "conn.php";
 include "towns.php";
 $f=false;
