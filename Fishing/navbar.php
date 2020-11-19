@@ -20,26 +20,22 @@ ini_set('display_startup_errors', 1);
 <div class="navbar" style="position: relative;" id="navbar">
 	<a href="../index.php">Начало</a>
 	<div class="dropdown" style="display: block;">
-		<button class="dropbtn" onclick="Show('myDropdown1')">Времето</button>
-		<div id="myDropdown1" class="dropdown-content">
-			<?php include "weat_wid.php"; ?>
-		</div>
+			<button class="dropbtn" onclick="DR_Show('myDropdown1')">Времето</button>
+			<div id="myDropdown1" style="" class="dropdown-content">
+				<?php include "Fishing/weat_wid.php"; ?>
+			</div>
 	</div>
 	<div class="dropdown">
-			<button id="dropbtn" class="dropbtn" onclick="Page_Turn(true, 0, true, false)">По Място 
-				<i class="fa fa-caret-down"></i>
+			<button id="dropbtn"  class="dropbtn" onclick="Page_Show('myDropdown', false)">По Място 
+				<i class="fa fa-caret-down" ></i>
 			</button>
 			<div id="myDropdown" class="dropdown-content">
-				<button class="dropdown-item" id="back_butt" onclick="Page_Turn(false, 0, false, false)" style="background-color:#17252A; color:#FEFFFF; display:none;">Назад</button>
-				<?php
-				for($i=1;$i<=4;$i++){
-					$att="town".$i;//make the id of every link
-				?>
-					<a  href="#" class="dropdown-item" id="<?php echo $att;?>"></a>
-				<?php
-				}
-				?>
-				<button class="dropdown-item" id="for_butt" onclick="Page_Turn(true, 0, false, false)" style="background-color:#17252A; color:#FEFFFF; display:block;">Напред</button>
+				<button class="dropdown-item" id="back_butt" onclick="Page_Turn(false, false)" style="background-color:#17252A; color:#FEFFFF; display:none;">Назад</button>
+					<a  href="#" class="dropdown-item" id="town0"></a>
+					<a  href="#" class="dropdown-item" id="town1"></a>
+					<a  href="#" class="dropdown-item" id="town2"></a>
+					<a  href="#" class="dropdown-item" id="town3"></a>
+				<button class="dropdown-item" id="for_butt" onclick="Page_Turn(true, false)" style="background-color:#17252A; color:#FEFFFF; display:block;">Напред</button>
 			</div>
 		</div>
 	<a href="offer_maker.php">Направи оферта</a>
