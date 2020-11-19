@@ -5,6 +5,5 @@ $(document).ready(function()
         dateFormat: "yyyy-MM-dd",
     });
     $("#dtBox1").DateTimePicker({
-        minuteInterval: 10
     });
  });
