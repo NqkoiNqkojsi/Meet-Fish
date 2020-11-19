@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 include "logging.php";
 include "conn.php";
@@ -13,42 +13,42 @@ include "navbar.php";
 ?>
     </div>
 	<br><br>
-    <h2 style="text-align:center">Responsive Pricing Tables</h2>
-<p style="text-align:center">Resize the browser window to see the effect.</p>
+    <h2 style="text-align:center">Абонаментни планове</h2>
+<p style="text-align:center">Изберете един за да се запишете в сайта.</p>
 
 <div class="columns_price">
   <ul class="price">
-    <li class="header">Basic</li>
-    <li class="grey">$ 9.99 / year</li>
-    <li>10GB Storage</li>
-    <li>10 Emails</li>
-    <li>10 Domains</li>
-    <li>1GB Bandwidth</li>
-    <li class="grey"><a href="#" class="button">Sign Up</a></li>
+    <li class="header">Хоби</li>
+    <li class="grey">Безплатно</li>
+    <li>1 участие в среща на седмица</li>
+    <li>Малко Реклами</li>
+    <li>Невъзможност за създаване на срещи с лодки</li>
+    <li>Без достъп до професионални оферти</li>
+    <li class="grey"><a href="#" class="button_price">Sign Up</a></li>
   </ul>
 </div>
 
 <div class="columns_price">
   <ul class="price">
-    <li class="header" style="background-color:#4CAF50">Pro</li>
-    <li class="grey">$ 24.99 / year</li>
-    <li>25GB Storage</li>
-    <li>25 Emails</li>
-    <li>25 Domains</li>
-    <li>2GB Bandwidth</li>
-    <li class="grey"><a href="#" class="button">Sign Up</a></li>
+    <li class="header" style="background-color:#4CAF50">Хоби++</li>
+    <li class="grey">3лв/месец</li>
+    <li>НЕОГРАНИЧЕНО участие в срещи</li>
+    <li>Без Реклами</li>
+    <li>Достъп до създаване на оферти с лодки</li>
+    <li>Без достъп до професионални оферти</li>
+    <li class="grey"><a href="#" class="button_price">Sign Up</a></li>
   </ul>
 </div>
 
 <div class="columns_price">
   <ul class="price">
-    <li class="header">Premium</li>
-    <li class="grey">$ 49.99 / year</li>
-    <li>50GB Storage</li>
-    <li>50 Emails</li>
-    <li>50 Domains</li>
-    <li>5GB Bandwidth</li>
-    <li class="grey"><a href="#" class="button">Sign Up</a></li>
+    <li class="header">Професионален</li>
+    <li class="grey">7лв/месец</li>
+    <li>НЕОГРАНИЧЕНО участие в срещи</li>
+    <li>Без Реклами</li>
+    <li>Достъп до създаване на оферти с лодки</li>
+    <li>Достъп до професионални оферти</li>
+    <li class="grey"><a href="#" class="button_price">Sign Up</a></li>
   </ul>
 </div>
 

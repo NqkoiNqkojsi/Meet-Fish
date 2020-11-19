@@ -5,7 +5,7 @@
 .columns_price {
   float: left;
   width: 33.3%;
-  padding: 8px;
+  padding: 32px;
 }
 
 .price {
@@ -28,9 +28,10 @@
 }
 
 .price li {
-  border-bottom: 1px solid #eee;
-  padding: 20px;
-  text-align: center;
+    border-bottom: 1px solid #eee;
+    background-color: #bfbfbf;
+    padding: 20px;
+    text-align: center;
 }
 
 .price .grey {
