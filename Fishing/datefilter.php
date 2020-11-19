@@ -1,6 +1,6 @@
 <?php
-if($_SERVER['REQUEST_URI']=="/index.php" || $_SERVER['REQUEST_URI']=="/Stelyo_Branch/index.php"){
-    console_log($_SERVER['REQUEST_URI']);
+if(basename($_SERVER['REQUEST_URI'])=="index.php" || $_SERVER['REQUEST_URI']=="/Stelyo_Branch/index.php"){
+    console_log(basename($_SERVER['REQUEST_URI']));
     $date=new DateTime();
     $date1=new DateTime();
     $date1->modify('+2 months');
@@ -21,8 +21,8 @@ if($_SERVER['REQUEST_URI']=="/index.php" || $_SERVER['REQUEST_URI']=="/Stelyo_Br
 
 <script src="JS/data_picker.js"></script>
 <?php
-}else if($_SERVER['REQUEST_URI']=="/Fishing/offer_maker.php" || $_SERVER['REQUEST_URI']=="/Stelyo_Branch/Fishing/offer_maker.php"){
-    console_log($_SERVER['REQUEST_URI']);
+}else if(basename($_SERVER['REQUEST_URI'])=="offer_maker.php" || $_SERVER['REQUEST_URI']=="/Stelyo_Branch/Fishing/offer_maker.php"){
+    console_log(basename($_SERVER['REQUEST_URI']));
     $date=new DateTime();
     $date1=new DateTime();
     $date1->modify('+2 months');
