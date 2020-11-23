@@ -11,6 +11,10 @@ $gres=0;
 $br=0;
 $messages="";
 $message2="";
+$plan=0;
+if(isset($_REQUEST["plan"])){
+	$plan=$_REQUEST["plan"];
+}
 function test_input($data) {//Clear the input
   $data = trim($data);
   $data = stripslashes($data);

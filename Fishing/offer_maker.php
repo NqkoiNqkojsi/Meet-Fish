@@ -37,11 +37,13 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 			$last_id;
 			$new_date=date_create_from_format("d-m-Y H:i", $_POST['time']);
 			$new_date=date_format($new_date,"Y-m-d H:i:s");
+			$now=date_format($now,"Y-m-d");
+			console_log("now:".$now);
 			console_log($_POST['time']."; type:".gettype($_POST['time']));
 			console_log("new_date:".$new_date."; type:".gettype($new_date));
-			$sql = "INSERT INTO offer (ID, Sender, Time, Place, Location, Info, Use_Boat, Ship, Free, Prof) ".
+			$sql = "INSERT INTO offer (ID, Sender, Time, Place, Location, Info, Use_Boat, Ship, Free, Prof, Creation) ".
 				"VALUES (0, ".$_SESSION["user_ID"].", '".$new_date."', ".$place.", '".
-				$chng1."', '".$chng2."', ".$g.", '".strip_tags($_POST['boat_num'])."', ".$_POST['seat'].", ".$h.")";
+				$chng1."', '".$chng2."', ".$g.", '".strip_tags($_POST['boat_num'])."', ".$_POST['seat'].", ".$h.", '".$now."')";
 			if (mysqli_query($conn, $sql)) {
 				$last_id=mysqli_insert_id($conn);
 				console_log($sql."; *****Izprashta*****");
