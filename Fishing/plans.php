@@ -21,7 +21,7 @@ if(!isset($_SESSION["user_ID"])){
 
 <button id="ModalBtn1">Open Modal</button>
 
-    <div id="myModal" class="modal">
+    <div id="Modal" class="modal">
 <div class="slideshow-container">
 
 <span class="close">&times;</span>
@@ -70,9 +70,9 @@ if(!isset($_SESSION["user_ID"])){
     <h2 style="text-align:center">Абонаментни планове</h2>
 <p style="text-align:center">Изберете един за да се запишете в сайта.</p>
 
-    <button id="myBtn">Open Modal</button>
+    <button id="ModalBtn1">Open Modal</button>
 
-<div id="ModalBtn1" class="modal">
+<div id="Modal1" class="modal">
 <div class="slideshow-container">
 
 <span class="close">&times;</span>
