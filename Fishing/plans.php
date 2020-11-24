@@ -19,6 +19,11 @@ if(!isset($_SESSION["user_ID"])){
     <h2 style="text-align:center">Абонаментни планове</h2>
 <p style="text-align:center">Изберете един за да се запишете в сайта.</p>
 
+    <div id="myModal" class="modal">
+<div class="slideshow-container">
+
+<span class="close">&times;</span>
+
 <div class="columns_price">
   <ul class="price">
     <li class="header">Хоби</li>
@@ -54,6 +59,9 @@ if(!isset($_SESSION["user_ID"])){
     <li class="grey"><a href="#" class="button_price">Sign Up</a></li>
   </ul>
 </div>
+</div></div>
+    <script src="JS/pricing_js.js"></script>
+    <script src="JS/modal1.js"></script>
 <?php
 }else{
 ?>
