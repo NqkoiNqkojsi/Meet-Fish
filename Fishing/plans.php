@@ -61,6 +61,13 @@ if(!isset($_SESSION["user_ID"])){
     <li class="grey"><a href="#" class="button_price">Sign Up</a></li>
   </ul>
 </div>
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+<div class="dot-container">
+  <span class="dot" onclick="currentSlide(1)"></span>
+  <span class="dot" onclick="currentSlide(2)"></span>
+  <span class="dot" onclick="currentSlide(3)"></span>
+</div>
 </div></div>
     <script src="JS/pricing_js.js"></script>
     <script src="JS/modal1.js"></script>
