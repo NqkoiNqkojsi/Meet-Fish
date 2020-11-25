@@ -26,6 +26,7 @@ if(!isset($_SESSION["user_ID"])){
 
 <span class="close">&times;</span>
 
+<div style="position:absolute">
 <div class="columns_price">
   <ul class="price">
     <li class="header">Хоби</li>
@@ -60,7 +61,7 @@ if(!isset($_SESSION["user_ID"])){
     <li>Достъп до професионални оферти</li>
     <li class="grey"><a href="#" class="button_price">Sign Up</a></li>
   </ul>
-</div>
+</div></div>
     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
     <a class="next" onclick="plusSlides(1)">&#10095;</a>
 <div class="dot-container">
@@ -84,6 +85,7 @@ if(!isset($_SESSION["user_ID"])){
 
 <span class="close">&times;</span>
 
+<div style="position:absolute">
 <div class="columns_price">
   <ul class="price">
     <li class="header">Хоби</li>
@@ -118,7 +120,7 @@ if(!isset($_SESSION["user_ID"])){
     <li>Достъп до професионални оферти</li>
     <li class="grey"><a href="#" class="button_price">Sign Up</a></li>
   </ul>
-</div>
+</div></div>
     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
     <a class="next" onclick="plusSlides(1)">&#10095;</a>
 <div class="dot-container">
