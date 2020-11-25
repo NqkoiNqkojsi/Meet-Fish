@@ -21,7 +21,7 @@ if(!isset($_SESSION["user_ID"])){
 
 <button id="ModalBtn1">Open Modal</button>
 
-    <div id="Modal1" class="modal">
+    <div id="Modal1" class="modal1">
 <div class="slideshow-container">
 
 <span class="close">&times;</span>
@@ -80,7 +80,7 @@ if(!isset($_SESSION["user_ID"])){
 
     <button id="ModalBtn1">Open Modal</button>
 
-<div id="Modal1" class="modal">
+<div id="Modal1" class="modal1">
 <div class="slideshow-container">
 
 <span class="close">&times;</span>
