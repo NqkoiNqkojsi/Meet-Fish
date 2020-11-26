@@ -8,7 +8,7 @@ if(!isset($_SESSION["user_ID"])){
 
 <span class="close">&times;</span>
 
-<div style="position:absolute">
+<div>
 <div class="columns_price">
   <ul class="price">
     <li class="header">Хоби</li>
@@ -73,7 +73,7 @@ if(!isset($_SESSION["user_ID"])){
 
 <span class="close">&times;</span>
 
-<div style="position:absolute">
+<div >
 <div class="columns_price">
   <ul class="price">
     <li class="header">Хоби</li>
