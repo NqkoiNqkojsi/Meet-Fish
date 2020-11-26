@@ -1,10 +1,7 @@
 <?php
 if(!isset($_SESSION["user_ID"])){
 ?>
-    <h2 style="text-align:center">Абонаментни планове</h2>
-<p style="text-align:center">Изберете един за да се запишете в сайта.</p>
-
-<button id="ModalBtn1">Open Modal</button>
+<button id="ModalBtn1" class="signupbtn">Избери план за регистриране</button>
 
     <div id="Modal1" class="modal1">
 <div class="slideshow-container">
@@ -20,7 +17,9 @@ if(!isset($_SESSION["user_ID"])){
     <li>Малко Реклами</li>
     <li>Невъзможност за създаване на срещи с лодки</li>
     <li>Без достъп до професионални оферти</li>
-    <li class="grey"><a href="Sing_Up.php?plan=1" class="button_price">Sign Up</a></li>
+    <li class="grey">
+        <button type="submit" name="submit" class="button_price" value="1">Запиши се</button>
+    </li>
   </ul>
 </div>
 
@@ -32,7 +31,9 @@ if(!isset($_SESSION["user_ID"])){
     <li>Без Реклами</li>
     <li>Достъп до създаване на оферти с лодки</li>
     <li>Без достъп до професионални оферти</li>
-    <li class="grey"><a href="#" class="button_price">Sign Up</a></li>
+      <li class="grey">
+          <button type="submit" name="submit" class="button_price" value="2">Запиши се</button>
+      </li>
   </ul>
 </div>
 
@@ -44,7 +45,9 @@ if(!isset($_SESSION["user_ID"])){
     <li>Без Реклами</li>
     <li>Достъп до създаване на оферти с лодки</li>
     <li>Достъп до професионални оферти</li>
-    <li class="grey"><a href="#" class="button_price">Sign Up</a></li>
+      <li class="grey">
+          <button type="submit" name="submit" class="button_price" value="3">Запиши се</button>
+      </li>
   </ul>
 </div></div>
     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
