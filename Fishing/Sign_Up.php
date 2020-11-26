@@ -186,6 +186,7 @@ include "passext.php";
 <head>
 	<title>Register</title>
 	<link rel="stylesheet" href="CSS/sign_up_style.css">
+	<link rel="stylesheet" href="CSS/pricing.css">
     <script src='https://www.google.com/recaptcha/api.js' async defer></script>
 <?php 
 	include "navbar.php";
