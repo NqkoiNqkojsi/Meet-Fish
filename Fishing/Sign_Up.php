@@ -301,6 +301,8 @@ if(isset($_POST["submit"])){
                     <label for="Desc"><b>Опишете се за другите</b></label><br>
 					<textarea id="Desc" style="height:90px;" placeholder="Въведи Описанието" name="Desc"></textarea><br><br>
 					
+					<?php include("plans.php"); ?>
+
 					<div class="g-recaptcha" data-sitekey="6Leu6OsUAAAAAERWESijZXDiawXZwO0gMKmThg4w"></div>
 					<div class="clearfix">
 						<button type="button" name="cancel" class="cancelbtn">Прекъсни</button>

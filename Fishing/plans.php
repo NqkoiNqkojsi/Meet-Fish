@@ -1,19 +1,4 @@
 <?php
-session_start();
-include "logging.php";
-include "conn.php";
-include "towns.php";
-?>
-<html>
-<head>
-    <title>Meet & Fish</title>
-    <link rel="stylesheet" href="CSS/pricing.css">
-<?php 
-include "navbar.php";
-?>
-    </div>
-	<br><br>
-<?php
 if(!isset($_SESSION["user_ID"])){
 ?>
     <h2 style="text-align:center">Абонаментни планове</h2>
@@ -134,5 +119,3 @@ if(!isset($_SESSION["user_ID"])){
 <?php
 }
 ?>
-</body>
-</html>
