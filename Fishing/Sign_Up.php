@@ -65,9 +65,6 @@ if(isset($_POST["submit"])){
 		    $messages="Паролите не си СЪОТВЕТСВАТ!";
 	    }    
 	}
-	if($_POST['submit']>0 && $_POST['submit']<4){
-        
-    }
 	//********reCaptcha**********
 	$captcha;
 	if(isset($_POST['g-recaptcha-response'])){
