@@ -65,6 +65,8 @@ if(isset($_POST["submit"])){
 		    $messages="Паролите не си СЪОТВЕТСВАТ!";
 	    }    
 	}
+	console_log($_POST["submit"]);
+	console_log(gettype($_POST["submit"]));
 	//********reCaptcha**********
 	$captcha;
 	if(isset($_POST['g-recaptcha-response'])){
@@ -199,7 +201,7 @@ include "passext.php";
 <?php
 if(isset($_POST["submit"])){
     if($f==false){
-?>      <h3>submit=<?php var_dump($_POST["submit"]); ?>; <?php gettype($_POST["submit"]); ?></h3>
+?>
 		<div class="column" style="padding: 10px;">
 			<form action="Sign_Up.php" method="post">
 				<div class="container">

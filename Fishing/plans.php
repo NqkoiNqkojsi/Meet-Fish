@@ -1,7 +1,7 @@
 <?php
 if(!isset($_SESSION["user_ID"])){
 ?>
-<button id="ModalBtn1" class="signupbtn">Избери план за регистриране</button>
+<button id="ModalBtn1" type="button" class="signupbtn">Избери план за регистриране</button>
 
     <div id="Modal1" class="modal1">
 <div class="slideshow-container">
