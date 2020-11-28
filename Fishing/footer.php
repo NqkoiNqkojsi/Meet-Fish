@@ -26,7 +26,13 @@ $url= $_SERVER['REQUEST_URI'];
             </div>
             <div class="col-sm-9">
                 <p>Направена от Стелиан Грозев<br>Ученик от 9д</p>
-                <p>При проблеми пишете на <span style="color:#3AAFA9;">mackarelbot@meetandfish.online</span></p>
+                <p>При проблеми пишете на <span style="color:#3AAFA9;">mackarelbot@meetandfish.online</span></p></br>
+                <div>
+                    Icons made by
+                    <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from
+                    <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+                </div>
+
             </div>
         </div>
     </div>
