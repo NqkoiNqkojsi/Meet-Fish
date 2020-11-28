@@ -106,9 +106,12 @@ if(isset($_POST["submit"])){
 	$plc=($_POST['place']-1);
 	if($f==true){
 	    $today=date("Y-m-d");
+		$onemonth=new DateTime("now");
+		$onemonth->modify("+1 month");
+		$future_date=$onemonth->format('Y-m-d');
 	    //***************************Binding & Excecuting************************
 		try{
-            $sql="INSERT INTO customer (ID, NickName, FName, SName, Email, Pass, Birth, Place, Ship, Exp, Description, "."Creation, Verified, Plan) "    ."VALUES (0, ?, ?, ?, ?, '".$pwd."', '".$_POST['birth']."', ".$plc.	", ?, 0, ?, '".$today."', 0, ".$_POST['submit'].")";
+            $sql="INSERT INTO customer (ID, NickName, FName, SName, Email, Pass, Birth, Place, Ship, Exp, Description, "."Creation, Verified, Plan, Plan_End) "    ."VALUES (0, ?, ?, ?, ?, '".$pwd."', '".$_POST['birth']."', ".$plc.	", ?, 0, ?, '".$today."', 0, ".$_POST['submit'].", '".$future_date."')";
             $stmt= $conn->prepare($sql);
             $stmt->bind_param("ssssss", $_POST['nname'], $_POST['fname'], $_POST['sname'], $_POST['email'], $_POST['ship'], $_POST['Desc']);
             $stmt->execute();
