@@ -107,13 +107,17 @@ if(isset($_POST["submit"])){
 	if($f==true){
 	    $today=date("Y-m-d");
 	    //***************************Binding & Excecuting************************
-		$sql="INSERT INTO customer (ID, NickName, FName, SName, Email, Pass, Birth, Place, Ship, Exp, Description, "."Creation, Verified, Plan) "    ."VALUES (0, ?, ?, ?, ?, '".$pwd."', '".$_POST['birth']."', ".$plc.	", ?, 0, ?, '".$today."', 0, ?)";
-		$stmt= $conn->prepare($sql);
-		$stmt->bind_param("ssssss", $_POST['nname'], $_POST['fname'], $_POST['sname'], $_POST['email'], $_POST['ship'], $_POST['Desc'], $_POST["submit"]);
-	    $stmt->execute();
+		try{
+            $sql="INSERT INTO customer (ID, NickName, FName, SName, Email, Pass, Birth, Place, Ship, Exp, Description, "."Creation, Verified, Plan) "    ."VALUES (0, ?, ?, ?, ?, '".$pwd."', '".$_POST['birth']."', ".$plc.	", ?, 0, ?, '".$today."', 0, ?)";
+            $stmt= $conn->prepare($sql);
+            $stmt->bind_param("ssssss", $_POST['nname'], $_POST['fname'], $_POST['sname'], $_POST['email'], $_POST['ship'], $_POST['Desc'], $_POST["submit"]);
+            $stmt->execute();
+        }catch(Exception $e){
+            echo "Error: " . $e->getMessage();
+        }
 	    include "email_verify.php";//send email verification
-		header("location:../index.php");
-		die();
+		//header("location:../index.php");
+		//die();
 	    /*$resul = $stmt->get_result();
         $row = $resul->fetch_assoc();
 		if ($row!==false) {
