@@ -116,6 +116,7 @@ if(isset($_POST["submit"])){
             console_log("Error: " . $e->getMessage());
 			console_log($sql);
         }
+		console_log($sql);
 	    include "email_verify.php";//send email verification
 		//header("location:../index.php");
 		//die();
