@@ -109,8 +109,8 @@ if(isset($_POST["submit"])){
 		$stmt->bind_param("ssssss", $_POST['nname'], $_POST['fname'], $_POST['sname'], $_POST['email'], $_POST['ship'], $_POST['Desc']);
 	    $stmt->execute();
 	    include "email_verify.php";//send email verification
-		header("location:../index.php");
-		die();
+		//header("location:../index.php");
+		//die();
 	    /*$resul = $stmt->get_result();
         $row = $resul->fetch_assoc();
 		if ($row!==false) {
