@@ -117,13 +117,10 @@ if(isset($_POST["submit"])){
             $stmt->execute();
         }catch(Exception $e){
             console_log("Error: " . $e->getMessage());
-			console_log($sql);
         }
-		console_log($sql);
-
 	    include "email_verify.php";//send email verification
-		//header("location:../index.php");
-		//die();
+		header("location:../index.php");
+		die();
 	    /*$resul = $stmt->get_result();
         $row = $resul->fetch_assoc();
 		if ($row!==false) {
