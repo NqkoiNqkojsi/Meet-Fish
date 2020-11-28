@@ -11,6 +11,10 @@ $gres=0;
 $br=0;
 $messages="";
 $message2="";
+$plan=0;
+if(isset($_REQUEST["plan"])){
+	$plan=$_REQUEST["plan"];
+}
 function test_input($data) {//Clear the input
   $data = trim($data);
   $data = stripslashes($data);
@@ -61,6 +65,11 @@ if(isset($_POST["submit"])){
 		    $messages="Паролите не си СЪОТВЕТСВАТ!";
 	    }    
 	}
+	if(intval($_POST["submit"])>4 || intval($_POST["submit"])<0){
+        $f=false;
+		$gres=7;
+		$messages="Има грешка с плановете";
+    }
 	//********reCaptcha**********
 	$captcha;
 	if(isset($_POST['g-recaptcha-response'])){
@@ -97,11 +106,18 @@ if(isset($_POST["submit"])){
 	$plc=($_POST['place']-1);
 	if($f==true){
 	    $today=date("Y-m-d");
+		$onemonth=new DateTime("now");
+		$onemonth->modify("+1 month");
+		$future_date=$onemonth->format('Y-m-d');
 	    //***************************Binding & Excecuting************************
-		$sql="INSERT INTO customer (ID, NickName, FName, SName, Email, Pass, Birth, Place, Ship, Exp, Description, "."Creation, Verified) "    ."VALUES (0, ?, ?, ?, ?, '".$pwd."', '".$_POST['birth']."', ".$plc.	", ?, 0, ?, '".$today."', 0)";
-		$stmt= $conn->prepare($sql);
-		$stmt->bind_param("ssssss", $_POST['nname'], $_POST['fname'], $_POST['sname'], $_POST['email'], $_POST['ship'], $_POST['Desc']);
-	    $stmt->execute();
+		try{
+            $sql="INSERT INTO customer (ID, NickName, FName, SName, Email, Pass, Birth, Place, Ship, Exp, Description, "."Creation, Verified, Plan, Plan_End) "    ."VALUES (0, ?, ?, ?, ?, '".$pwd."', '".$_POST['birth']."', ".$plc.	", ?, 0, ?, '".$today."', 0, ".$_POST['submit'].", '".$future_date."')";
+            $stmt= $conn->prepare($sql);
+            $stmt->bind_param("ssssss", $_POST['nname'], $_POST['fname'], $_POST['sname'], $_POST['email'], $_POST['ship'], $_POST['Desc']);
+            $stmt->execute();
+        }catch(Exception $e){
+            console_log("Error: " . $e->getMessage());
+        }
 	    include "email_verify.php";//send email verification
 		header("location:../index.php");
 		die();
@@ -182,6 +198,7 @@ include "passext.php";
 <head>
 	<title>Register</title>
 	<link rel="stylesheet" href="CSS/sign_up_style.css">
+	<link rel="stylesheet" href="CSS/pricing.css">
     <script src='https://www.google.com/recaptcha/api.js' async defer></script>
 <?php 
 	include "navbar.php";
@@ -296,11 +313,12 @@ if(isset($_POST["submit"])){
 			
                     <label for="Desc"><b>Опишете се за другите</b></label><br>
 					<textarea id="Desc" style="height:90px;" placeholder="Въведи Описанието" name="Desc"></textarea><br><br>
-					
+
 					<div class="g-recaptcha" data-sitekey="6Leu6OsUAAAAAERWESijZXDiawXZwO0gMKmThg4w"></div>
 					<div class="clearfix">
 						<button type="button" name="cancel" class="cancelbtn">Прекъсни</button>
-						<button type="submit" name="submit" class="signupbtn">Запиши се</button>
+						<?php include("plans.php"); ?>
+						<!--<button type="submit" name="submit" class="signupbtn">Запиши се</button>-->
 					</div>
 				</div>
 			</form>
@@ -372,7 +390,7 @@ if(isset($_POST["submit"])){
 						<option value="<?php echo $br;?>"><?php echo $town; ?></option>
 						<?php
 						}
-						?>
+                        ?>
 					</select><br>
 			     
 					<label for="Ship"><b>Имаш ли лодка</b></label>
@@ -380,10 +398,13 @@ if(isset($_POST["submit"])){
 			
                     <label for="Desc"><b>Опишете се за другите</b></label><br>
 					<textarea id="Desc" style="height:90px;" placeholder="Въведи Описанието" name="Desc"></textarea><br><br>
+
+
 			        <div class="g-recaptcha" data-sitekey="6Leu6OsUAAAAAERWESijZXDiawXZwO0gMKmThg4w"></div>
 					<div class="clearfix">
 						<button type="button" name="cancel" class="cancelbtn">Прекъсни</button>
-						<button type="submit" name="submit" class="signupbtn">Запиши се</button>
+						<?php include("plans.php"); ?>
+						<!--<button type="submit" name="submit" class="signupbtn">Запиши се</button>-->
 					</div>
 				</div>
 			</form>
