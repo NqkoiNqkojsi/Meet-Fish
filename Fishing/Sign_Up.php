@@ -113,7 +113,7 @@ if(isset($_POST["submit"])){
             $stmt->bind_param("ssssss", $_POST['nname'], $_POST['fname'], $_POST['sname'], $_POST['email'], $_POST['ship'], $_POST['Desc'], $_POST["submit"]);
             $stmt->execute();
         }catch(Exception $e){
-            echo "Error: " . $e->getMessage();
+            console_log("Error: " . $e->getMessage());
         }
 	    include "email_verify.php";//send email verification
 		//header("location:../index.php");
