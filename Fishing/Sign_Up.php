@@ -65,8 +65,11 @@ if(isset($_POST["submit"])){
 		    $messages="Паролите не си СЪОТВЕТСВАТ!";
 	    }    
 	}
-	console_log($_POST["submit"]);
-	console_log(gettype($_POST["submit"]));
+	if(intval($_POST["submit"])>4 || intval($_POST["submit"])<0){
+        $f=false;
+		$gres=7;
+		$messages="Има грешка с плановете";
+    }
 	//********reCaptcha**********
 	$captcha;
 	if(isset($_POST['g-recaptcha-response'])){
@@ -104,13 +107,13 @@ if(isset($_POST["submit"])){
 	if($f==true){
 	    $today=date("Y-m-d");
 	    //***************************Binding & Excecuting************************
-		$sql="INSERT INTO customer (ID, NickName, FName, SName, Email, Pass, Birth, Place, Ship, Exp, Description, "."Creation, Verified) "    ."VALUES (0, ?, ?, ?, ?, '".$pwd."', '".$_POST['birth']."', ".$plc.	", ?, 0, ?, '".$today."', 0)";
+		$sql="INSERT INTO customer (ID, NickName, FName, SName, Email, Pass, Birth, Place, Ship, Exp, Description, "."Creation, Verified, Plan) "    ."VALUES (0, ?, ?, ?, ?, '".$pwd."', '".$_POST['birth']."', ".$plc.	", ?, 0, ?, '".$today."', 0, ?)";
 		$stmt= $conn->prepare($sql);
-		$stmt->bind_param("ssssss", $_POST['nname'], $_POST['fname'], $_POST['sname'], $_POST['email'], $_POST['ship'], $_POST['Desc']);
+		$stmt->bind_param("ssssss", $_POST['nname'], $_POST['fname'], $_POST['sname'], $_POST['email'], $_POST['ship'], $_POST['Desc'], $_POST["submit"]);
 	    $stmt->execute();
 	    include "email_verify.php";//send email verification
-		//header("location:../index.php");
-		//die();
+		header("location:../index.php");
+		die();
 	    /*$resul = $stmt->get_result();
         $row = $resul->fetch_assoc();
 		if ($row!==false) {
