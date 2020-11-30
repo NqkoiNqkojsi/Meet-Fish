@@ -1,0 +1,7 @@
+{
+  "name": "Заедно за Риба", // The name of your project
+  "version": "0.2.8", // The version of your project
+  "description": "Platform for gettiing people to fish together", // The description of your project
+  "main": "index.php"
+  "license": "MIT" // The license of your project
+}
