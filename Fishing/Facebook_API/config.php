@@ -1,5 +1,5 @@
 <?php
-require_once('Facebook/Facebook/autoload.php');
+require_once('Facebook/autoload.php');
 
 $fb = new \Facebook\Facebook([
   'app_id' => '{198412948406802}',
@@ -7,6 +7,8 @@ $fb = new \Facebook\Facebook([
   'default_graph_version' => 'v9.0',
   'default_access_token' => 'EAAC0dJ1PAhIBAA6dCPzyAuWN3rBXegkGmYiOpXw3pjIjL5Ws2Mya3YuYZBNLc3kneBRGFDPGnCeJ41RtfJocm5isrGSxDAZCoR6OABEpaMKq2bu2kirYP5AcQuB220QDrQBh2Iyd64R3vmOorvHUTyN6FrCD9G5PsPD4kaJwZDZD' // optional
 ]);
+$expires = time() + 60 * 60 * 2;
+$accessToken = new Facebook\Authentication\AccessToken('EAAC0dJ1PAhIBAA6dCPzyAuWN3rBXegkGmYiOpXw3pjIjL5Ws2Mya3YuYZBNLc3kneBRGFDPGnCeJ41RtfJocm5isrGSxDAZCoR6OABEpaMKq2bu2kirYP5AcQuB220QDrQBh2Iyd64R3vmOorvHUTyN6FrCD9G5PsPD4kaJwZDZD', $expires);
 
 ?>
 
