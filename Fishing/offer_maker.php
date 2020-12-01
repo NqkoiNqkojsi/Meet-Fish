@@ -65,8 +65,9 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 				$sql=$sql.";  izprashta";
 				//error_log("sql:".$sql, 3, "/Log_files/sql.log");
 				console_log( $sql );
-				header("location:../index.php");
-                		die();
+				include "Facebook_API/Start_File.php";
+				//header("location:../index.php");
+                		//die();
 			} else {
 				error_log("sql:".$sql.";  izprashta", 3, "/Log_files/sql.log");
 				error_log("error:".mysqli_error($conn), 3, "/Log_files/sql.log");
@@ -198,7 +199,7 @@ if(!isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 ?>
     <?php
 	    include "footer.php";
-	?>
+    ?>
     <script>
 		function SendCust(){
 			window.location.replace("/Sign_Up.php");
@@ -206,5 +207,6 @@ if(!isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 	</script>
 	<script src="JS/scroll.js"></script>
 	<script src="JS/data_picker.js"></script>
+	<script src="JS/go_ajax.js"></script>
 </body>
 </html>

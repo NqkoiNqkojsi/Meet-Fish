@@ -1,39 +1,21 @@
 <?php
 //Used to upload the canvas to the facebook page
 //set the send variables
+$info_var;
+if(isset($_REQUEST["info_var"])){
+	$info_var=json_decode($_REQUEST["info_var"]);//{ "name": ime, "url": myImage, "link": ID }
+}
 
-$ime="";
-if(isset($_REQUEST["ime"])){
-	$ime=$_REQUEST["ime"];
-}
-$link="";
-if(isset($_REQUEST["link"])){
-	$ime=$_REQUEST["link"];
-}
-$link_img="";
-include("Make_Picture.php");
 include("config.php");
-$canvasHelper = $fb->getCanvasHelper();
-
-try {
-    $accessToken = $canvasHelper->getAccessToken();
-}
-catch(Facebook\Exceptions\FacebookResponseException $e) {
-    // When Graph returns an error
-    echo 'Graph returned an error: ' . $e->getMessage();
-}
-catch(Facebook\Exceptions\FacebookSDKException $e) {
-    // When validation fails or other local issues
-    echo 'Facebook SDK returned an error: ' . $e->getMessage();
-}
 
 if (isset($accessToken)) {
     // Logged in.
 
-    $My_message=$ime."Ви кани на риболов на ".$link;
+    $My_message=$info_var->name."Ви кани на риболов";
     $data = [
+      'link' => $info_var->link,
       'message' => $My_message,
-      'source' => $fb->fileToUpload($link_img),
+      'source' => $fb->fileToUpload($info_var->url),
     ];
 
     try {
