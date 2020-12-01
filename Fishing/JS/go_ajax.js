@@ -4,6 +4,7 @@ function Email1(str){
     xmlhttp.send();
 }
 function Send_FC(date, ime, pic, mqsto, id) {
+    var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             setTimeout(() => { window.location = "http://meetandfish.online/index.php";); }, 4000);

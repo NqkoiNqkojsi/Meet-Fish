@@ -55,6 +55,7 @@ if(isset($_REQUEST["ime"])){
 		<h3><b>Час: <?php echo $time; ?></b></h2><br>
 		<h3>В зоната на:<?php echo $mqsto;?></h3>
 </div></div>
+	<p id="Error"></p>
 	<script type="text/javascript" src="html2canvas/dist/html2canvas.js"></script>
 	<script type="text/javascript" src="jquery-1.9.1.js"></script>
     <script type="text/javascript">
@@ -71,6 +72,13 @@ if(isset($_REQUEST["ime"])){
 			Send_Info();
 		});
 		function Send_Info() {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					var myElement = document.getElementById("Error");
+					myElement.innerHTML = responseText;
+				}
+			};
 			console.log(myImage);
 			myJSON = { "name": ime, "url": myImage, "link": ID };
 			console.log(myJSON);
