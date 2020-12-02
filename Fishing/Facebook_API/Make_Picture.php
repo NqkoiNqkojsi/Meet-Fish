@@ -3,32 +3,26 @@ $date1="";
 $date2="";
 if(isset($_REQUEST["date1"])){
 	$date1=$_REQUEST["date1"];
-	echo $date1;
 }
 if(isset($_REQUEST["date2"])){
 	$date2=$_REQUEST["date2"];
-	echo $date2;
 }
 $mqsto="";
 if(isset($_REQUEST["mqsto"])){
 	$mqsto=$_REQUEST["mqsto"];
-	echo $mqsto;
 }
 $prof_pic="../Img/FB_Img/";
 if(isset($_REQUEST["pic"])){
 	$prof_pic=$prof_pic.$_REQUEST["pic"];
-	echo $prof_pic;
 }
 $link="";
 if(isset($_REQUEST["id"])){
     $link="https://meetandfish.online/Fishing/offer.php?id=";
 	$link=$link.$_REQUEST["id"];
-	echo $link;
 }
 $ime="";
 if(isset($_REQUEST["ime"])){
 	$ime=$_REQUEST["ime"];
-	echo $ime;
 }
 ?>
 <html>
@@ -54,13 +48,13 @@ if(isset($_REQUEST["ime"])){
 		}
 	</style>
 </head>
-<body onload="Set_Var(<?php echo "'".$ime."'"; ?>, <?php echo $_REQUEST["id"]; ?>)">
+<body onload="Set_Var(<?php echo "'".$ime."'"; ?>, <?php echo "'".$link."'"; ?>)">
 <div class="carda">
 	<img src=<?php echo $prof_pic;?> class="card_img" alt="Thubnail images">
 	<div class="card-body" id="card">
 	    <?php
-		$time=$date1->format('H:i');//get the hour and min
-		$date=$date2->format('d.m');//get the day and month
+		$time=$date2->format('H:i');//get the hour and min
+		$date=$date1->format('d.m');//get the day and month
         ?>
 		<h2><b>Дата: <?php echo $date; ?></b></h2><br>
 		<h3><b>Час: <?php echo $time; ?></b></h2><br>
@@ -72,11 +66,11 @@ if(isset($_REQUEST["ime"])){
     <script type="text/javascript">
 		var myImage = "";
 		var ime = "";
-		var ID = "https://meetandfish.online/Fishing/offer.php?id=";
+		var ID;
 		var myJSON = Object();
 		function Set_Var(name, id) {
 			ime = name;
-			ID = ID+id.toString();
+			ID = id;
         }
         html2canvas($("#testdiv").then(function(canvas) {
 			myImage = canvas.toDataURL("image/png");
