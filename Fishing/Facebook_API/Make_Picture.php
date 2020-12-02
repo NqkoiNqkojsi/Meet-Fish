@@ -40,7 +40,7 @@ if(isset($_REQUEST["ime"])){
 			padding: 16px;
 			text-align: center;
 			background-color: #DEF2F1;
-			height:300px;
+			width: 600px;
 		}
 		.card-body {
 			-ms-flex: 1 1 auto;
@@ -49,12 +49,12 @@ if(isset($_REQUEST["ime"])){
 			padding: 1.25rem;
 		}
 		.card_img {
-			width: 100%;
+			width: 33%;
 			height:33%;
 		}
 	</style>
 </head>
-<body onload="Set_Var(<?php echo "'".$ime."'"; ?>, <?php echo $id; ?>)">
+<body onload="Set_Var(<?php echo "'".$ime."'"; ?>, <?php echo $_REQUEST["id"]; ?>)">
 <div class="carda">
 	<img src=<?php echo $prof_pic;?> class="card_img" alt="Thubnail images">
 	<div class="card-body" id="card">
