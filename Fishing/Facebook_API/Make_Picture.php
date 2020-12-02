@@ -6,6 +6,7 @@ if(isset($_REQUEST["date1"])){
 }
 if(isset($_REQUEST["date2"])){
 	$date2=$_REQUEST["date2"];
+	echo $date2;
 }
 $mqsto="";
 if(isset($_REQUEST["mqsto"])){
@@ -41,6 +42,7 @@ var_dump($date);
 			text-align: center;
 			background-color: #DEF2F1;
 			width: 600px;
+			height: 600px;
 		}
 		.card-body {
 			-ms-flex: 1 1 auto;
@@ -49,18 +51,17 @@ var_dump($date);
 			padding: 1.25rem;
 		}
 		.card_img {
-			width: 33%;
-			height:33%;
+			height:30%;
 		}
 	</style>
 </head>
 <body>
 <div class="carda" id="carda" onclick="takeScreenShot(<?php echo "'".$ime."'"; ?>, <?php echo "'".$link."'"; ?>)">
-	<img src=<?php echo $prof_pic;?> class="card_img" alt="Thubnail images">
+	<img src=<?php echo $prof_pic;?> class="card_img" alt="Thubnail images"><br>
 	<div class="card-body" id="card">
-		<h2><b>Дата: <?php echo $date; ?></b></h2><br>
-		<h3><b>Час: <?php echo $time; ?></b></h2><br>
-		<h3>В зоната на:<?php echo $mqsto;?></h3>
+		<h2 style="font-size: 50px;"><b>Дата: <?php echo $date; ?></b></h2><br>
+		<h3 style="font-size: 40px;"><b>Час: <?php echo $time; ?></b></h2><br>
+		<h3 style="font-size: 40px;">В зоната на:<?php echo $mqsto;?></h3>
 </div></div>
 	<p id="Error"></p>
 	<script type="text/javascript" src="html2canvas/dist/html2canvas.js"></script>
@@ -73,15 +74,20 @@ var_dump($date);
 		function takeScreenShot(name, id) {
 			ime = name;
 			ID = id;
-			html2canvas(div, {
-				onrendered: function (canvas) {
-					document.body.appendChild(canvas);
-					myImage = canvas.toDataURL("image/png");
-					Send_Info();
-				},
-				width: 600,
-				height: 600
-			});
+			console.log("predi canvas");
+			try {
+				html2canvas(div, {
+					onrendered: function (canvas) {
+						document.body.appendChild(canvas);
+						myImage = canvas.toDataURL("image/png");
+						Send_Info();
+					},
+					width: 600,
+					height: 600
+				});
+			} catch (error) {
+				console.error(error);
+            }
 		}
 		function Send_Info() {
 			var xhttp = new XMLHttpRequest();
