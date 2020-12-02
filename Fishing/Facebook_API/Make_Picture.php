@@ -32,6 +32,7 @@ $date=date_format($new_date,"d.M");
 <html>
 <head>
 	<title>Facebook Api posting</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 	<style>
 		.carda {
 			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -52,8 +53,8 @@ $date=date_format($new_date,"d.M");
 		}
 	</style>
 </head>
-<body onload="Set_Var(<?php echo "'".$ime."'"; ?>, <?php echo "'".$link."'"; ?>)">
-<div class="carda">
+<body>
+<div class="carda" id="carda" onclick="takeScreenShot(<?php echo "'".$ime."'"; ?>, <?php echo "'".$link."'"; ?>)">
 	<img src=<?php echo $prof_pic;?> class="card_img" alt="Thubnail images">
 	<div class="card-body" id="card">
 		<h2><b>Дата: <?php echo $date; ?></b></h2><br>
@@ -71,11 +72,20 @@ $date=date_format($new_date,"d.M");
 		function Set_Var(name, id) {
 			ime = name;
 			ID = id;
-        }
-        html2canvas($("#testdiv").then(function(canvas) {
-			myImage = canvas.toDataURL("image/png");
-			Send_Info();
-		}));
+		}
+		var div=document.getElementById("carda");
+		function takeScreenShot(name, id) {
+			ime = name;
+			ID = id;
+			html2canvas(div, {
+				onrendered: function (canvas) {
+					document.body.appendChild(canvas);
+					myImage = canvas.toDataURL("image/png");
+					Send_Info();
+				},
+			width:600,
+			height:600
+		});
 		function Send_Info() {
 			var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function() {
