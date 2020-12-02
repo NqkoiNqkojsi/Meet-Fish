@@ -27,7 +27,8 @@ if(isset($_REQUEST["ime"])){
 $new_date=date_create_from_format("d-m-Y H:i:s", $date1." ".$date2);
 $time=date_format($new_date,"H:i");
 $date=date_format($new_date,"d.M");
-
+var_dump($new_date);
+var_dump($date);
 ?>
 <html>
 <head>
@@ -63,16 +64,11 @@ $date=date_format($new_date,"d.M");
 </div></div>
 	<p id="Error"></p>
 	<script type="text/javascript" src="html2canvas/dist/html2canvas.js"></script>
-	<script type="text/javascript" src="jquery-1.9.1.js"></script>
     <script type="text/javascript">
 		var myImage = "";
 		var ime = "";
 		var ID;
 		var myJSON = Object();
-		function Set_Var(name, id) {
-			ime = name;
-			ID = id;
-		}
 		var div=document.getElementById("carda");
 		function takeScreenShot(name, id) {
 			ime = name;
@@ -83,9 +79,10 @@ $date=date_format($new_date,"d.M");
 					myImage = canvas.toDataURL("image/png");
 					Send_Info();
 				},
-			width:600,
-			height:600
-		});
+				width: 600,
+				height: 600
+			});
+		}
 		function Send_Info() {
 			var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function() {
