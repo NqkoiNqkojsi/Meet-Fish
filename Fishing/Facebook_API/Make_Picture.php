@@ -24,6 +24,10 @@ $ime="";
 if(isset($_REQUEST["ime"])){
 	$ime=$_REQUEST["ime"];
 }
+$new_date=date_create_from_format("d-m-Y H:i:s", $date1." ".$date2);
+$time=date_format($new_date,"H:i");
+$date=date_format($new_date,"d.M");
+
 ?>
 <html>
 <head>
@@ -52,10 +56,6 @@ if(isset($_REQUEST["ime"])){
 <div class="carda">
 	<img src=<?php echo $prof_pic;?> class="card_img" alt="Thubnail images">
 	<div class="card-body" id="card">
-	    <?php
-		$time=$date2->format('H:i');//get the hour and min
-		$date=$date1->format('d.m');//get the day and month
-        ?>
 		<h2><b>Дата: <?php echo $date; ?></b></h2><br>
 		<h3><b>Час: <?php echo $time; ?></b></h2><br>
 		<h3>В зоната на:<?php echo $mqsto;?></h3>
