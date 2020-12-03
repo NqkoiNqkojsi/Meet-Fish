@@ -26,8 +26,8 @@ if(isset($_REQUEST["ime"])){
 	$ime=$_REQUEST["ime"];
 }
 $new_date=date_create_from_format("d-m-Y H:i:s", $date1." ".$date2);
-$time=date_format($new_date,"H:i");
-$date=date_format($new_date,"d.M");
+$time=$date2; //date_format($new_date,"H:i");
+$date=$date1; //date_format($new_date,"d.M");
 var_dump($new_date);
 var_dump($date);
 ?>
@@ -72,6 +72,7 @@ var_dump($date);
 		var myJSON = Object();
 		var div=document.getElementById("carda");
 		function takeScreenShot(name, id) {
+			var f = true;
 			ime = name;
 			ID = id;
 			console.log("predi canvas");
@@ -80,14 +81,19 @@ var_dump($date);
 					onrendered: function (canvas) {
 						document.body.appendChild(canvas);
 						myImage = canvas.toDataURL("image/png");
-						Send_Info();
 					},
 					width: 600,
 					height: 600
 				});
 			} catch (error) {
 				console.error(error);
-            }
+				f = false;
+			}
+			console.log("After making a photo");
+			console.log("Img Url=" + myImage);
+			if (f == true ) {
+				Send_Info();
+			}
 		}
 		function Send_Info() {
 			var xhttp = new XMLHttpRequest();
