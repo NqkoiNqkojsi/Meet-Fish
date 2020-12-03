@@ -85,10 +85,11 @@ var_dump($date);
 				console.error(error);
 				f = false;
 			}
-			console.log("After making a photo");
-			console.log("Img Url=" + myImage);
-			if (f == true ) {
-				Send_Info();
+
+			if (f == true) {
+				console.log("After making a photo");
+				console.log("Img Url=" + myImage);
+				window.setTimeout(Send_Info(), 4000);
 			}
 		}
 		function Send_Info() {
