@@ -4,10 +4,6 @@ $date2="";
 if(isset($_REQUEST["date1"])){
 	$date1=$_REQUEST["date1"];
 }
-if(isset($_REQUEST["date2"])){
-	$date2=$_REQUEST["date2"];
-	echo $date2;
-}
 $mqsto="";
 if(isset($_REQUEST["mqsto"])){
 	$mqsto=$_REQUEST["mqsto"];
@@ -25,9 +21,9 @@ $ime="";
 if(isset($_REQUEST["ime"])){
 	$ime=$_REQUEST["ime"];
 }
-$new_date=date_create_from_format("d-m-Y H:i:s", $date1." ".$date2);
-$time=$date2; //date_format($new_date,"H:i");
-$date=$date1; //date_format($new_date,"d.M");
+$new_date=date_create($date1);
+$time=date_format($new_date,"H:i");
+$date=date_format($new_date,"d.M");
 var_dump($new_date);
 var_dump($date);
 ?>
