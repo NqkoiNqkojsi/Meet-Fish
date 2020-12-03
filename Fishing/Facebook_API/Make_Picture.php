@@ -85,12 +85,13 @@ var_dump($date);
 				console.error(error);
 				f = false;
 			}
-
-			if (f == true) {
-				console.log("After making a photo");
-				console.log("Img Url=" + myImage);
-				window.setTimeout(Send_Info(), 4000);
-			}
+			setTimeout(() => {
+				if (f == true) {
+					console.log("After making a photo");
+					console.log("Img Url=" + myImage);
+					Send_Info()
+				}
+			}, 4000);
 		}
 		function Send_Info() {
 			var xhttp = new XMLHttpRequest();
