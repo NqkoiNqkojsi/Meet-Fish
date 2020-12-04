@@ -1,4 +1,6 @@
 <?php
+include("../Log_files/logging_to_file.php");
+$log_filename="../Log_files/API_logs.txt";
 $date1="";
 $date2="";
 if(isset($_REQUEST["date1"])){
@@ -24,13 +26,12 @@ if(isset($_REQUEST["ime"])){
 $new_date=date_create($date1);
 $time=date_format($new_date,"H:i");
 $date=date_format($new_date,"d.M");
-var_dump($new_date);
-var_dump($date);
+$msg=$date." ".$time;
+Log_file($msg, $log_filename);
 ?>
 <html>
 <head>
 	<title>Facebook Api posting</title>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 	<style>
 		.carda {
 			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);

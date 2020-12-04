@@ -7,7 +7,7 @@ function Send_FC(date, ime, pic, mqsto, id) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            setTimeout(() => { window.location = "http://meetandfish.online/index.php";); }, 4000);
+            setTimeout(() => { window.location = "http://meetandfish.online/index.php";}, 4000);
         }
     };
     var str = "date1=" + date.toString() + "&ime=" + ime.toString() + "&pic=" + pic.toString + "&mqsto=" + mqsto.toString() + "&id=" + id.toString();
