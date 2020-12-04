@@ -18,10 +18,10 @@ include("config.php");
 if (isset($AccessToken)) {
     // Logged in.
 
-    $My_message=$info_var->name."Ви кани на риболов";
+    $My_message=$ime." Ви кани на риболов";
     $data = [
       'link' => $link,
-      'message' => $My_message,
+      'message' => $My_message
     ];
 
     try {
