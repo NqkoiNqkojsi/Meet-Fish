@@ -2,7 +2,7 @@
 $log_msg="";
 if(isset($_REQUEST["msg"])){
 	$log_msg=$_REQUEST["msg"];
-    Log_file($log_msg, "API_logs.txt");
+    Log_file($log_msg, "API_logs.log");
 }
 function Log_file($log_msg, $log_filename){
     $log_time = date('Y-m-d h:i:sa');
@@ -18,8 +18,8 @@ function Log_file($log_msg, $log_filename){
             // create directory/folder uploads.
             mkdir($log_filename, 0777, true);
         }
-        //$log_file_data = $log_filename.'/log_' . date('d-M-Y') . '.log';
-        //file_put_contents($log_file_data, $log_msg . "\n", FILE_APPEND);
+        $log_file_data = $log_filename.'/log_' . date('d-M-Y') . '.log';
+        file_put_contents($log_file_data, $log_msg . "\n", FILE_APPEND);
     }
 }
 ?>

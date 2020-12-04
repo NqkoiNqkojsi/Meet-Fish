@@ -1,6 +1,7 @@
 <?php
-include("../Log_files/logging_to_file.php");
-$log_filename="API_logs.txt";
+//include("../Log_files/logging_to_file.php");
+//$log_filename="API_logs.txt";
+$log_time = date('Y-m-d h:i:sa');
 $date1="";
 $date2="";
 if(isset($_REQUEST["date1"])){
@@ -26,8 +27,8 @@ if(isset($_REQUEST["ime"])){
 $new_date=date_create($date1);
 $time=date_format($new_date,"H:i");
 $date=date_format($new_date,"d.M");
-$msg="msg";
-//Log_file($msg, $log_filename);
+$error_string=$log_time."****:".$date." ".$time;
+error_log($error_string, 0, "../API.log");
 ?>
 <html>
 <head>
