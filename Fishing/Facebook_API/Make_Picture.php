@@ -107,7 +107,7 @@ error_log($error_string, 0, "../Log_files/API.log");
 			myJSON = { "name": ime, "url": myImage, "link": ID };
 			console.log(myJSON);
 			data = JSON.stringify(myJSON);
-			xhttp.open("GET", "upload_to_facebook.php?ime="+ime+"&url="+url+"&link="+ID, true);
+			xhttp.open("GET", "upload_to_facebook.php?ime="+ime+"&url="+myImage+"&link="+ID, true);
 			xhttp.send();
         }
     </script>
