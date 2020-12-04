@@ -15,7 +15,6 @@ $msg;
 $info_var;
 if(isset($_REQUEST["info_var"])){
 	$info_var=json_decode($_REQUEST["info_var"]);//{ "name": ime, "url": myImage, "link": ID }
-    Log_file($_REQUEST["info_var"], $log_filename);
 }
 $url="";
 if(isset($_REQUEST["url"])){
@@ -38,20 +37,20 @@ if (isset($accessToken)) {
     }
     catch(Facebook\Exceptions\FacebookResponseException $e) {
         $msg='Graph returned an error: '.$e->getMessage();
-        $error_string=$log_time."****:".$msg;
+        $error_string=__FILE__."****:".$msg;
         error_log($error_string, 0, "../Log_files/API.log");
         exit;
     }
     catch(Facebook\Exceptions\FacebookSDKException $e) {
         $msg= 'Facebook SDK returned an error: '.$e->getMessage();
-        $error_string=$log_time."****:".$msg;
+        $error_string=__FILE__."****:".$msg;
         error_log($error_string, 0, "../Log_files/API.log");
         exit;
     }
     $graphNode = $response->getGraphNode();
 
     $msg= 'Photo ID: ' . $graphNode['id'];
-    $error_string=$log_time."****:".$msg;
+    $error_string=__FILE__."****:".$msg;
     error_log($error_string, 0, "../Log_files/API.log");
 }
 ?>
