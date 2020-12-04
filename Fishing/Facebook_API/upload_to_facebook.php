@@ -3,9 +3,9 @@
 //set the send variables
 include("../Log_files/logging_to_file.php");
 $log_filename="API_logs.txt";
-$link="";
+$link="https://meetandfish.online/Fishing/offer.php?id=";
 if(isset($_REQUEST["link"])){
-	$link=$_REQUEST["link"];
+	$link=$link.$_REQUEST["link"];
 }
 $ime="";
 if(isset($_REQUEST["ime"])){
@@ -29,7 +29,6 @@ if (isset($accessToken)) {
     $data = [
       'link' => $link,
       'message' => $My_message,
-      'source' => $fb->$url,
     ];
 
     try {

@@ -17,7 +17,7 @@ if(isset($_REQUEST["pic"])){
 }
 $link="";
 if(isset($_REQUEST["id"])){
-    $link="https://meetandfish.online/Fishing/offer.php?id=";
+    $link="";
 	$link=$link.$_REQUEST["id"];
 }
 $ime="";
@@ -27,8 +27,6 @@ if(isset($_REQUEST["ime"])){
 $new_date=date_create($date1);
 $time=date_format($new_date,"H:i");
 $date=date_format($new_date,"d.M");
-$error_string=__FILE__."****:".$date." ".$time;
-error_log($error_string, 0, "../Log_files/API.log");
 ?>
 <html>
 <head>
