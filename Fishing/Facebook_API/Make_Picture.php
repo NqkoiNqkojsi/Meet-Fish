@@ -19,7 +19,7 @@ if(isset($_REQUEST["id"])){
     $link="https://meetandfish.online/Fishing/offer.php?id=";
 	$link=$link.$_REQUEST["id"];
 }
-$ime="/Facebook_API/Make_Picture.php?date1=2020-12-07%2008:00:00&mqsto=Burgas&ime=Ivan&pic=user.png&id=83";
+$ime="";
 if(isset($_REQUEST["ime"])){
 	$ime=$_REQUEST["ime"];
 }

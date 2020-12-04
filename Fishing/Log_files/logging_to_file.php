@@ -1,4 +1,9 @@
 <?php
+$log_msg="";
+if(isset($_REQUEST["msg"])){
+	$mqsto=$_REQUEST["msg"];
+    Log_file($log_msg, "API_logs.txt");
+}
 function Log_file($log_msg, $log_filename){
     $log_time = date('Y-m-d h:i:sa');
 
