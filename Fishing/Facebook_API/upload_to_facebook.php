@@ -2,7 +2,7 @@
 //Used to upload the canvas to the facebook page
 //set the send variables
 include("../Log_files/logging_to_file.php");
-$log_filename="../Log_files/API_logs.txt";
+$log_filename="API_logs.txt";
 $msg;
 $info_var;
 if(isset($_REQUEST["info_var"])){

@@ -1,6 +1,6 @@
 <?php
 include("../Log_files/logging_to_file.php");
-$log_filename="../Log_files/API_logs.txt";
+$log_filename="API_logs.txt";
 $date1="";
 $date2="";
 if(isset($_REQUEST["date1"])){
