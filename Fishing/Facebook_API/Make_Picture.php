@@ -26,7 +26,7 @@ if(isset($_REQUEST["ime"])){
 $new_date=date_create($date1);
 $time=date_format($new_date,"H:i");
 $date=date_format($new_date,"d.M");
-$msg=$date." ".$time;
+$msg="msg";
 Log_file($msg, $log_filename);
 ?>
 <html>
