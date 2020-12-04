@@ -3,13 +3,24 @@
 //set the send variables
 include("../Log_files/logging_to_file.php");
 $log_filename="API_logs.txt";
+$link="";
+if(isset($_REQUEST["link"])){
+	$link=$_REQUEST["link"];
+}
+$ime="";
+if(isset($_REQUEST["ime"])){
+	$ime=$_REQUEST["ime"];
+}
 $msg;
 $info_var;
 if(isset($_REQUEST["info_var"])){
 	$info_var=json_decode($_REQUEST["info_var"]);//{ "name": ime, "url": myImage, "link": ID }
     Log_file($_REQUEST["info_var"], $log_filename);
 }
-
+$url="";
+if(isset($_REQUEST["url"])){
+	$url=$_REQUEST["url"];
+}
 include("config.php");
 
 if (isset($accessToken)) {
@@ -17,9 +28,9 @@ if (isset($accessToken)) {
 
     $My_message=$info_var->name."Ви кани на риболов";
     $data = [
-      'link' => $info_var->link,
+      'link' => $link,
       'message' => $My_message,
-      'source' => $fb->fileToUpload($info_var->url),
+      'source' => $fb->$url,
     ];
 
     try {
@@ -27,17 +38,20 @@ if (isset($accessToken)) {
     }
     catch(Facebook\Exceptions\FacebookResponseException $e) {
         $msg='Graph returned an error: '.$e->getMessage();
-        Log_file($msg, $log_filename);
+        $error_string=$log_time."****:".$msg;
+        error_log($error_string, 0, "../Log_files/API.log");
         exit;
     }
     catch(Facebook\Exceptions\FacebookSDKException $e) {
         $msg= 'Facebook SDK returned an error: '.$e->getMessage();
-        Log_file($msg, $log_filename);
+        $error_string=$log_time."****:".$msg;
+        error_log($error_string, 0, "../Log_files/API.log");
         exit;
     }
     $graphNode = $response->getGraphNode();
 
     $msg= 'Photo ID: ' . $graphNode['id'];
-    Log_file($msg, $log_filename);
+    $error_string=$log_time."****:".$msg;
+    error_log($error_string, 0, "../Log_files/API.log");
 }
 ?>

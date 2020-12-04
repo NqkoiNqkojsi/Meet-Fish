@@ -28,7 +28,7 @@ $new_date=date_create($date1);
 $time=date_format($new_date,"H:i");
 $date=date_format($new_date,"d.M");
 $error_string=$log_time."****:".$date." ".$time;
-error_log($error_string, 0, "../API.log");
+error_log($error_string, 0, "../Log_files/API.log");
 ?>
 <html>
 <head>
@@ -64,7 +64,7 @@ error_log($error_string, 0, "../API.log");
 	<p id="Error"></p>
 	<script type="text/javascript" src="html2canvas/dist/html2canvas.js"></script>
     <script type="text/javascript">
-		var myImage = "";
+		var myImage = "../Img/boat2.jpg";
 		var ime = "";
 		var ID;
 		var myJSON = Object();
@@ -107,7 +107,7 @@ error_log($error_string, 0, "../API.log");
 			myJSON = { "name": ime, "url": myImage, "link": ID };
 			console.log(myJSON);
 			data = JSON.stringify(myJSON);
-			xhttp.open("GET", "upload_to_facebook.php?info_var="+data, true);
+			xhttp.open("GET", "upload_to_facebook.php?ime="+ime+"&url="+url+"&link="+ID, true);
 			xhttp.send();
         }
     </script>
