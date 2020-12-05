@@ -10,7 +10,7 @@ function Send_FC(date, ime, pic, mqsto, id) {
             setTimeout(() => { window.location = "http://meetandfish.online/index.php";}, 2000);
         }
     };
-    var str = "date1=" + date.toString() + "&ime=" + ime.toString() + "&pic=" + pic.toString + "&mqsto=" + mqsto.toString() + "&id=" + id.toString();
+    var str = "date1=" + date.toString() + "&ime=" + ime.toString() + "&pic=" + pic.toString() + "&mqsto=" + mqsto.toString() + "&id=" + id.toString();
     var xmlhttp = new XMLHttpRequest();
     console.log(str);
     xmlhttp.open("GET", "/Stelyo_Branch/Fishing/Facebook_API/Make_Picture.php?"+str, true);
