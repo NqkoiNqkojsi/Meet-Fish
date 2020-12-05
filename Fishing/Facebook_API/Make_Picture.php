@@ -27,6 +27,7 @@ if(isset($_REQUEST["ime"])){
 $new_date=date_create($date1);
 $time=date_format($new_date,"H:i");
 $date=date_format($new_date,"d.M");
+$message_send="от ".$time." на ".$date;
 ?>
 <html>
 <head>
@@ -67,11 +68,11 @@ $date=date_format($new_date,"d.M");
 		var ID;
 		var myJSON = Object();
 		var div = document.getElementById("carda");
-		/*window.onload = function() {
+		window.onload = function() {
 			setTimeout(() => {
-				takeScreenShot();
+				takeScreenShot(<?php echo "'".$ime."'"; ?>, <?php echo "'".$link."'"; ?>, <?php echo "'".."'"; ?>);
 			}, 1000);
-		}*/
+		}
 		function takeScreenShot(name, id) {
 			var f = true;
 			ime = name;
