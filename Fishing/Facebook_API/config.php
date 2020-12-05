@@ -1,6 +1,6 @@
 <?php
-define('FACEBOOK_SDK_V4_SRC_DIR', "https://meetandfish.online/Stelyo_Branch/Fishing/Facebook_API".'/Facebook/');
-require_once("https://meetandfish.online/Stelyo_Branch/Fishing/Facebook_API".'/Facebook/autoload.php');
+define('FACEBOOK_SDK_V4_SRC_DIR', '/home/u157928248/domains/meetandfish.online/public_html/Stelyo_Branch/Fishing/Facebook_API/Facebook/Facebook/');
+require_once('/home/u157928248/domains/meetandfish.online/public_html/Stelyo_Branch/Fishing/Facebook_API/Facebook/Facebook/autoload.php');
 ini_set('display_errors', 1);
 
 $fb = new \Facebook\Facebook([
