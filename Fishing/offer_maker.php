@@ -2,6 +2,9 @@
 // Start the session
 session_start();
 include "logging.php";
+?>
+<script src="JS/go_ajax.js"></script>
+<?php
 $f=false;
 $g=true;
 $mess="Nothing";
@@ -209,6 +212,5 @@ if(!isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 	</script>
 	<script src="JS/scroll.js"></script>
 	<script src="JS/data_picker.js"></script>
-	<script src="JS/go_ajax.js"></script>
 </body>
 </html>
