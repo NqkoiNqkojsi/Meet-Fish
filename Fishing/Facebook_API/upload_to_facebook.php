@@ -42,8 +42,6 @@ if (isset($AccessToken)) {
     }
     $graphNode = $response->getGraphNode();
 
-    $msg= 'Photo ID: ' . $graphNode['id'];
-    $error_string=__FILE__."****:".$msg;
-    error_log($error_string, 0, "../Log_files/API.log");
+    echo 'Photo ID: ' . $graphNode['id'];
 }
 ?>
