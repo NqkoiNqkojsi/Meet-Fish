@@ -1,6 +1,7 @@
 <?php
 define('FACEBOOK_SDK_V4_SRC_DIR', __DIR__.'/Facebook/');
 require_once(__DIR__.'Facebook/autoload.php');
+ini_set('display_errors', 1);
 
 $fb = new \Facebook\Facebook([
   'app_id' => '198412948406802',
