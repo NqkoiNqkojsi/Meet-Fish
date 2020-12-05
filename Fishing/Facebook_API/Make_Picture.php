@@ -83,7 +83,7 @@ $message_send="от ".$time." на ".$date;
 			try {
 				html2canvas(div).then(function(canvas){
 					document.body.appendChild(canvas);
-					var myImage = canvas.toDataURL("image/png");
+					myImage = canvas.toDataURL("image/png");
 					console.log(myImage);
 					Send_Info(myImage)
 				});
@@ -110,7 +110,7 @@ $message_send="от ".$time." на ".$date;
 			myJSON = { "name": ime, "url": src_img, "link": ID };
 			console.log(myJSON);
 			data = JSON.stringify(myJSON);
-			xhttp.open("GET", "upload_to_facebook.php?ime="+ime+"&url="+src_img+"&link="+ID+"&mes="+mes, true);
+			xhttp.open("GET", "upload_to_facebook.php?ime="+ime+"&url="+"src_img"+"&link="+ID+"&mes="+mes, true);
 			xhttp.send();
         }
     </script>
