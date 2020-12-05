@@ -52,7 +52,7 @@ $date=date_format($new_date,"d.M");
 	</style>
 </head>
 <body>
-<div class="carda" id="carda" onclick="takeScreenShot(<?php echo "'".$ime."'"; ?>, <?php echo "'".$link."'"; ?>)">
+<div class="carda" id="carda" onload="takeScreenShot(<?php echo "'".$ime."'"; ?>, <?php echo "'".$link."'"; ?>)">
 	<img src=<?php echo $prof_pic;?> class="card_img" alt="Thubnail images"><br>
 	<div class="card-body" id="card">
 		<h2 style="font-size: 50px;"><b>Дата: <?php echo $date; ?></b></h2><br>
@@ -91,7 +91,7 @@ $date=date_format($new_date,"d.M");
 					console.log("Img Url=" + myImage);
 					Send_Info()
 				}
-			}, 4000);
+			}, 3000);
 		}
 		function Send_Info() {
 			var xhttp = new XMLHttpRequest();
