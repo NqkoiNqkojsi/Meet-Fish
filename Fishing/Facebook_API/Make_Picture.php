@@ -83,8 +83,9 @@ $message_send="от ".$time." на ".$date;
 			try {
 				html2canvas(div).then(function(canvas){
 					document.body.appendChild(canvas);
-					var myImage = canvas.toDataURL();
+					var myImage = canvas.toDataURL("image/png");
 					console.log(myImage);
+					Send_Info(myImage)
 				});
 			} catch (error) {
 				console.error(error);
@@ -94,11 +95,10 @@ $message_send="от ".$time." на ".$date;
 				if (f == true) {
 					console.log("After making a photo");
 					console.log("Img Url=" + myImage);
-					Send_Info()
 				}
-			}, 3000);
+			}, 2000);
 		}
-		function Send_Info() {
+		function Send_Info(src_img) {
 			var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
@@ -107,10 +107,10 @@ $message_send="от ".$time." на ".$date;
 				}
 			};
 			console.log(myImage);
-			myJSON = { "name": ime, "url": myImage, "link": ID };
+			myJSON = { "name": ime, "url": src_img, "link": ID };
 			console.log(myJSON);
 			data = JSON.stringify(myJSON);
-			xhttp.open("GET", "upload_to_facebook.php?ime="+ime+"&url="+myImage+"&link="+ID+"&mes="+mes, true);
+			xhttp.open("GET", "upload_to_facebook.php?ime="+ime+"&url="+src_img+"&link="+ID+"&mes="+mes, true);
 			xhttp.send();
         }
     </script>
