@@ -37,7 +37,7 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 			$last_id;
 			$new_date=date_create_from_format("d-m-Y H:i", $_POST['time']);
 			$new_date=date_format($new_date,"Y-m-d H:i:s");
-			$now=date_format($now,"Y-m-d");
+			$now=date("Y/m/d");
 			console_log("now:".$now);
 			console_log($_POST['time']."; type:".gettype($_POST['time']));
 			console_log("new_date:".$new_date."; type:".gettype($new_date));
