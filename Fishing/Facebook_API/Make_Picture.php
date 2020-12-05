@@ -63,7 +63,7 @@ $message_send="от ".$time." на ".$date;
 	<p id="Error"></p>
 	<script type="text/javascript" src="html2canvas/dist/html2canvas.js"></script>
     <script type="text/javascript">
-		var myImage = "../Img/boat2.jpg";
+		var myImage;
 		var ime = "";
 		var ID;
 		var mes="";
@@ -84,7 +84,8 @@ $message_send="от ".$time." на ".$date;
 				html2canvas(div, {
 					onrendered: function (canvas) {
 						document.body.appendChild(canvas);
-						myImage = canvas.toDataURL("image/png");
+						var myImage = canvas.toDataURL();
+						console.log(myImage);
 					},
 					width: 600,
 					height: 600
