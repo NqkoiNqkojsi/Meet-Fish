@@ -74,11 +74,11 @@ $message_send="от ".$time." на ".$date;
 				takeScreenShot(<?php echo "'".$ime."'"; ?>, <?php echo "'".$link."'"; ?>, <?php echo "'".$message_send."'"; ?>);
 			}, 1000);
 		}
-		function takeScreenShot(name, id, mes) {
+		function takeScreenShot(name, id, mes1) {
 			var f = true;
 			ime = name;
 			ID = id;
-			mes = mes;
+			mes = mes1;
 			console.log("predi canvas");
 			try {
 				html2canvas(div, {
