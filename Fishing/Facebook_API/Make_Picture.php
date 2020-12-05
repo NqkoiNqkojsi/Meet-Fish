@@ -52,7 +52,7 @@ $date=date_format($new_date,"d.M");
 	</style>
 </head>
 <body>
-<div class="carda" id="carda" onload="takeScreenShot(<?php echo "'".$ime."'"; ?>, <?php echo "'".$link."'"; ?>)">
+<div class="carda" id="carda" onload="takeScreenShot(<?php echo "'".$ime."'"; ?>, <?php echo "'".$link."'"; ?>);">
 	<img src=<?php echo $prof_pic;?> class="card_img" alt="Thubnail images"><br>
 	<div class="card-body" id="card">
 		<h2 style="font-size: 50px;"><b>Дата: <?php echo $date; ?></b></h2><br>
@@ -66,7 +66,12 @@ $date=date_format($new_date,"d.M");
 		var ime = "";
 		var ID;
 		var myJSON = Object();
-		var div=document.getElementById("carda");
+		var div = document.getElementById("carda");
+		/*window.onload = function() {
+			setTimeout(() => {
+				takeScreenShot();
+			}, 1000);
+		}*/
 		function takeScreenShot(name, id) {
 			var f = true;
 			ime = name;
