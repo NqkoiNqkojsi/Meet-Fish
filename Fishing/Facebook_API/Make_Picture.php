@@ -81,14 +81,10 @@ $message_send="от ".$time." на ".$date;
 			mes = mes1;
 			console.log("predi canvas");
 			try {
-				html2canvas(div, {
-					onrendered: function (canvas) {
-						document.body.appendChild(canvas);
-						var myImage = canvas.toDataURL();
-						console.log(myImage);
-					},
-					width: 600,
-					height: 600
+				html2canvas(div).then(function(canvas){
+					document.body.appendChild(canvas);
+					var myImage = canvas.toDataURL();
+					console.log(myImage);
 				});
 			} catch (error) {
 				console.error(error);
