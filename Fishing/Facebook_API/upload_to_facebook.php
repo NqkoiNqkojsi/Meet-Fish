@@ -9,16 +9,17 @@ $ime="";
 if(isset($_REQUEST["ime"])){
 	$ime=$_REQUEST["ime"];
 }
-$url="";
-if(isset($_REQUEST["url"])){
-	$url=$_REQUEST["url"];
+$mes="";
+if(isset($_REQUEST["mes"])){
+	$mes=$_REQUEST["mes"];
 }
+
 include("config.php");
 
 if (isset($AccessToken)) {
     // Logged in.
 
-    $My_message=$ime." Ви кани на риболов";
+    $My_message=$ime." Ви кани на риболов ".$mes;
     $data = [
       'link' => $link,
       'message' => $My_message

@@ -66,17 +66,19 @@ $message_send="от ".$time." на ".$date;
 		var myImage = "../Img/boat2.jpg";
 		var ime = "";
 		var ID;
+		var mes="";
 		var myJSON = Object();
 		var div = document.getElementById("carda");
 		window.onload = function() {
 			setTimeout(() => {
-				takeScreenShot(<?php echo "'".$ime."'"; ?>, <?php echo "'".$link."'"; ?>, <?php echo "'".."'"; ?>);
+				takeScreenShot(<?php echo "'".$ime."'"; ?>, <?php echo "'".$link."'"; ?>, <?php echo "'".$message_send."'"; ?>);
 			}, 1000);
 		}
-		function takeScreenShot(name, id) {
+		function takeScreenShot(name, id, mes) {
 			var f = true;
 			ime = name;
 			ID = id;
+			mes = mes;
 			console.log("predi canvas");
 			try {
 				html2canvas(div, {
@@ -111,7 +113,7 @@ $message_send="от ".$time." на ".$date;
 			myJSON = { "name": ime, "url": myImage, "link": ID };
 			console.log(myJSON);
 			data = JSON.stringify(myJSON);
-			xhttp.open("GET", "upload_to_facebook.php?ime="+ime+"&url="+myImage+"&link="+ID, true);
+			xhttp.open("GET", "upload_to_facebook.php?ime="+ime+"&url="+myImage+"&link="+ID+"&mes="+mes, true);
 			xhttp.send();
         }
     </script>
