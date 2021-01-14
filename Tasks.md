@@ -3,3 +3,7 @@
 3Add separate html page for pros
 4Change the index page to something of a lobby and the old index into a separate page; if logged to skip 
 5Fix the design
+6Fix the stupid facebook stuff
+7Add ads
+8Make it into app
+9Make it into asp.net and react
