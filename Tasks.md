@@ -3,9 +3,9 @@
 3Fix the stupid facebook stuff(The api page to display a picture and to be shareable instantly by the user)-january-february
 4Add facebook sign in and linking
 5Fix the design-make it more easy, clean and elegant-february-march
-6Add uploading personal and offer pictures
-7Being able to see other user's profiles
-8Lvls and Xp(a sort of a progression like in video games- the more you fish the bigger lvl you are)
+6Add uploading personal and offer pictures-february-March
+7Being able to see other user's profiles-March
+8Lvls and Xp(a sort of a progression like in video games- the more you fish the bigger lvl you are)-March
 9Add payment options and stuff
 10Add ads from google-After olimpiada
 11Make it into app with xamarin and c#-Summer
