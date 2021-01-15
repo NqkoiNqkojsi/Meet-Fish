@@ -2,7 +2,7 @@
 A site about going fishing together with others so resources and the environment is spared.
 
 
-Task.md:
+Task.md:                                                                          
 1.Add separate html page for pros(looking like that for casuals, but only acssesible for authenticated pros)-january                                                     
 2.Change the index page to something of a lobby and the old index into a separate page; if logged to skip(when you go for first time, there should be more clear page, clean, static, sort of a guide for newbies) -january                                                
 3.Fix the stupid facebook stuff(The api page to display a picture and to be shareable instantly by the user)-january-february                                          
