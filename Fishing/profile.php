@@ -59,6 +59,49 @@ if(isset($_POST["submit"])){//Zapisvane na informaciq
 		} else {
 			$message= "Error updating record: " . mysqli_error($conn);
 		}
+	}else if ($_POST["submit"]==6){//*******************Img saving
+		$sql = "SELECT Img_name FROM customer WHERE ID='".$_SESSION['user_ID']."'";
+        $result = mysqli_query($conn, $sql);
+        $row= mysqli_fetch_assoc($result);
+		$target_dir = "Img/User_Img";
+		$save_path=$target_dir.$row["Img_name"];
+		$file = $_FILES['my_file']['name'];
+		$path = pathinfo($file);
+		$filename = $path['filename'];
+		$ext = $path['extension'];
+		if($ext=="jpeg" || $ext=="png" || $ext=="gif" || $ext=="jpg" || $ext=="jpeg"){
+			//deleting the old adress
+			if (file_exists($save_path)) {
+				if (!unlink($save_path)) {  
+					echo ("$save_path cannot be deleted due to an error");  
+				}  
+				else {  
+					echo ("$save_path has been deleted");  
+				}  
+			}
+			//adding the new img
+			$temp_name = $_FILES['my_file']['tmp_name'];
+			$save_path = $target_dir.$filename.".".$ext;
+			$save_path_sql = $filename.".".$ext;
+			if (file_exists($save_path)) {
+				 $f=false;
+				$gres=9;
+				$messages="Моля променете името на снимката, сега то е".$save_path;
+			}else{
+				 move_uploaded_file($temp_name,$save_path);
+				 $sql = "UPDATE customer SET Img_name='".$save_path_sql."' WHERE ID='".$_SESSION['user_ID']."'";//sql for description
+				if (mysqli_query($conn, $sql)) {
+					$message= "Record updated successfully";
+				}else {
+					$message= "Error updating record: " . mysqli_error($conn);
+				}
+				 echo "Congratulations! File Uploaded Successfully.";
+			}
+		}else{
+			$f=false;
+			$gres=9;
+			$messages="Снимката трябва да бъде от типвете:jpg, jpeg, gif, png";
+		}
 	}else if($_POST["submit"]=="exit"){
 		session_unset();
 		session_destroy();
@@ -73,6 +116,10 @@ if(isset($_POST["submit"])){//Zapisvane na informaciq
 $sql="SELECT * FROM customer WHERE ID=".$_SESSION["user_ID"];//get the db
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
+$save_path="Img/User_Img".$row["Img_name"];
+if (!file_exists($save_path)) {
+	$save_path="Img/FB_Img/user.png";
+}
 //*************************************************************************************************************
 $broj=0;
 $offer=array();
@@ -154,6 +201,15 @@ if($row["Attend"]!=null){
             <label for="Desc">Променете си описанието:</label>
             <textarea style="width:60%; height:120px; margin:10px 10px;" id="Desc" placeholder="Въведи Описанието" name="Desc"></textarea>
             <button type="submit" name="submit" value="5">Запиши</button>
+        </form>
+		</div>
+		 <!--Image upload--> 
+		<div class="otdel">
+        <form class="form-inline" action="profile.php" method="post">
+			<img src=<?php echo $save_path; ?> />
+            <label for="my_file"><b>Твоя нова снимка</b></label>
+			<input type="file" name="my_file" /><br /><br />
+            <button type="submit" name="submit" value="6">Запиши</button>
         </form>
 		</div>
     </div>
