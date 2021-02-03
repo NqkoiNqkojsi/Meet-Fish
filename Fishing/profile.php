@@ -73,10 +73,10 @@ if(isset($_POST["submit"])){//Zapisvane na informaciq
 			//deleting the old adress
 			if (file_exists($save_path)) {
 				if (!unlink($save_path)) {  
-					echo ("$save_path cannot be deleted due to an error");  
+					echo ($save_path." cannot be deleted due to an error");  
 				}  
 				else {  
-					echo ("$save_path has been deleted");  
+					echo ($save_path." has been deleted");  
 				}  
 			}
 			//adding the new img
