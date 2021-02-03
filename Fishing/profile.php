@@ -60,12 +60,14 @@ if(isset($_POST["submit"])){//Zapisvane na informaciq
 			$message= "Error updating record: " . mysqli_error($conn);
 		}
 	}else if ($_POST["submit"]==6){//*******************Img saving
-		echo "goes into submit";
 		$sql = "SELECT Img_name FROM customer WHERE ID='".$_SESSION['user_ID']."'";
         $result = mysqli_query($conn, $sql);
         $row= mysqli_fetch_assoc($result);
 		$target_dir = "Img/User_Img";
 		$save_path=$target_dir.$row["Img_name"];
+		foreach($_FILES as $files){
+			echo $files['name'];
+		}
 		$file = $_FILES['my_file']['name'];
 		echo $_FILES['my_file']['error'];
 		$path = pathinfo($file);
@@ -209,8 +211,8 @@ if($row["Attend"]!=null){
 		<div class="otdel">
         <form class="form-inline" action="profile.php" method="post">
 			<img src=<?php echo $save_path; ?> />
-            <label for="my_file"><b>Твоя нова снимка</b></label>
-			<input type="file" name="my_file" /><br /><br />
+            <label for="my_file"><b>Смени профилна снимка</b></label>
+			<input type="file" name="my_file" id="my_file" /><br /><br />
             <button type="submit" name="submit" value="6">Запиши</button>
         </form>
 		</div>
