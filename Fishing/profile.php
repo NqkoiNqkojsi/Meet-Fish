@@ -60,6 +60,7 @@ if(isset($_POST["submit"])){//Zapisvane na informaciq
 			$message= "Error updating record: " . mysqli_error($conn);
 		}
 	}else if ($_POST["submit"]==6){//*******************Img saving
+		echo "goes into submit";
 		$sql = "SELECT Img_name FROM customer WHERE ID='".$_SESSION['user_ID']."'";
         $result = mysqli_query($conn, $sql);
         $row= mysqli_fetch_assoc($result);
