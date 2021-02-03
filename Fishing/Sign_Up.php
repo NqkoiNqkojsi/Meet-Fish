@@ -111,7 +111,7 @@ if(isset($_POST["submit"])){
 	$save_path_sql="";
 	if (($_FILES['my_file']['name']!="") && f==true){
 		// Where the file is going to be stored
-		$target_dir = "Img/User_Img";
+		$target_dir = "Img/User_Img/";
 		$file = $_FILES['my_file']['name'];
 		$path = pathinfo($file);
 		$filename = $path['filename'];
