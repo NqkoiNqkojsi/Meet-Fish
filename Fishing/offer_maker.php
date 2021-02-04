@@ -33,6 +33,22 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 		    }
 		}
 		$f=true;
+		//*********************************Saving Photos****************************************
+		if (($_FILES['my_file']['name']!="") && f==true){
+			// Where the file is going to be stored
+			$target_dir = "Img/User_Img/";
+			$file = $_FILES['my_file']['name'];
+			$path = pathinfo($file);
+			$filename = $path['filename'];
+			$ext = $path['extension'];
+			if($ext=="jpeg" || $ext=="png" || $ext=="gif" || $ext=="jpg" || $ext=="jpeg"){
+				$temp_name = $_FILES['my_file']['tmp_name'];
+				$imgContent = addslashes(file_get_contents($temp_name));
+				echo gettype($imgContent);
+				echo "<br>".$imgContent;
+		}
+		//**************************************************************************************
+		//**************************************************************************************
 		if($f==true){/*make the query*/
 			$chng1=hndlcms($_POST['loc'], true);
 			$chng2=hndlcms($_POST['info'], true);
