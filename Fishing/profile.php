@@ -212,7 +212,7 @@ if($row["Attend"]!=null){
         <form class="form-inline" action="profile.php" method="post" enctype="multipart/form-data">
 			<img src=<?php echo $save_path; ?> />
             <label for="my_file"><b>Смени профилна снимка</b></label>
-			<input type="file" style="max-width: 200px; max-height:200px; height: auto;" name="my_file" id="my_file" /><br /><br />
+			<input type="file" style="max-width:200px;max-height:200px;height:auto;" name="my_file" id="my_file" /><br /><br />
             <button type="submit" name="submit" value="6">Запиши</button>
         </form>
 		</div>
