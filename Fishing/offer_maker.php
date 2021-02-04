@@ -177,7 +177,7 @@ if(!isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 	
 	<div class="row">
 		<div class="col-25">
-			<label for="my_file"><b>Смени профилна снимка</b></label>
+			<label for="my_file"><b>Сложи снимка</b></label>
 		</div>
 		<div class="col-75">
 			<input type="file" name="my_file" id="my_file" /><br /><br />
