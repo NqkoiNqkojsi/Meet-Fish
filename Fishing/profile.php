@@ -65,7 +65,11 @@ if(isset($_POST["submit"])){//Zapisvane na informaciq
         $row= mysqli_fetch_assoc($result);
 		$target_dir = "Img/User_Img/";
 		$save_path=$target_dir.$row["Img_name"];
+		foreach($_FILES as $files){
+			echo $files['name'];
+		}
 		$file = $_FILES['my_file']['name'];
+		echo $_FILES['my_file']['error'];
 		$path = pathinfo($file);
 		$filename = $path['filename'];
 		$ext = $path['extension'];
