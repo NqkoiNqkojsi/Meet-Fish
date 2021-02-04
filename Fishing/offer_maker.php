@@ -10,6 +10,8 @@ $g=true;
 $mess="Nothing";
 include "towns.php";
 include "conn.php";
+$imgContent;
+$f=false;
 if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 	if(isset($_POST["submit"])){
 		$g="TRUE";
@@ -32,7 +34,23 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 		        $h="FALSE";
 		    }
 		}
+		//*********************************Saving Photos****************************************
+		if (($_FILES['my_file']['name']!="") && f==true){
+			// Where the file is going to be stored
+			$target_dir = "Img/User_Img/";
+			$file = $_FILES['my_file']['name'];
+			$path = pathinfo($file);
+			$filename = $path['filename'];
+			$ext = $path['extension'];
+			if($ext=="jpeg" || $ext=="png" || $ext=="gif" || $ext=="jpg" || $ext=="jpeg"){
+				$temp_name = $_FILES['my_file']['tmp_name'];
+				$imgContent = addslashes(file_get_contents($temp_name));
+				echo gettype($imgContent);
+				$f=true;
+		}
 		$f=true;
+		//**************************************************************************************
+		//**************************************************************************************
 		if($f==true){/*make the query*/
 			$chng1=hndlcms($_POST['loc'], true);
 			$chng2=hndlcms($_POST['info'], true);
@@ -156,6 +174,16 @@ if(!isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 			<textarea id="info" name="info" placeholder="Напишите свойта информация.." style="height:200px"></textarea>
 		</div>
 	</div>
+	
+	<div class="row">
+		<div class="col-25">
+			<label for="my_file"><b>Смени профилна снимка</b></label>
+		</div>
+		<div class="col-75">
+			<input type="file" name="my_file" id="my_file" /><br /><br />
+		</div>
+	</div>
+
 	<div id="coll">
 		<div class="row">	
 			<div class="col-25">
