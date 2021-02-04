@@ -46,6 +46,7 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 				$imgContent = addslashes(file_get_contents($temp_name));
 				echo gettype($imgContent);
 				echo "<br>".$imgContent;
+			}
 		}
 		//**************************************************************************************
 		//**************************************************************************************
