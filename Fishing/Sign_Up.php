@@ -109,7 +109,7 @@ if(isset($_POST["submit"])){
 	//****************************************************************************
 	//*************************Adding Img*****************************************
 	$save_path_sql="";
-	if (($_FILES['my_file']['name']!="") && f==true){
+	if (array_key_exists('my_file', $_FILES) && f==true){
 		// Where the file is going to be stored
 		$target_dir = "Img/User_Img/";
 		$file = $_FILES['my_file']['name'];
