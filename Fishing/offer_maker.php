@@ -34,7 +34,7 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 		}
 		$f=true;
 		//*********************************Saving Photos****************************************
-		if (array_key_exists('my_file', $_FILES)){
+		if ($f){
 			// Where the file is going to be stored
 			$target_dir = "Img/User_Img/";
 			$file = $_FILES['my_file']['name'];
@@ -50,7 +50,7 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 		}
 		//**************************************************************************************
 		//**************************************************************************************
-		if($f==true){/*make the query*/
+		if(false){/*make the query*/  //make the if($f==true)
 			$chng1=hndlcms($_POST['loc'], true);
 			$chng2=hndlcms($_POST['info'], true);
 			$place=intval($_POST['place'])-1;
