@@ -120,7 +120,7 @@ if(isset($_POST["submit"])){//Zapisvane na informaciq
 $sql="SELECT * FROM customer WHERE ID=".$_SESSION["user_ID"];//get the db
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
-$save_path="Img/User_Img".$row["Img_name"];
+$save_path="Img/User_Img/".$row["Img_name"];
 if (!file_exists($save_path)) {
 	$save_path="Img/FB_Img/user.png";
 }
