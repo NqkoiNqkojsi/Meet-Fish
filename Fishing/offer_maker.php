@@ -128,7 +128,7 @@ if(!isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 ?>
     <h3 style="color:#E85A4F;"><?php echo $mess; ?></h3>
 <?php } ?>    
-	<form action=<?php echo $_SERVER['REQUEST_URI']; ?> method="post">
+	<form action=<?php echo $_SERVER['REQUEST_URI']; ?> method="post" enctype="multipart/form-data">
 	<div class="row">
 		<div class="col-25">
 			<label for="time">Кога ще ходите за риба?</label>
