@@ -10,6 +10,29 @@ $g=true;
 $mess="Nothing";
 include "towns.php";
 include "conn.php";
+function SaveImg(){
+	//*********************************Saving Photos****************************************
+	if ($f){
+		// Where the file is going to be stored
+		$target_dir = "Img/Post_Img/";
+		$file = $_FILES['my_file']['name'];
+		$path = pathinfo($file);
+		$filename = $path['filename'];
+		$ext = $path['extension'];
+		if($ext=="jpeg" || $ext=="png" || $ext=="gif" || $ext=="jpg" || $ext=="jpeg"){
+			//adding the new img
+			$temp_name = $_FILES['my_file']['tmp_name'];
+			$save_path = $target_dir.$filename.".".$ext;
+			$imgCont=file_get_contents($temp_name);
+			$sql = "UPDATE offer SET (Img) values(?) WHERE ID=".$_SESSION["user_ID"];;
+
+			$stmt = mysqli_prepare($con,$sql);
+
+			mysqli_stmt_bind_param($stmt, "s", $imgCont);
+			mysqli_stmt_execute($stmt);
+		}
+	}
+}
 if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 	if(isset($_POST["submit"])){
 		$g="TRUE";
@@ -33,21 +56,6 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 		    }
 		}
 		$f=true;
-		//*********************************Saving Photos****************************************
-		if ($f){
-			// Where the file is going to be stored
-			$target_dir = "Img/User_Img/";
-			$file = $_FILES['my_file']['name'];
-			$path = pathinfo($file);
-			$filename = $path['filename'];
-			$ext = $path['extension'];
-			if($ext=="jpeg" || $ext=="png" || $ext=="gif" || $ext=="jpg" || $ext=="jpeg"){
-				$temp_name = $_FILES['my_file']['tmp_name'];
-				$imgContent = addslashes(file_get_contents($temp_name));
-				echo gettype($imgContent);
-				echo "<br>".$imgContent;
-			}
-		}
 		//**************************************************************************************
 		//**************************************************************************************
 		if(false){/*make the query*/  //make the if($f==true)
@@ -72,6 +80,8 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 				console_log($sql."; greshka");
 				console_log($mess);
 			}
+			SaveImg();
+			$sql = "UPDATE offer SET Exp=".$row['Exp'].", Attend='".$row["Attend"]."' WHERE ID=".$_SESSION["user_ID"];
 			$mess=$mess."<br>".$sql;
 			$sql="SELECT ID, Exp, Attend FROM customer WHERE ID=".$_SESSION["user_ID"];
 			$result =mysqli_query($conn, $sql);
