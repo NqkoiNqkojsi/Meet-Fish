@@ -1,4 +1,5 @@
 <?php
+$img="";
 $img="Fishing/Img/Post_Img/".$row["Img"];
 if (!file_exists($img)) {
 	if($row["Prof"]==true){
@@ -20,7 +21,7 @@ if($i%4==1){
 <?php } ?>
 <div class="columna">
 	<div class="carda">
-		<img src=<?php echo $img;?> class="card_img" alt="Thubnail images">
+		<img src=<?php echo $img;?> class="card_img" alt="Thubnail images" style="max-height:350px;width:auto;">
 		<div class="card-body">
 	        <?php
 			$date_time = new DateTime($row['Time']);
