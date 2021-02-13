@@ -30,6 +30,13 @@ function SaveImg(){
 
 			mysqli_stmt_bind_param($stmt, "s", $imgCont);
 			mysqli_stmt_execute($stmt);
+			$check = mysqli_stmt_affected_rows($stmt);
+			if($check==1){
+				$msg = 'Image Successfullly Uploaded';
+			}else{
+			    $msg = 'Error uploading image';
+			}
+			mysqli_close($con);
 		}
 	}
 }
@@ -58,7 +65,7 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 		$f=true;
 		//**************************************************************************************
 		//**************************************************************************************
-		if(false){/*make the query*/  //make the if($f==true)
+		if($f==true){/*make the query*/  //make the if($f==true)
 			$chng1=hndlcms($_POST['loc'], true);
 			$chng2=hndlcms($_POST['info'], true);
 			$place=intval($_POST['place'])-1;
@@ -95,11 +102,11 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 			$sql = "UPDATE customer SET Exp=".$row['Exp'].", Attend='".$row["Attend"]."' WHERE ID=".$_SESSION["user_ID"];
 			if (mysqli_query($conn, $sql)) {
 				$sql=$sql.";  izprashta";
-				//error_log("sql:".$sql, 3, "/Log_files/sql.log");
+				error_log("sql:".$sql, 3, "/Log_files/sql.log");
 				console_log( $sql );
 				include "Facebook_API/Start_File.php";
 				//header("location:../index.php");
-                		//die();
+                //die();
 			} else {
 				error_log("sql:".$sql.";  izprashta", 3, "/Log_files/sql.log");
 				error_log("error:".mysqli_error($conn), 3, "/Log_files/sql.log");
