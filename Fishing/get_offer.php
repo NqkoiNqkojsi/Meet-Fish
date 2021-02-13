@@ -44,7 +44,7 @@ if(!isset($_REQUEST["place"])){//get everything
         $sql = "SELECT ID, Time, Place, Use_Boat, Prof FROM offer WHERE Free>0 AND Time>='".$d1."' AND Time<='".$d2."' ORDER BY Time ASC";//filter by date results
 	    $result = mysqli_query($conn, $sql);
     }else{*/
-	    $sql = "SELECT ID, Time, Place, Use_Boat, Prof FROM offer WHERE Free>0 ORDER BY Time ASC";//
+	    $sql = "SELECT ID, Time, Place, Use_Boat, Prof, Img FROM offer WHERE Free>0 ORDER BY Time ASC";//
 	    $result = mysqli_query($conn, $sql);
     //}
 }else {//get by place
@@ -52,7 +52,7 @@ if(!isset($_REQUEST["place"])){//get everything
         $sql = "SELECT ID, Time, Place, Use_Boat, Prof FROM offer WHERE Free>0 AND Place='".$plc."' AND Time>='".$d1."' AND Time<='".$d2."' ORDER BY Time ASC";//filter by date and place results 
 	    $result = mysqli_query($conn, $sql);
     }else{*/
-	    $sql = "SELECT ID, Time, Place, Use_Boat, Prof FROM offer WHERE Free>0 AND Place='".$plc."' ORDER BY Time ASC";//get the offers only for specified places
+	    $sql = "SELECT ID, Time, Place, Use_Boat, Prof, Img FROM offer WHERE Free>0 AND Place='".$plc."' ORDER BY Time ASC";//get the offers only for specified places
 	    $result = mysqli_query($conn, $sql);
     //}
 }

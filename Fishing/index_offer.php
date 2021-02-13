@@ -1,15 +1,17 @@
 <?php
-$img;
-if($row["Prof"]==true){
-	$ima=rand(1, 4).".jpg";
-	$img="Fishing/Img/professional".$ima;
-}else{
-	if($row["Use_Boat"]==true){
-		$ima=rand(1, 5).".jpg";
-		$img="Fishing/Img/boat".$ima;
+$img;="Fishing/Img/User_Img/".$row["Img_name"];
+if (!file_exists($img;)) {
+	if($row["Prof"]==true){
+		$ima=rand(1, 4).".jpg";
+		$img="Fishing/Img/professional".$ima;
 	}else{
-		$ima=rand(1, 5).".jpg";
-		$img="Fishing/Img/beach".$ima;
+		if($row["Use_Boat"]==true){
+			$ima=rand(1, 5).".jpg";
+			$img="Fishing/Img/boat".$ima;
+		}else{
+			$ima=rand(1, 5).".jpg";
+			$img="Fishing/Img/beach".$ima;
+		}
 	}
 }
 if($i%4==1){
