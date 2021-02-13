@@ -26,7 +26,7 @@ function SaveImg($f){
 			$imgCont=file_get_contents($temp_name);
 			$sql = "UPDATE offer SET (Img) values(?) WHERE ID=".$_SESSION["user_ID"];;
 
-			$stmt = mysqli_prepare($con,$sql);
+			$stmt = mysqli_prepare($conn,$sql);
 
 			mysqli_stmt_bind_param($stmt, "s", $imgCont);
 			mysqli_stmt_execute($stmt);
