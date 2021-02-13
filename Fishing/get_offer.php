@@ -38,7 +38,7 @@ foreach($delete_id as $a){
 foreach($delete_img as $img){
 	$path="Fishing/Img/Post_Img/".$img;
 	if (file_exists($path)) {
-		unlink($path)
+		unlink($path);
 	}
 }
 
