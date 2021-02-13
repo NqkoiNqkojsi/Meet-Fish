@@ -13,7 +13,7 @@ if ($result && mysqli_num_rows($result) > 0) {//look at the OFFERS
         if($izpishi  > $row["Time"]){//Search for passed offers
 			$br=$br+1;
 			$delete_id[$br]=$row["ID"];
-			$delete_img[$br]=$row["Img"]
+			$delete_img[$br]=$row["Img"];
 		}
     }
 }
