@@ -1,6 +1,6 @@
 <?php
 $img="Fishing/Img/User_Img/".$row["Img_name"];
-if (!file_exists($img;)) {
+if (!file_exists($img)) {
 	if($row["Prof"]==true){
 		$ima=rand(1, 4).".jpg";
 		$img="Fishing/Img/professional".$ima;
