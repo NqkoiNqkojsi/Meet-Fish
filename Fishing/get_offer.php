@@ -8,8 +8,10 @@ $br=-1;
 $br1=-1;
 $now = new DateTime();
 $izpishi = $now->format('Y-m-d H:i');
+echo "Now is ".$izpishi."<br>";
 if ($result && mysqli_num_rows($result) > 0) {//look at the OFFERS
     while($row = mysqli_fetch_assoc($result)) {//cycle through ever offer 
+	echo "Ofertata e ".$row["Time"]."<br>";
         if($izpishi  > $row["Time"]){//Search for passed offers
 			$br=$br+1;
 			$delete_id[$br]=$row["ID"];
