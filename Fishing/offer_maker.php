@@ -10,7 +10,7 @@ $g=true;
 $mess="Nothing";
 include "towns.php";
 include "conn.php";
-function SaveImg($f){
+function SaveImg($f, $conn){
 	//*********************************Saving Photos****************************************
 	if (array_key_exists('my_file', $_FILES) && $f==true){
 		// Where the file is going to be stored
@@ -87,7 +87,7 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 				console_log($sql."; greshka");
 				console_log($mess);
 			}
-			SaveImg($f);
+			SaveImg($f, $conn);
 			$sql="SELECT ID, Exp, Attend FROM customer WHERE ID=".$_SESSION["user_ID"];
 			$result =mysqli_query($conn, $sql);
 			$row=mysqli_fetch_assoc($result);
