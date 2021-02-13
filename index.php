@@ -162,13 +162,13 @@ include "Fishing/towns.php";
 			for($i=1;$i<=12 && $i<=$red-$prebr;$i++){//cycle through the rows
 				$row = mysqli_fetch_assoc($result);//get the row
 				if(isset($_REQUEST["d1"]) && isset($_REQUEST["d2"])){
-				    if($row['Time'"Fishing/index_offer.php";
+				    if($row['Time']>=$d1 && $row['Time']<=$d2){
+				        include "Fishing/index_offer.php";
 				    }else{
 				        $prebr++;
 				    }
 				}else{
-				    include "Fishi]>=$d1 && $row['Time']<=$d2){
-				        include ng/index_offer.php";
+				    include "Fishing/index_offer.php";
 				}
 			}
 			if(($red-$prebr)%4!=0){
