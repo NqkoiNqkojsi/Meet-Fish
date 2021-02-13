@@ -24,19 +24,13 @@ function SaveImg($f, $conn){
 			$temp_name = $_FILES['my_file']['tmp_name'];
 			$save_path = $target_dir.$filename.".".$ext;
 			$imgCont=file_get_contents($temp_name);
-			
 
-			$stmt = $conn->prepare("UPDATE offer SET (Img) values(?) WHERE ID=".$_SESSION["user_ID"]);
-
-			$stmt->bind_param("s", $ImgCont)
-			$stmt->execute();
-			$check = mysqli_stmt_affected_rows($stmt);
-			if($check==1){
-				$msg = 'Image Successfullly Uploaded';
-			}else{
-			    $msg = 'Error uploading image';
+			$sql = "UPDATE offer SET Img='".$ImgCont."' WHERE ID=".$_SESSION["user_ID"];
+			if (mysqli_query($conn, $sql)) {
+				$sql=$sql.";  izprashta";
+				error_log("sql:".$sql, 3, "/Log_files/sql.log");
+				console_log( $sql );
 			}
-			$stmt->close();
 		}
 	}
 }
