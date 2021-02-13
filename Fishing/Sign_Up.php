@@ -109,7 +109,7 @@ if(isset($_POST["submit"])){
 	//****************************************************************************
 	//*************************Adding Img*****************************************
 	$save_path_sql="";
-	if (array_key_exists('my_file', $_FILES) && f==true){
+	if (array_key_exists('my_file', $_FILES) && $f==true){
 		// Where the file is going to be stored
 		$target_dir = "Img/User_Img/";
 		$file = $_FILES['my_file']['name'];
@@ -256,7 +256,7 @@ if(isset($_POST["submit"])){
     if($f==false){
 ?>
 		<div class="column" style="padding: 10px;">
-			<form action="Sign_Up.php" method="post">
+			<form action="Sign_Up.php" method="post" enctype="multipart/form-data">
 				<div class="container">
 					<h1>Запиши се</h1>
 					<h4 style="color:#E85A4F;"><?php echo $messages; ?></h4>
@@ -374,7 +374,7 @@ if(isset($_POST["submit"])){
 }else{
 ?>
 		<div class="column" style="padding: 10px; border-width: 0; outline-offset: 1px;">
-			<form action="Sign_Up.php" method="post">
+			<form action="Sign_Up.php" method="post" enctype="multipart/form-data">
 				<div class="container">
 					<h1>Запиши се</h1>
 					<hr>

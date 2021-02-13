@@ -10,9 +10,9 @@ $g=true;
 $mess="Nothing";
 include "towns.php";
 include "conn.php";
-function SaveImg(){
+function SaveImg($f){
 	//*********************************Saving Photos****************************************
-	if ($f){
+	if (array_key_exists('my_file', $_FILES) && $f==true){
 		// Where the file is going to be stored
 		$target_dir = "Img/Post_Img/";
 		$file = $_FILES['my_file']['name'];
@@ -87,9 +87,7 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 				console_log($sql."; greshka");
 				console_log($mess);
 			}
-			SaveImg();
-			$sql = "UPDATE offer SET Exp=".$row['Exp'].", Attend='".$row["Attend"]."' WHERE ID=".$_SESSION["user_ID"];
-			$mess=$mess."<br>".$sql;
+			SaveImg($f);
 			$sql="SELECT ID, Exp, Attend FROM customer WHERE ID=".$_SESSION["user_ID"];
 			$result =mysqli_query($conn, $sql);
 			$row=mysqli_fetch_assoc($result);
