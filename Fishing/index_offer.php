@@ -1,7 +1,7 @@
 <?php
 $img="";
 $img="Fishing/Img/Post_Img/".$row["Img"];
-if (!file_exists($img)) {
+if (!file_exists($img) || $img=="Fishing/Img/Post_Img/") {
 	if($row["Prof"]==true){
 		$ima=rand(1, 4).".jpg";
 		$img="Fishing/Img/professional".$ima;
@@ -21,7 +21,7 @@ if($i%4==1){
 <?php } ?>
 <div class="columna">
 	<div class="carda">
-		<img src=<?php echo $img;?> class="card_img" alt="Thubnail images" style="max-height:350px;width:auto;">
+		<img src=<?php echo $img;?> class="card_img" alt="Thubnail images" style="max-height:350px;width:auto;max-width:350px;height:auto;">
 		<div class="card-body">
 	        <?php
 			$date_time = new DateTime($row['Time']);
