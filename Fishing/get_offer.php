@@ -7,6 +7,7 @@ $delete_peop=array();//every not verified date
 $br=-1;
 $br1=-1;
 $now = new DateTime();
+$dateTime->modify('+2 hours');
 $izpishi = $now->format('Y-m-d H:i');
 echo "Now is ".$izpishi."<br>";
 if ($result && mysqli_num_rows($result) > 0) {//look at the OFFERS
