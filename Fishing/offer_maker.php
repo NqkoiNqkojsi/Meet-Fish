@@ -10,7 +10,7 @@ $g=true;
 $mess="Nothing";
 include "towns.php";
 include "conn.php";
-function SaveImg($f, $conn){
+function SaveImg($f, $conn, $last_id){
 	//*********************************Saving Photos****************************************
 	if (array_key_exists('my_file', $_FILES) && $f==true){
 		// Where the file is going to be stored
@@ -23,14 +23,25 @@ function SaveImg($f, $conn){
 			//adding the new img
 			$temp_name = $_FILES['my_file']['tmp_name'];
 			$save_path = $target_dir.$filename.".".$ext;
-			$imgCont=file_get_contents($temp_name);
-
-			$sql = "UPDATE offer SET Img='".$ImgCont."' WHERE ID=".$_SESSION["user_ID"];
-			if (mysqli_query($conn, $sql)) {
-				$sql=$sql.";  izprashta";
-				error_log("sql:".$sql, 3, "/Log_files/sql.log");
-				console_log( $sql );
+			$save_path_sql = $filename.".".$ext;
+			if (file_exists($save_path)) {
+				 $f=false;
+				$gres=9;
+				$messages="Моля променете името на снимката, сега то е".$save_path;
+			}else{
+				 move_uploaded_file($temp_name,$save_path);
+				 $sql = "UPDATE offer SET Img='".$save_path_sql."' WHERE ID='".$last_id."'";//sql for description
+				if (mysqli_query($conn, $sql)) {
+					$message= "Record updated successfully";
+				}else {
+					$message= "Error updating record: " . mysqli_error($conn);
+				}
+				 echo "Congratulations! File Uploaded Successfully.";
 			}
+		}else{
+			$f=false;
+			$gres=9;
+			$messages="Снимката трябва да бъде от типвете:jpg, jpeg, gif, png";
 		}
 	}
 }
@@ -81,7 +92,7 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 				console_log($sql."; greshka");
 				console_log($mess);
 			}
-			SaveImg($f, $conn);
+			SaveImg($f, $conn, $last_id);
 			$sql="SELECT ID, Exp, Attend FROM customer WHERE ID=".$_SESSION["user_ID"];
 			$result =mysqli_query($conn, $sql);
 			$row=mysqli_fetch_assoc($result);
