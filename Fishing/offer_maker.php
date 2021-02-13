@@ -14,7 +14,7 @@ function SaveImg($f, $conn, $last_id){
 	//*********************************Saving Photos****************************************
 	if (array_key_exists('my_file', $_FILES) && $f==true){
 		// Where the file is going to be stored
-		$target_dir = "/Img/Post_Img/";
+		$target_dir = "Img/Post_Img/";
 		$file = $_FILES['my_file']['name'];
 		$path = pathinfo($file);
 		$filename = $path['filename'];
