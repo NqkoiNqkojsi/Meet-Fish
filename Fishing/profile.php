@@ -210,7 +210,9 @@ if($row["Attend"]!=null){
 		 <!--Image upload--> 
 		<div class="otdel">
         <form class="form-inline" action="profile.php" method="post" enctype="multipart/form-data">
-			<img src=<?php echo $save_path; ?> style="max-width:200px;max-height:200px;height:auto;"/>
+			<a target="_blank" href=<?php echo $save_path;?>>
+				<img src=<?php echo $save_path; ?> style="max-width:200px;max-height:200px;height:auto;"/>
+			</a>
             <label for="my_file"><b>Смени профилна снимка</b></label>
 			<input type="file" name="my_file" id="my_file" /><br /><br />
             <button type="submit" name="submit" value="6">Запиши</button>

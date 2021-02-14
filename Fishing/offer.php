@@ -80,7 +80,9 @@ function GetAllNames($need1, $need2, $why){
 	</div>
 	<br><br>
 	<div class="containerut">
-			<img src=<?php echo $img;?> class="card_img" alt="Thubnail images" style="max-height:500px;width:auto;max-width:700px;height:auto;">
+		<a target="_blank" href=<?php echo $img;?>>
+			<img src=<?php echo $img;?> class="thumbnail" alt="Thubnail images" style="max-height:500px;width:auto;max-width:700px;height:auto;">
+		</a>
 			<h3>На <span><?php echo $used_time;?></span> ще се проведе споделен риболов.</h3><br>
 		<br>
 			<div style="display:inline;"><h4>Организирано от <div class="tooltipa"><b><?php echo $sender["FName"].' "'.$sender["NickName"].'" '.$sender["SName"];?></b><span class="tooltiptexta"><?php echo $age."год., Опит:".$sender["Exp"]."т., ".$sender["Description"];?></span></div>.</h4></div><br>
