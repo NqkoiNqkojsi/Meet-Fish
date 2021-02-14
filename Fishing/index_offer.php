@@ -22,7 +22,7 @@ if($i%4==1){
 <div class="columna">
 	<div class="carda">
 		<a target="_blank" href=<?php echo $img;?>>
-			<img src=<?php echo $img;?> class="thumbnail" alt="Thubnail images" style="max-height:300px;width:auto;max-width:300px;height:auto;">
+			<img src=<?php echo $img;?> class="thumbnail" alt="Thubnail images" style="max-height:300px;max-width:300px">
 		</a>
 		<div class="card-body">
 	        <?php

@@ -81,7 +81,7 @@ function GetAllNames($need1, $need2, $why){
 	<br><br>
 	<div class="containerut">
 		<a target="_blank" href=<?php echo $img;?>>
-			<img src=<?php echo $img;?> class="thumbnail" alt="Thubnail images" style="max-height:500px;width:auto;max-width:700px;height:auto;">
+			<img src=<?php echo $img;?> class="thumbnail" alt="Thubnail images" style="max-height:500px;max-width:700px;">
 		</a>
 			<h3>На <span><?php echo $used_time;?></span> ще се проведе споделен риболов.</h3><br>
 		<br>
