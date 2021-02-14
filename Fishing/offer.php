@@ -21,6 +21,25 @@ $used_time=date_format($time, 'd.m в H:i');
 $dop=$row["Place"];
 $chng1=hndlcms($row['Location'], false);//format the two text strings
 $chng2=hndlcms($row['Info'], false);
+//**************************
+//Getting the image
+$img="";
+$img="Img/Post_Img/".$row["Img"];
+if (!file_exists($img) || $img=="Img/Post_Img/") {
+	if($row["Prof"]==true){
+		$ima=rand(1, 4).".jpg";
+		$img="Img/professional".$ima;
+	}else{
+		if($row["Use_Boat"]==true){
+			$ima=rand(1, 5).".jpg";
+			$img="Img/boat".$ima;
+		}else{
+			$ima=rand(1, 5).".jpg";
+			$img="Img/beach".$ima;
+		}
+	}
+}
+
 //Check if the pearson is already in_array
 $check_acc=false;
 $token = strtok($row["Taken"], ",");
@@ -61,6 +80,7 @@ function GetAllNames($need1, $need2, $why){
 	</div>
 	<br><br>
 	<div class="containerut">
+			<img src=<?php echo $img;?> class="card_img" alt="Thubnail images" style="max-height:500px;width:auto;max-width:700px;height:auto;">
 			<h3>На <span><?php echo $used_time;?></span> ще се проведе споделен риболов.</h3><br>
 		<br>
 			<div style="display:inline;"><h4>Организирано от <div class="tooltipa"><b><?php echo $sender["FName"].' "'.$sender["NickName"].'" '.$sender["SName"];?></b><span class="tooltiptexta"><?php echo $age."год., Опит:".$sender["Exp"]."т., ".$sender["Description"];?></span></div>.</h4></div><br>
