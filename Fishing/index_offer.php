@@ -24,7 +24,7 @@ if($i%4==1){
 		<a target="_blank" href=<?php echo $img;?>>
 			<img src=<?php echo $img;?> class="thumbnail" alt="Thubnail images" style="max-height:300px;max-width:300px">
 		</a>
-		<div class="card-body">
+		<div class="card-body" style="margin: auto;">
 	        <?php
 			$date_time = new DateTime($row['Time']);
 			$time=$date_time->format('H:i');//get the hour and min
