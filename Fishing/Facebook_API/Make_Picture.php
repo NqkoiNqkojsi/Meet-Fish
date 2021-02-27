@@ -115,13 +115,17 @@ $message_send="посети го на https://meetandfish.online/Fishing/offer.p
 				data: {
 					base64data : Img,
 					name : filename
-				}
+				},
+				success: function (data) {
+					console.log(data);
+					Send_Info(filename);
+				},
 			});
-			Send_Info(filename);
 		}
 
 
 		function Send_Info(src_img) {
+		console.log("Sending to Facebook");
 			var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
