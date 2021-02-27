@@ -5,7 +5,6 @@
     $ifp = fopen( $name, 'wb' );
 
     $image = explode( ',', $data);
-    echo $image;
 
     // we could add validation here with ensuring count( $data ) > 1
     fwrite( $ifp, base64_decode( $image[ 1 ] ) );

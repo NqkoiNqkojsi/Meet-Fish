@@ -47,5 +47,12 @@ if (isset($AccessToken)) {
     $graphNode = $response->getGraphNode();
 
     echo 'Photo ID: ' . $graphNode['id'];
+
+    if (!unlink('../Img/FB_Img/'.$Img)) {  
+		echo ($Img." cannot be deleted due to an error");  
+	}  
+	else {  
+    	echo ($Img." has been deleted");  
+	}  
 }
 ?>
