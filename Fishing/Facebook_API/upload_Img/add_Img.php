@@ -1,6 +1,6 @@
 <?php
     $data = $_REQUEST['base64data']; 
-    //echo $data;
+    echo $data;
     $name='../Img/FB_Img/'.$_REQUEST['name'];
 
     $image = explode('base64,',$data); 

