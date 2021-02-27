@@ -8,8 +8,25 @@ $fb = new \Facebook\Facebook([
   'app_secret' => '8f1a318c934afa4f244b3f48c37929b8',
   'default_graph_version' => 'v2.2'
 ]);
-$AccessToken = 'EAAC0dJ1PAhIBAA6dCPzyAuWN3rBXegkGmYiOpXw3pjIjL5Ws2Mya3YuYZBNLc3kneBRGFDPGnCeJ41RtfJocm5isrGSxDAZCoR6OABEpaMKq2bu2kirYP5AcQuB220QDrQBh2Iyd64R3vmOorvHUTyN6FrCD9G5PsPD4kaJwZDZD';
+$helper = $fb->getCanvasHelper();
+$AccessToken;
 
+try {
+  $AccessToken = $helper->getAccessToken();
+} catch(Facebook\Exception\ResponseException $e) {
+  // When Graph returns an error
+  echo 'Graph returned an error: ' . $e->getMessage();
+  exit;
+} catch(Facebook\Exception\SDKException $e) {
+  // When validation fails or other local issues
+  echo 'Facebook SDK returned an error: ' . $e->getMessage();
+  exit;
+}
+
+if (! isset($AccessToken)) {
+  echo 'No OAuth data could be obtained from the signed request. User has not authorized your app yet.';
+  exit;
+}
 ?>
 
 

@@ -13,6 +13,10 @@ $mes="";
 if(isset($_REQUEST["mes"])){
 	$mes=$_REQUEST["mes"];
 }
+$Img="";
+if(isset($_REQUEST["url"])){
+	$Img=$_REQUEST["url"];
+}
 
 include("config.php");
 
@@ -20,8 +24,8 @@ if (isset($AccessToken)) {
     // Logged in.
 
     $My_message=$ime." Ви кани на риболов ".$mes;
-    $data = [
-      'link' => $link,
+    $data = [ 
+      'source' => $fb->fileToUpload('../Img/FB_Img/'.$Img),
       'message' => $My_message
     ];
 

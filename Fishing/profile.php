@@ -96,6 +96,7 @@ if(isset($_POST["submit"])){//Zapisvane na informaciq
 				 $sql = "UPDATE customer SET Img_name='".$save_path_sql."' WHERE ID='".$_SESSION['user_ID']."'";//sql for description
 				if (mysqli_query($conn, $sql)) {
 					$message= "Record updated successfully";
+					$_SESSION["Img"]=$save_path_sql;
 				}else {
 					$message= "Error updating record: " . mysqli_error($conn);
 				}

@@ -11,9 +11,11 @@ $mqsto="";
 if(isset($_REQUEST["mqsto"])){
 	$mqsto=$_REQUEST["mqsto"];
 }
-$prof_pic="../Img/FB_Img/";
+$prof_pic="../Img/User_Img/";
 if(isset($_REQUEST["pic"])){
 	$prof_pic=$prof_pic.$_REQUEST["pic"];
+}else{
+	$prof_pic="../Img/FB_Img/user.png";
 }
 $link="";
 if(isset($_REQUEST["id"])){
@@ -27,7 +29,7 @@ if(isset($_REQUEST["ime"])){
 $new_date=date_create($date1);
 $time=date_format($new_date,"H:i");
 $date=date_format($new_date,"d.M");
-$message_send="от ".$time." на ".$date;
+$message_send="посети го на https://meetandfish.online/Fishing/offer.php?id=".$link;
 ?>
 <html>
 <head>
@@ -85,7 +87,7 @@ $message_send="от ".$time." на ".$date;
 					document.body.appendChild(canvas);
 					myImage = canvas.toDataURL("image/png");
 					console.log(myImage);
-					Send_Info(myImage)
+					saveAs(myImage);
 				});
 			} catch (error) {
 				console.error(error);
@@ -98,6 +100,26 @@ $message_send="от ".$time." на ".$date;
 				}
 			}, 2000);
 		}
+
+
+		function saveAs(Img) {   
+			
+			var filename=<?php echo $_REQUEST["id"].".png"; ?>;
+			var url = 'upload_Img/add_Img.php';
+
+			$.ajax({ 
+				type: "POST", 
+				url: url,
+				dataType: 'text',
+				data: {
+					base64data : Img,
+					name : filename
+				}
+			});
+			Send_Info(filename);
+		}
+
+
 		function Send_Info(src_img) {
 			var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function() {
@@ -110,7 +132,7 @@ $message_send="от ".$time." на ".$date;
 			myJSON = { "name": ime, "url": src_img, "link": ID };
 			console.log(myJSON);
 			data = JSON.stringify(myJSON);
-			xhttp.open("GET", "upload_to_facebook.php?ime="+ime+"&url="+"src_img"+"&link="+ID+"&mes="+mes, true);
+			xhttp.open("GET", "upload_to_facebook.php?ime="+ime+"&url="+src_img+"&link="+ID+"&mes="+mes, true);
 			xhttp.send();
         }
     </script>

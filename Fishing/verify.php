@@ -11,7 +11,7 @@ if(isset($_REQUEST["key"])){
 	$b=$_REQUEST["key"];
 }
 //***************Select statements*************************
-$sql="SELECT ID, NickName, Place FROM customer WHERE ID=?";
+$sql="SELECT ID, NickName, Place, Img_name FROM customer WHERE ID=?";
 $stmt= $conn->prepare($sql);
 $stmt->bind_param("i", $a);
 $stmt->execute();
@@ -27,6 +27,7 @@ if(password_verify($row["NickName"], $b)){
     $_SESSION["user_Nname"]=$row["NickName"];
     $_SESSION["user_Plc"]=$row["Place"];
     $_SESSION["Verified"]=true;
+    $_SESSION["Img"]=$row["Img_name"];
     header("Location: ../index.php");
     die();
 }else{
