@@ -2,9 +2,14 @@
     $data = $_REQUEST['base64data']; 
     $name='../Img/FB_Img/'.$_REQUEST['name'];
 
-    $image = explode('base64,',$data); 
+    $ifp = fopen( $name, 'wb' );
+
+    $image = explode( ',', $data);
     echo $image;
 
-    file_put_contents($name, base64_decode($image));
+    // we could add validation here with ensuring count( $data ) > 1
+    fwrite( $ifp, base64_decode( $image[ 1 ] ) );
 
+    // clean up the file resource
+    fclose( $ifp );
 ?>
