@@ -100,7 +100,7 @@ $message_send="посети го на https://meetandfish.online/Fishing/offer.p
 		function saveAs(Img) {   
 			
 			var filename=<?php echo "'".$_REQUEST["id"].".png'"; ?>;
-			var url = 'upload_Img/add_Img.php';
+			var url = 'add_Img.php';
 
 			$.ajax({ 
 				type: "POST", 
