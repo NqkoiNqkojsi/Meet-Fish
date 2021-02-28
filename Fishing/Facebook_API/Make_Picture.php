@@ -113,9 +113,7 @@ $message_send="посети го на https://meetandfish.online/Fishing/offer.p
 				success: function (data) {
 					console.log(data);
 					setTimeout(() => {
-						if (f == true) {
-							Send_Info(filename);
-						}
+						Send_Info(filename);
 					}, 2000);
 				},
 			});
