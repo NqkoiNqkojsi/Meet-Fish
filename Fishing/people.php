@@ -14,7 +14,7 @@ if($_SESSION["user_ID"]==$id){
 	header("location:profile.php");
     die();
 }
-$sql="SELECT * FROM customer WHERE ID=".$_SESSION["user_ID"];//get the db
+$sql="SELECT * FROM customer WHERE ID=".$id;//get the db
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 //Checking User Data
@@ -35,8 +35,8 @@ if (!file_exists($save_path)) {
     <div class="containerut">  
         <h6><?php echo  $row["FName"].' "'.$row["NickName"].'" '.$row["SName"];?></h6>
 		<img src=<?php echo $save_path; ?> style="max-width:200px;max-height:200px;height:auto;"/>
-		<h3><?php echo  "They have: ".$row["Exp"]."Exp";?></h3>
-		<h4><?php echo "Discription".$row["Discription"];?></h4>
+		<h3><?php echo  "Те имат: ".$row["Exp"]."XP";?></h3>
+		<h4><?php echo "Описание:".$row["Discription"];?></h4>
 
 	</div>
 	<br><br>
