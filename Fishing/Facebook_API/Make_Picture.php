@@ -11,7 +11,7 @@ $mqsto="";
 if(isset($_REQUEST["mqsto"])){
 	$mqsto=$_REQUEST["mqsto"];
 }
-$prof_pic="../Img/User_Img/";
+$prof_pic="../Img/Post_Img/";
 if(isset($_REQUEST["pic"])){
 	$prof_pic=$prof_pic.$_REQUEST["pic"];
 }else{
@@ -29,7 +29,6 @@ if(isset($_REQUEST["ime"])){
 $new_date=date_create($date1);
 $time=date_format($new_date,"H:i");
 $date=date_format($new_date,"d.M");
-$message_send="посети го на https://meetandfish.online/Fishing/offer.php?id=".$link;
 ?>
 <html>
 <head>
@@ -69,7 +68,7 @@ $message_send="посети го на https://meetandfish.online/Fishing/offer.p
 		var myImage;
 		var ime = "";
 		var ID;
-		var mes="";
+		var mes="посети го на https://meetandfish.online/Fishing/offer.php?id="+<?php echo $link; ?>;
 		var myJSON = Object();
 		var div = document.getElementById("carda");
 		window.onload = function() {
@@ -77,11 +76,11 @@ $message_send="посети го на https://meetandfish.online/Fishing/offer.p
 				takeScreenShot(<?php echo "'".$ime."'"; ?>, <?php echo "'".$link."'"; ?>, <?php echo "'".$message_send."'"; ?>);
 			}, 1000);
 		}
-		function takeScreenShot(name, id, mes1) {
+		function takeScreenShot(name, id) {
 			var f = true;
 			ime = name;
 			ID = id;
-			mes = mes1;
+			console.log(mes);
 			console.log("predi canvas");
 			try {
 				html2canvas(div).then(function(canvas){
@@ -133,7 +132,7 @@ $message_send="посети го на https://meetandfish.online/Fishing/offer.p
 			myJSON = { "name": ime, "url": src_img, "link": ID };
 			console.log(myJSON);
 			data = JSON.stringify(myJSON);
-			xhttp.open("GET", "upload_to_facebook.php?ime="+ime+"&url="+src_img+"&link="+ID+"&mes="+mes, true);
+			xhttp.open("GET", "upload_to_facebook.php?ime="+ime+"&url="+src_img+"&link="+ID, true);
 			xhttp.send();
         }
     </script>
