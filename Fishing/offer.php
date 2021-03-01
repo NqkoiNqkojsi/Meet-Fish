@@ -85,7 +85,7 @@ function GetAllNames($need1, $need2, $why){
 		</a>
 			<h3>На <span><?php echo $used_time;?></span> ще се проведе споделен риболов.</h3><br>
 		<br>
-			<div style="display:inline;"><h4>Организирано от <div class="tooltipa"><b><?php echo $sender["FName"].' "'.$sender["NickName"].'" '.$sender["SName"];?></b><span class="tooltiptexta"><?php echo $age."год., Опит:".$sender["Exp"]."т., ".$sender["Description"];?></span></div>.</h4></div><br>
+			<div style="display:inline;"><h4>Организирано от <div class="tooltipa" onclick="ViewPerson(<?php echo $sender['ID']; ?>)"><b><?php echo $sender["FName"].' "'.$sender["NickName"].'" '.$sender["SName"];?></b><span class="tooltiptexta"><?php echo $age."год., Опит:".$sender["Exp"]."т., ".$sender["Description"];?></span></div>.</h4></div><br>
 		<br>
 			<h4 style="display: inline;">Ще бъде в околността на <?php echo $towns[intval($row["Place"])]; ?> и <?php echo $sender["NickName"];?> опредили мястото на срещата:</h4>
 			<?php
@@ -163,6 +163,12 @@ function GetAllNames($need1, $need2, $why){
 		    include "user_mail.php";
 		?>
 	</div><br><br>
+	<script> 
+		//The script to show the sender profile
+		ViewPerson(id){
+			window.open("https://meetandfish.online/Stelyo_Branch/Fishing/people.php?id="+id.toString());
+		}
+	</script>
 	<script src="JS/scroll.js"></script>
 	<script src="JS/modal1.js"></script>
 	<script src="JS/collapse.js"></script>
