@@ -5,7 +5,7 @@ include "conn.php";
 include "towns.php";
 $id=0;
 if(isset($_REQUEST["id"])){
-	$id=$_RQUEST["id"];
+	$id=$_REQUEST["id"];
 }else{
 	header("location:profile.php");
     die();
