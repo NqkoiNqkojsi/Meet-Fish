@@ -31,12 +31,14 @@ if (isset($AccessToken)) {
     catch(Facebook\Exceptions\FacebookResponseException $e) {
         $msg='Graph returned an error: '.$e->getMessage();
         $error_string=__FILE__."****:".$msg;
+        echo $msg;
         error_log($error_string, 0, "../Log_files/API.log");
         exit;
     }
     catch(Facebook\Exceptions\FacebookSDKException $e) {
         $msg= 'Facebook SDK returned an error: '.$e->getMessage();
         $error_string=__FILE__."****:".$msg;
+        echo $msg;
         error_log($error_string, 0, "../Log_files/API.log");
         exit;
     }
