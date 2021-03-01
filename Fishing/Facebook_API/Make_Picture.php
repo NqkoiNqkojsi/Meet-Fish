@@ -125,7 +125,7 @@ $date=date_format($new_date,"d.M");
 			xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
 					var myElement = document.getElementById("Error");
-					myElement.innerHTML = responseText;
+					myElement.innerHTML = this.responseText;
 				}
 			};
 			console.log(myImage);
