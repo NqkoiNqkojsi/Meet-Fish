@@ -165,7 +165,7 @@ function GetAllNames($need1, $need2, $why){
 	</div><br><br>
 	<script> 
 		//The script to show the sender profile
-		ViewPerson(id){
+		function ViewPerson(id){
 			window.open("https://meetandfish.online/Stelyo_Branch/Fishing/people.php?id="+id.toString());
 		}
 	</script>
