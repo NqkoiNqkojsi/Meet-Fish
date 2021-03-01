@@ -73,7 +73,7 @@ $date=date_format($new_date,"d.M");
 		var div = document.getElementById("carda");
 		window.onload = function() {
 			setTimeout(() => {
-				takeScreenShot(<?php echo "'".$ime."'"; ?>, <?php echo "'".$link."'"; ?>, <?php echo "'".$message_send."'"; ?>);
+				takeScreenShot(<?php echo "'".$ime."'"; ?>, <?php echo "'".$link."'"; ?>);
 			}, 1000);
 		}
 		function takeScreenShot(name, id) {
