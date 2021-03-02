@@ -21,7 +21,7 @@ if (isset($AccessToken)) {
 
     $My_message=$ime." Ви кани на риболов! Посетете офертата на ".$link;
     $data = [ 
-      'source' => $fb->fileToUpload('../Img/FB_Img/'.$Img),
+      'source' => $fb->fileToUpload('https://meetandfish.online/Stelyo_Branch/Fishing/Img/FB_Img/'.$Img),//remove Stelyo_Branch when pulling
       'message' => $My_message
     ];
 
