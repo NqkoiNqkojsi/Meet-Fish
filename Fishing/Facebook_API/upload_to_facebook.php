@@ -26,7 +26,7 @@ if (isset($AccessToken)) {
     ];
 
     try {
-        $response = $fb->post('/104356978172893/feed', $data, $AccessToken);
+        $response = $fb->post('/104356978172893/photos', $data, $AccessToken);
     }
     catch(Facebook\Exceptions\FacebookResponseException $e) {
         $msg='Graph returned an error: '.$e->getMessage();
