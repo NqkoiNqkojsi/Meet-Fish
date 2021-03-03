@@ -73,6 +73,8 @@ $date=date_format($new_date,"d.m.y");
 			left: 0;
 			right: 0;
 			margin: auto;
+			border-style: solid;
+			border-width: 2px;
 		}
 
 		.FB_Img {
