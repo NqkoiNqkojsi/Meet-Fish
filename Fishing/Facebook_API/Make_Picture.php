@@ -54,6 +54,7 @@ $date=date_format($new_date,"d.m.y");
 		}
 		.txt{
 			color:white;
+			margin: 0px;
 		}
 		.Img_Cont {
 			display: block;
