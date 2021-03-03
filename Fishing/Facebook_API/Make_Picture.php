@@ -57,12 +57,15 @@ $date=date_format($new_date,"d.M");
 </head>
 <body>
 <div class="carda" id="carda" onload="takeScreenShot(<?php echo "'".$ime."'"; ?>, <?php echo "'".$link."'"; ?>);">
+	<div class="FB_Img">
 	<img src=<?php echo $prof_pic;?> class="card_img" alt="Thubnail images"><br>
 	<div class="card-body" id="card">
 		<h2 style="font-size: 50px;"><b>Дата: <?php echo $date; ?></b></h2><br>
 		<h3 style="font-size: 40px;"><b>Час: <?php echo $time; ?></b></h2><br>
 		<h3 style="font-size: 40px;">В зоната на:<?php echo $mqsto;?></h3>
-</div></div>
+		</div>
+	</div>
+</div>
 	<p id="Error"></p>
 	<script type="text/javascript" src="html2canvas/dist/html2canvas.js"></script>
     <script type="text/javascript">
