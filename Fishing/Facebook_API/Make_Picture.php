@@ -33,6 +33,7 @@ $date=date_format($new_date,"d.M");
 <html>
 <head>
 	<title>Facebook Api posting</title>
+	<link rel="stylesheet" href="../CSS/img.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<style>
 		.carda {
@@ -112,7 +113,7 @@ $date=date_format($new_date,"d.M");
 				success: function (data) {
 					console.log(data);
 					setTimeout(() => {
-						Send_Info(filename);
+						//Send_Info(filename); remove soon
 					}, 2000);
 				},
 			});

@@ -21,9 +21,11 @@ if($i%4==1){
 <?php } ?>
 <div class="columna">
 	<div class="carda">
-		<a target="_blank" href=<?php echo $img;?>>
-			<img src=<?php echo $img;?> class="thumbnail" alt="Thubnail images" style="max-height:300px;max-width:300px">
-		</a>
+		<div class="Img_Cont">
+			<a target="_blank" href=<?php echo $img;?>>
+				<img src=<?php echo $img;?> class="Img_In1" alt="Thubnail images">
+			</a>
+		</div>
 		<div class="card-body" style="margin: auto;">
 	        <?php
 			$date_time = new DateTime($row['Time']);
