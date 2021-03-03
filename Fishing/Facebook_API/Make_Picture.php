@@ -151,7 +151,7 @@ $date=date_format($new_date,"d.m.y");
 				success: function (data) {
 					console.log(data);
 					setTimeout(() => {
-						Send_Info(filename); remove soon
+						Send_Info(filename); 
 					}, 2000);
 				},
 			});
