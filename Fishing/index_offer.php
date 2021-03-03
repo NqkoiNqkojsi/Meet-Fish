@@ -22,8 +22,8 @@ if($i%4==1){
 <div class="columna">
 	<div class="carda">
 		<div class="Img_Cont">
-			<a target="_blank" href=<?php echo $img;?>>
-				<img src=<?php echo $img;?> class="Img_In1" alt="Thubnail images">
+			<a class="Img_In1" target="_blank" href=<?php echo $img;?>>
+				<img src=<?php echo $img;?> alt="Thubnail images">
 			</a>
 		</div>
 		<div class="card-body" style="margin: auto;">
