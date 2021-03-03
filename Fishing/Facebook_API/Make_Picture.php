@@ -91,7 +91,9 @@ $date=date_format($new_date,"d.m.y");
 <body>
 <div class="carda" id="carda" onload="takeScreenShot(<?php echo "'".$ime."'"; ?>, <?php echo "'".$link."'"; ?>);">
 	<div class="FB_Img">
-	<img src=<?php echo $prof_pic;?> class="card_img" alt="Thubnail images"><br>
+	<div class="Img_Cont">
+		<img src=<?php echo $prof_pic;?> class="card_img" alt="Thubnail images">
+	</div>
 	<div class="card-body" id="card">
 		<h3 class="txt" style="font-size: 50px;">В зоната на:<?php echo $mqsto;?></h3>
 		<h2 class="txt" style="font-size: 40px;"><b>Дата: <?php echo $date; ?></h2>
