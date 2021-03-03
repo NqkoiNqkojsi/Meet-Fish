@@ -57,18 +57,22 @@ $date=date_format($new_date,"d.m.y");
 			margin: 30px;
 		}
 		.Img_Cont {
-			display: block;
-			width:100%;
-			height:300px;
+			position: relative;
+			width: 100%;
+			height: 300px;
 		}
 
 		.Img_In1 {
-			display: block;
-			margin-left: auto;
-			margin-right: auto;
-			max-height: 300px;
-			max-width: 300px;
-			width: 90%;
+			max-height: 90%;
+			max-width: 90%;
+			width: auto;
+			height: auto;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
 		}
 
 		.FB_Img {
