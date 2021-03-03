@@ -6,7 +6,7 @@ if (array_key_exists('my_file', $_FILES)){
 }
 echo "The place is ".$towns[$place];
 echo '<script type="text/javascript">',
-"Send_FC('".$new_date."', '".$_SESSION["user_Nname"]."', '".$filename."', '".
+"Send_FC1('".$new_date."', '".$_SESSION["user_Nname"]."', '".$filename."', '".//Change to Send_FC later 
 $towns[$place]."', '".$last_id."');",
 '</script>'
 ;
