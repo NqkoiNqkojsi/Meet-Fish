@@ -3,7 +3,7 @@ function Email1(str){
     xmlhttp.open("GET", "Fishing/email_verify.php?q=" + str.toString(), true);
     xmlhttp.send();
 }
-function Send_FC(date, ime, pic, mqsto, id) {
+/*function Send_FC(date, ime, pic, mqsto, id) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -15,4 +15,4 @@ function Send_FC(date, ime, pic, mqsto, id) {
     console.log(str);
     xmlhttp.open("GET", "Fishing/Facebook_API/Make_Picture.php?"+str, true);//Delete Stelyo Branch at pull
     xmlhttp.send();
-}
+}*/

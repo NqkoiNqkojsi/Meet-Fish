@@ -255,6 +255,19 @@ if(!isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 		function SendCust(){
 			window.location.replace("/Sign_Up.php");
 		}
+		function Send_FC(date, ime, pic, mqsto, id) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            setTimeout(() => { window.location = "http://meetandfish.online/index.php";}, 2000);
+        }
+    };
+    var str = "date1=" + date.toString() + "&ime=" + ime.toString() + "&pic=" + pic.toString() + "&mqsto=" + mqsto.toString() + "&id=" + id.toString();
+    var xmlhttp = new XMLHttpRequest();
+    console.log(str);
+    xmlhttp.open("GET", "Fishing/Facebook_API/Make_Picture.php?"+str, true);//Delete Stelyo Branch at pull
+    xmlhttp.send();
+}
 	</script>
 	<script src="JS/scroll.js"></script>
 	<script src="JS/data_picker.js"></script>
