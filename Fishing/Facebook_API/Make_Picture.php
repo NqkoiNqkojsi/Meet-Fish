@@ -92,7 +92,7 @@ $date=date_format($new_date,"d.m.y");
 <div class="carda" id="carda" onload="takeScreenShot(<?php echo "'".$ime."'"; ?>, <?php echo "'".$link."'"; ?>);">
 	<div class="FB_Img">
 	<div class="Img_Cont">
-		<img src=<?php echo $prof_pic;?> class="card_img" alt="Thubnail images">
+		<img src=<?php echo $prof_pic;?> class="Img_In1" alt="Thubnail images">
 	</div>
 	<div class="card-body" id="card">
 		<h3 class="txt" style="font-size: 50px;">В зоната на:<?php echo $mqsto;?></h3>
@@ -151,7 +151,7 @@ $date=date_format($new_date,"d.m.y");
 				success: function (data) {
 					console.log(data);
 					setTimeout(() => {
-						//Send_Info(filename); remove soon
+						Send_Info(filename); remove soon
 					}, 2000);
 				},
 			});
