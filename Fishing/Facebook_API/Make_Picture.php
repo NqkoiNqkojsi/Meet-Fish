@@ -54,7 +54,7 @@ $date=date_format($new_date,"d.m.y");
 		}
 		.txt{
 			color:white;
-			margin: 0px;
+			margin: 30px;
 		}
 		.Img_Cont {
 			display: block;
@@ -90,8 +90,8 @@ $date=date_format($new_date,"d.m.y");
 	<img src=<?php echo $prof_pic;?> class="card_img" alt="Thubnail images"><br>
 	<div class="card-body" id="card">
 		<h3 class="txt" style="font-size: 50px;">В зоната на:<?php echo $mqsto;?></h3>
-		<h2 class="txt" style="font-size: 40px;"><b>Дата: <?php echo $date; ?></h2><br>
-		<h3 class="txt" style="font-size: 40px;"><b>Час: <?php echo $time; ?></h2><br>
+		<h2 class="txt" style="font-size: 40px;"><b>Дата: <?php echo $date; ?></h2>
+		<h3 class="txt" style="font-size: 40px;"><b>Час: <?php echo $time; ?></h2>
 		</div>
 	</div>
 </div>
