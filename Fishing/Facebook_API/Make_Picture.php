@@ -33,7 +33,6 @@ $date=date_format($new_date,"d.m.y");
 <html>
 <head>
 	<title>Facebook Api posting</title>
-	<link rel="stylesheet" href="../CSS/img.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<style>
 		.carda {
@@ -55,6 +54,32 @@ $date=date_format($new_date,"d.m.y");
 		}
 		.txt{
 			color:white;
+		}
+		.Img_Cont {
+			display: block;
+			width:100%;
+			height:300px;
+		}
+
+		.Img_In1 {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			max-height: 300px;
+			max-width: 300px;
+			width: 90%;
+		}
+
+		.FB_Img {
+			/* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+			background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7)), url("../Img/FB_Img/waves.jpg");
+			/* Set a specific height */
+			height: 100%;
+			/* Position and center the image to scale nicely on all screens */
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			position: relative;
 		}
 	</style>
 </head>
