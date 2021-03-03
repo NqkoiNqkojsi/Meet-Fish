@@ -47,7 +47,7 @@ include "Fishing/towns.php";
 	<link rel="stylesheet" href="Fishing/CSS/content_style.css">
 	<link rel="stylesheet" href="Fishing/CSS/nav.css">
 	<link rel="stylesheet" href="Fishing/CSS/form.css">
-	<link rel="stylesheet" href="Fishing/CSS/img.css">
+	<!--<link rel="stylesheet" href="Fishing/CSS/img.css">-->
 	<script src="Fishing/JS/datedropper.pro.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
