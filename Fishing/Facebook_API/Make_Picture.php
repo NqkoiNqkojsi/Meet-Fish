@@ -28,7 +28,7 @@ if(isset($_REQUEST["ime"])){
 }
 $new_date=date_create($date1);
 $time=date_format($new_date,"H:i");
-$date=date_format($new_date,"d.M");
+$date=date_format($new_date,"d.m.y");
 ?>
 <html>
 <head>
@@ -38,7 +38,7 @@ $date=date_format($new_date,"d.M");
 	<style>
 		.carda {
 			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-			padding: 16px;
+			padding: 5px;
 			text-align: center;
 			background-color: #DEF2F1;
 			width: 600px;
@@ -51,7 +51,10 @@ $date=date_format($new_date,"d.M");
 			padding: 1.25rem;
 		}
 		.card_img {
-			height:30%;
+			height:50%;
+		}
+		.txt{
+			color:white;
 		}
 	</style>
 </head>
@@ -60,9 +63,9 @@ $date=date_format($new_date,"d.M");
 	<div class="FB_Img">
 	<img src=<?php echo $prof_pic;?> class="card_img" alt="Thubnail images"><br>
 	<div class="card-body" id="card">
-		<h2 style="font-size: 50px;"><b>Дата: <?php echo $date; ?></b></h2><br>
-		<h3 style="font-size: 40px;"><b>Час: <?php echo $time; ?></b></h2><br>
-		<h3 style="font-size: 40px;">В зоната на:<?php echo $mqsto;?></h3>
+		<h3 class="txt" style="font-size: 50px;">В зоната на:<?php echo $mqsto;?></h3>
+		<h2 class="txt" style="font-size: 40px;"><b>Дата: <?php echo $date; ?></h2><br>
+		<h3 class="txt" style="font-size: 40px;"><b>Час: <?php echo $time; ?></h2><br>
 		</div>
 	</div>
 </div>
