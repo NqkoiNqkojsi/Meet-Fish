@@ -44,6 +44,9 @@ if (isset($AccessToken)) {
     }
     $graphNode = $response->getGraphNode();
 
+    $sql = "UPDATE customer SET FB_ID='".$graphNode['id']."' WHERE ID=".$_REQUEST["link"];
+	mysqli_query($conn, $sql);
+
     echo 'Photo ID: ' . $graphNode['id'];
 
     if (!unlink('../Img/FB_Img/'.$Img)) {  
