@@ -11,9 +11,10 @@ a.fb {
     position: relative;
     border-radius: 5px;
 }
-    a.fb:hover {
-        background: #2b426e;
-    }
+
+a.fb:hover {
+    background: #2b426e;
+}
 
 .connect:before {
     display: inline-block;
