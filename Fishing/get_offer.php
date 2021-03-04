@@ -1,20 +1,25 @@
 <?php
-$sql = "SELECT ID, Time, Img FROM offer";//check the date times and free places of every offer
+$sql = "SELECT ID, Time, Img, FB_ID FROM offer";//check the date times and free places of every offer
 $result = mysqli_query($conn, $sql);
 $delete_id=array();//every id of offer that needs to be deleted
 $delete_img=array();//every image not needed
+$delete_fb=array();//every fb post out of time
 $delete_peop=array();//every not verified date
 $br=-1;
 $br1=-1;
 $now = new DateTime();
 $now->modify('+2 hours');
 $izpishi = $now->format('Y-m-d H:i');
+?>
+<script src="JS/FB_actions.js"></script>
+<?php
 if ($result && mysqli_num_rows($result) > 0) {//look at the OFFERS
     while($row = mysqli_fetch_assoc($result)) {//cycle through ever offer 
         if($izpishi  > $row["Time"]){//Search for passed offers
 			$br=$br+1;
 			$delete_id[$br]=$row["ID"];
 			$delete_img[$br]=$row["Img"];
+			$delete_fb[$br]=$row["FB_ID"];
 		}
     }
 }
@@ -35,13 +40,15 @@ foreach($delete_id as $a){
 	$sql = "DELETE FROM offer WHERE id='".$a."'";//delete the useless offers
 	$result = mysqli_query($conn, $sql);
 }
-
+$br=0;
 foreach($delete_img as $img){
 	$path="Fishing/Img/Post_Img/".$img;
 	echo $path;
 	if (file_exists($path) && $path !="Fishing/Img/Post_Img/") {
 		unlink($path);
 	}
+	echo "<script>Delete_FB(".$delete_fb[$br].");</script>";
+	$br++;
 }
 
 foreach($delete_peop as $a){
