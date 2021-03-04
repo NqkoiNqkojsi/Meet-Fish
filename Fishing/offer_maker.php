@@ -10,7 +10,6 @@ include "logging.php";
 		xhttp.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
 				console.log("success");
-				setTimeout(() => { window.location = "http://meetandfish.online/index.php";}, 2000);
 			}	
 		};
 		var str = "date1=" + date.toString() + "&ime=" + ime.toString() + "&pic=" + pic.toString() + "&mqsto=" + mqsto.toString() + "&id=" + id.toString();
