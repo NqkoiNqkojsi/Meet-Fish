@@ -74,15 +74,37 @@ function GetAllNames($need1, $need2, $why){
 <head>
 	<title>Offer on <?php echo date_format($row["Time"], "d.m");?> </title>
 	<link rel="stylesheet" href="CSS/form.css">
+	<style>
+		.Img_Cont {
+			position: relative;
+			width: 100%;
+			height: 300px;
+		}
+
+		.Img_In1 {
+			max-height: 95%;
+			max-width: 95%;
+			width: auto;
+			height: auto;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+		}
+	</style>
 <?php 
 	include "navbar.php";
 ?>
 	</div>
 	<br><br>
 	<div class="containerut">
-		<a target="_blank" href=<?php echo $img;?>>
-			<img src=<?php echo $img;?> class="thumbnail" alt="Thubnail images" style="max-height:500px;max-width:700px;">
-		</a>
+		<div class="Img_Cont">
+			<a target="_blank" href=<?php echo $img;?>>
+				<img src=<?php echo $img;?> class="Img_In1" alt="Thubnail images" style="max-height:500px;max-width:700px;">
+			</a>
+		</div>
 			<h3>На <span><?php echo $used_time;?></span> ще се проведе споделен риболов.</h3><br>
 		<br>
 			<div style="display:inline;"><h4>Организирано от <div class="tooltipa" onclick="ViewPerson(<?php echo $sender['ID']; ?>)"><b><?php echo $sender["FName"].' "'.$sender["NickName"].'" '.$sender["SName"];?></b><span class="tooltiptexta"><?php echo $age."год., Опит:".$sender["Exp"]."т., ".$sender["Description"];?></span></div>.</h4></div><br>
