@@ -1,6 +1,7 @@
 <?php
 define('FACEBOOK_SDK_V4_SRC_DIR', '/home/u157928248/domains/meetandfish.online/public_html/Stelyo_Branch/Fishing/Facebook_API/Facebook/Facebook/');
 require_once('/home/u157928248/domains/meetandfish.online/public_html/Stelyo_Branch/Fishing/Facebook_API/Facebook/Facebook/autoload.php');
+require_once('/home/u157928248/domains/meetandfish.online/public_html/Stelyo_Branch/Fishing/conn.php');
 ini_set('display_errors', 1);
 
 define('APP_ID', '198412948406802');
