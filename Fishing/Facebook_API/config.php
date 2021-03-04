@@ -6,7 +6,7 @@ ini_set('display_errors', 1);
 define('APP_ID', '198412948406802');
 define('APP_SECRET', '8f1a318c934afa4f244b3f48c37929b8');
 define('GRAPH_VERSION', 'v9.0');
-define('RIDERECT_URI', 'https://meetandfish.online/Stelyo_Branch/Fishing/Sign_Up.php')
+define('RIDERECT_URI', 'https://meetandfish.online/Stelyo_Branch/Fishing/Sign_Up.php');
 
 $fb = new \Facebook\Facebook([
   'app_id' => APP_ID,
