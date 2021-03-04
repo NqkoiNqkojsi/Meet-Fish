@@ -15,7 +15,7 @@ include "logging.php";
 		var str = "date1=" + date.toString() + "&ime=" + ime.toString() + "&pic=" + pic.toString() + "&mqsto=" + mqsto.toString() + "&id=" + id.toString();
 		var xmlhttp = new XMLHttpRequest();
 		console.log(str);
-		xmlhttp.open("GET", "Facebook_API/Make_Picture.php?"+str, true);//Delete Stelyo Branch at pull
+		xmlhttp.open("GET", "https://meetandfish.online/Stelyo_Branch/Fishing/Facebook_API/Make_Picture.php?"+str, true);//Delete Stelyo Branch at pull
 		xmlhttp.send();
 	}
 </script>
