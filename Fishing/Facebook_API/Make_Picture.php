@@ -38,6 +38,7 @@ function Error_Logging($name, $msg){
 
     fclose( $ifp );
 }
+Error_Logging("../Log_files/picture_making.txt", $link.":Going to Making picture")
 ?>
 <html>
 <head>
