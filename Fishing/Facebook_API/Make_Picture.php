@@ -167,15 +167,6 @@ $date=date_format($new_date,"d.m.y");
 				if (this.readyState == 4 && this.status == 200) {
 					var myElement = document.getElementById("Error");
 					myElement.innerHTML = this.responseText;
-					//saving log to a file
-					const fs = require('fs');
-					fs.writeFile("../Log_files/picture_making.txt", this.responseText, function(err) {
-						if(err) {
-							return console.log(err);
-						}
-
-						console.log("The file was saved!");
-					}); 
 				}
 			};
 			console.log(myImage);
