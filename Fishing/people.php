@@ -29,6 +29,26 @@ if (!file_exists($save_path)) {
 <html>
 <head>
     <title>Meet & Fish</title>
+	<style>
+		.Img_Cont {
+			position: relative;
+			width: 100%;
+			height: 300px;
+		}
+
+		.Img_In1 {
+			max-height: 95%;
+			max-width: 95%;
+			width: auto;
+			height: auto;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+		}
+	</style>
 <?php 
 	include "navbar.php";
 ?>
@@ -36,7 +56,11 @@ if (!file_exists($save_path)) {
 	<br><br>
     <div class="containerut">  
         <h1><?php echo  $row["FName"].' "'.$row["NickName"].'" '.$row["SName"];?></h1>
-		<img src=<?php echo $save_path; ?> style="max-width:200px;max-height:200px;height:auto;"/>
+		<div class="Img_Cont">
+			<a target="_blank" href=<?php echo $save_path;?>>
+				<img src=<?php echo $save_path;?> class="Img_In1" alt="Thubnail images">
+			</a>
+		</div>
 		<h3><?php echo  "Те имат: ".$row["Exp"]."XP";?></h3>
 		<h4><?php echo "Описание:".$row["Description"];?></h4>
 
