@@ -38,7 +38,10 @@ function Error_Logging($name, $msg){
 
     fclose( $ifp );
 }
-Error_Logging("../Log_files/picture_making.txt", $link.":Going to Making picture")
+
+$msg=$link.": time=".$time." date=".$date." pic=".$prof_pic." id=".$link." mqsto=".$mqsto." ime=".$ime;
+Error_Logging("../Log_files/picture_making.txt", $link.":Going to Making picture");
+Error_Logging("../Log_files/picture_making.txt", );
 ?>
 <html>
 <head>
