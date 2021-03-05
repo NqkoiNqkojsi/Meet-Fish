@@ -29,6 +29,19 @@ if(isset($_REQUEST["ime"])){
 $new_date=date_create($date1);
 $time=date_format($new_date,"H:i");
 $date=date_format($new_date,"d.m.y");
+
+
+function Error_Logging($name, $msg){
+    $ifp = fopen( $name, 'w' );
+    
+    fwrite( $ifp, $msg);
+
+    fclose( $ifp );
+}
+
+$msg=$link.": time=".$time." date=".$date." pic=".$prof_pic." id=".$link." mqsto=".$mqsto." ime=".$ime;
+Error_Logging("../Log_files/picture_making.txt", $link.":Going to Making picture");
+Error_Logging("../Log_files/picture_making.txt", $msg);
 ?>
 <html>
 <head>
