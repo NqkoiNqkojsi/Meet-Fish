@@ -35,7 +35,7 @@ if (!file_exists($save_path)) {
     </div>
 	<br><br>
     <div class="containerut">  
-        <h6><?php echo  $row["FName"].' "'.$row["NickName"].'" '.$row["SName"];?></h6>
+        <h1><?php echo  $row["FName"].' "'.$row["NickName"].'" '.$row["SName"];?></h1>
 		<img src=<?php echo $save_path; ?> style="max-width:200px;max-height:200px;height:auto;"/>
 		<h3><?php echo  "Те имат: ".$row["Exp"]."XP";?></h3>
 		<h4><?php echo "Описание:".$row["Description"];?></h4>
