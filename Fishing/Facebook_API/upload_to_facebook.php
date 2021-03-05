@@ -15,6 +15,17 @@ if(isset($_REQUEST["url"])){
 }
 
 include("config.php");
+function Error_Logging($name, $msg){
+    $ifp = fopen( $name, 'w' );
+
+    // we could add validation here with ensuring count( $data ) > 1
+    fwrite( $ifp, $msg);
+
+    // clean up the file resource
+    fclose( $ifp );
+}
+
+
 
 if (isset($AccessToken)) {
     // Logged in.
@@ -32,6 +43,7 @@ if (isset($AccessToken)) {
         $msg='Graph returned an error: '.$e->getMessage();
         $error_string=__FILE__."****:".$msg;
         echo $msg;
+        Error_Logging("../Log_files/API.log", $msg."<br>");
         error_log($error_string, 0, "../Log_files/API.log");
         exit;
     }
@@ -39,6 +51,7 @@ if (isset($AccessToken)) {
         $msg= 'Facebook SDK returned an error: '.$e->getMessage();
         $error_string=__FILE__."****:".$msg;
         echo $msg;
+        Error_Logging("../Log_files/API.log", $msg."<br>");
         error_log($error_string, 0, "../Log_files/API.log");
         exit;
     }
@@ -48,12 +61,16 @@ if (isset($AccessToken)) {
 	mysqli_query($conn, $sql);
 
     echo 'Photo ID: ' . $graphNode['id']."<br>";
+    $msg='Photo ID: ' . $graphNode['id']."<br>";
 
     if (!unlink('../Img/FB_Img/'.$Img)) {  
-		echo ($Img." cannot be deleted due to an error");  
+		echo ($Img." cannot be deleted due to an error");
+        $msg=$msg.$Img." cannot be deleted due to an error";
 	}  
 	else {  
     	echo ($Img." has been deleted");  
-	}  
+        $msg=$msg.$Img." has been deleted";
+	}
+    Error_Logging("../Log_files/API.log", $msg."<br>");
 }
 ?>
