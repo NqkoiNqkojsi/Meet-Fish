@@ -40,7 +40,6 @@ function Error_Logging($name, $msg){
 }
 
 $msg=$link.": time=".$time." date=".$date." pic=".$prof_pic." id=".$link." mqsto=".$mqsto." ime=".$ime;
-Error_Logging("../Log_files/picture_making.txt", $link.":Going to Making picture");
 Error_Logging("../Log_files/picture_making.txt", $msg);
 ?>
 <html>
@@ -154,7 +153,7 @@ Error_Logging("../Log_files/picture_making.txt", $msg);
 			
 			var filename=<?php echo "'".$_REQUEST["id"].".png'"; ?>;
 			var url = 'add_Img.php';
-
+			<?php Error_Logging("../Log_files/picture_making.txt", $link+": Saving picture"); ?>
 			$.ajax({ 
 				type: "POST", 
 				url: url,
