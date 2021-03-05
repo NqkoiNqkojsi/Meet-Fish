@@ -114,6 +114,8 @@ a:hover {
   padding: 16px;
   text-align: center;
   background-color: #DEF2F1;
+  height:650px;
+  width:auto;
 }
 
 /* Responsive columns - one column layout (vertical) on small screens */

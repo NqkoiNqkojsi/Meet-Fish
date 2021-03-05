@@ -21,6 +21,25 @@ $used_time=date_format($time, 'd.m в H:i');
 $dop=$row["Place"];
 $chng1=hndlcms($row['Location'], false);//format the two text strings
 $chng2=hndlcms($row['Info'], false);
+//**************************
+//Getting the image
+$img="";
+$img="Img/Post_Img/".$row["Img"];
+if (!file_exists($img) || $img=="Img/Post_Img/") {
+	if($row["Prof"]==true){
+		$ima=rand(1, 4).".jpg";
+		$img="Img/professional".$ima;
+	}else{
+		if($row["Use_Boat"]==true){
+			$ima=rand(1, 5).".jpg";
+			$img="Img/boat".$ima;
+		}else{
+			$ima=rand(1, 5).".jpg";
+			$img="Img/beach".$ima;
+		}
+	}
+}
+
 //Check if the pearson is already in_array
 $check_acc=false;
 $token = strtok($row["Taken"], ",");
@@ -55,15 +74,40 @@ function GetAllNames($need1, $need2, $why){
 <head>
 	<title>Offer on <?php echo date_format($row["Time"], "d.m");?> </title>
 	<link rel="stylesheet" href="CSS/form.css">
+	<style>
+		.Img_Cont {
+			position: relative;
+			width: 100%;
+			height: 300px;
+		}
+
+		.Img_In1 {
+			max-height: 95%;
+			max-width: 95%;
+			width: auto;
+			height: auto;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+		}
+	</style>
 <?php 
 	include "navbar.php";
 ?>
 	</div>
 	<br><br>
 	<div class="containerut">
+		<div class="Img_Cont">
+			<a target="_blank" href=<?php echo $img;?>>
+				<img src=<?php echo $img;?> class="Img_In1" alt="Thubnail images" style="max-height:500px;max-width:700px;">
+			</a>
+		</div>
 			<h3>На <span><?php echo $used_time;?></span> ще се проведе споделен риболов.</h3><br>
 		<br>
-			<div style="display:inline;"><h4>Организирано от <div class="tooltipa"><b><?php echo $sender["FName"].' "'.$sender["NickName"].'" '.$sender["SName"];?></b><span class="tooltiptexta"><?php echo $age."год., Опит:".$sender["Exp"]."т., ".$sender["Description"];?></span></div>.</h4></div><br>
+			<div style="display:inline;"><h4>Организирано от <div class="tooltipa" onclick="ViewPerson(<?php echo $sender['ID']; ?>)"><b><?php echo $sender["FName"].' "'.$sender["NickName"].'" '.$sender["SName"];?></b><span class="tooltiptexta"><?php echo $age."год., Опит:".$sender["Exp"]."т., ".$sender["Description"];?></span></div>.</h4></div><br>
 		<br>
 			<h4 style="display: inline;">Ще бъде в околността на <?php echo $towns[intval($row["Place"])]; ?> и <?php echo $sender["NickName"];?> опредили мястото на срещата:</h4>
 			<?php
@@ -141,6 +185,12 @@ function GetAllNames($need1, $need2, $why){
 		    include "user_mail.php";
 		?>
 	</div><br><br>
+	<script> 
+		//The script to show the sender profile
+		function ViewPerson(id){
+			window.open("https://meetandfish.online/Stelyo_Branch/Fishing/people.php?id="+id.toString());
+		}
+	</script>
 	<script src="JS/scroll.js"></script>
 	<script src="JS/modal1.js"></script>
 	<script src="JS/collapse.js"></script>

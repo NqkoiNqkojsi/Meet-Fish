@@ -15,12 +15,26 @@ $plan=0;
 if(isset($_REQUEST["plan"])){
 	$plan=$_REQUEST["plan"];
 }
+
+//*************Functions**************
 function test_input($data) {//Clear the input
   $data = trim($data);
   $data = stripslashes($data);
   $data = htmlspecialchars($data);
   return $data;
 }
+//*******************Check and change name*************
+/*function file_naming($path, $temp, $i){
+	if (file_exists($path)) {
+		echo "Sorry, file already exists.";
+
+		file_naming($path, $temp, $i+1);
+	}else{
+		move_uploaded_file($temp,$path);
+		echo "Congratulations! File Uploaded Successfully.";
+	}
+}*/
+
 //*************************************CHECK if the SIGN UP is correct*******************************************
 if(isset($_POST["submit"])){
 	foreach($_POST as $item){//test input everyhing
@@ -92,6 +106,35 @@ if(isset($_POST["submit"])){
 		$gres=8;
 	    $messages="GTFO you filthy bot!";
     }
+	//****************************************************************************
+	//*************************Adding Img*****************************************
+	$save_path_sql="";
+	if (array_key_exists('my_file', $_FILES) && $f==true){
+		// Where the file is going to be stored
+		$target_dir = "/Img/User_Img/";
+		$file = $_FILES['my_file']['name'];
+		$path = pathinfo($file);
+		$filename = $path['filename'];
+		$ext = $path['extension'];
+		if($ext=="jpeg" || $ext=="png" || $ext=="gif" || $ext=="jpg" || $ext=="jpeg"){
+			$temp_name = $_FILES['my_file']['tmp_name'];
+			$save_path = $target_dir.$filename.".".$ext;
+			$save_path_sql = $filename.".".$ext;
+			if (file_exists($save_path)) {
+				 $f=false;
+				$gres=9;
+				$messages="Моля променете името на снимката, сега то е".$save_path;
+			}else{
+				 move_uploaded_file($temp_name,$save_path);
+				 echo "Congratulations! File Uploaded Successfully.";
+			}
+		}else{
+			$f=false;
+			$gres=9;
+			$messages="Снимката трябва да бъде от типвете:jpg, jpeg, gif, png";
+		}
+	}
+
     //****************************************************************************
     //*************************Hashing passwords***********************
     $timeTarget = 0.05; // 50 milliseconds 
@@ -111,9 +154,9 @@ if(isset($_POST["submit"])){
 		$future_date=$onemonth->format('Y-m-d');
 	    //***************************Binding & Excecuting************************
 		try{
-            $sql="INSERT INTO customer (ID, NickName, FName, SName, Email, Pass, Birth, Place, Ship, Exp, Description, "."Creation, Verified, Plan, Plan_End) "    ."VALUES (0, ?, ?, ?, ?, '".$pwd."', '".$_POST['birth']."', ".$plc.	", ?, 0, ?, '".$today."', 0, ".$_POST['submit'].", '".$future_date."')";
+            $sql="INSERT INTO customer (ID, NickName, FName, SName, Email, Pass, Birth, Place, Ship, Exp, Description, "."Creation, Verified, Plan, Plan_End, Img_name) "    ."VALUES (0, ?, ?, ?, ?, '".$pwd."', '".$_POST['birth']."', ".$plc.	", ?, 0, ?, '".$today."', 0, ".$_POST['submit'].", '".$future_date."', ?)";
             $stmt= $conn->prepare($sql);
-            $stmt->bind_param("ssssss", $_POST['nname'], $_POST['fname'], $_POST['sname'], $_POST['email'], $_POST['ship'], $_POST['Desc']);
+            $stmt->bind_param("sssssss", $_POST['nname'], $_POST['fname'], $_POST['sname'], $_POST['email'], $_POST['ship'], $_POST['Desc'], $save_path_sql);
             $stmt->execute();
         }catch(Exception $e){
             console_log("Error: " . $e->getMessage());
@@ -199,6 +242,7 @@ include "passext.php";
 	<title>Register</title>
 	<link rel="stylesheet" href="CSS/sign_up_style.css">
 	<link rel="stylesheet" href="CSS/pricing.css">
+	<link rel="stylesheet" href="CSS/fb.css">
     <script src='https://www.google.com/recaptcha/api.js' async defer></script>
 <?php 
 	include "navbar.php";
@@ -213,7 +257,7 @@ if(isset($_POST["submit"])){
     if($f==false){
 ?>
 		<div class="column" style="padding: 10px;">
-			<form action="Sign_Up.php" method="post">
+			<form action="Sign_Up.php" method="post" enctype="multipart/form-data">
 				<div class="container">
 					<h1>Запиши се</h1>
 					<h4 style="color:#E85A4F;"><?php echo $messages; ?></h4>
@@ -292,7 +336,10 @@ if(isset($_POST["submit"])){
 
 					<label for="psw-repeat"><b>Повтори Парола*</b></label>
 					<input type="password" placeholder="Повтори Паролата" name="psw-repeat" required>
-			
+					
+					<label for="my_file"><b>Твоя снимка</b></label>
+					<input type="file" name="my_file" /><br /><br />
+
 					<label for="birth"><b>Рожден Ден*</b></label>
 					<input type="date" id="birth" placeholder="Въведи рожден ден..." name="birth" required><br>
 			
@@ -328,7 +375,7 @@ if(isset($_POST["submit"])){
 }else{
 ?>
 		<div class="column" style="padding: 10px; border-width: 0; outline-offset: 1px;">
-			<form action="Sign_Up.php" method="post">
+			<form action="Sign_Up.php" method="post" enctype="multipart/form-data">
 				<div class="container">
 					<h1>Запиши се</h1>
 					<hr>
@@ -378,6 +425,9 @@ if(isset($_POST["submit"])){
 					<label for="psw-repeat"><b>Повтори Парола*</b></label>
 					<input type="password" placeholder="Повтори Паролата" name="psw-repeat" required>
 			
+					<label for="my_file"><b>Твоя снимка</b></label>
+					<input type="file" name="my_file" /><br /><br />
+
 					<label for="birth"><b>Рожден Ден*</b></label>
 					<input type="date" id="birth" placeholder="Въведи рожден ден..." name="birth" required><br>
 			
@@ -429,6 +479,8 @@ if(isset($_POST["enter"])){
 
                     <div class="g-recaptcha" data-sitekey="6LckJ-wUAAAAAGpbh-Ryd343646rfcoKEdr3QmL6"></div>
 					<button type="submit" name="enter">Влез</button>
+					<br>
+					<a href="" class="fb connect">Sign in with Facebook</a>
 				</div>
 			</form>
 			<?php include "chgpass.php"; ?>
@@ -452,6 +504,8 @@ if(isset($_POST["enter"])){
                     <br><br>
                     <div class="g-recaptcha" data-sitekey="6LckJ-wUAAAAAGpbh-Ryd343646rfcoKEdr3QmL6"></div>
 				    <button type="submit" name="enter">Влез</button>
+					<br>
+					<a href="" class="fb connect">Sign in with Facebook</a>
 				</div>
 			</form>
 			<?php include "chgpass.php"; ?>

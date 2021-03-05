@@ -47,6 +47,7 @@ include "Fishing/towns.php";
 	<link rel="stylesheet" href="Fishing/CSS/content_style.css">
 	<link rel="stylesheet" href="Fishing/CSS/nav.css">
 	<link rel="stylesheet" href="Fishing/CSS/form.css">
+	<!--<link rel="stylesheet" href="Fishing/CSS/img.css">-->
 	<script src="Fishing/JS/datedropper.pro.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -56,6 +57,26 @@ include "Fishing/towns.php";
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<style>
+		.Img_Cont {
+			position: relative;
+			width: 100%;
+			height: 300px;
+		}
+
+		.Img_In1 {
+			max-height: 95%;
+			max-width: 95%;
+			width: auto;
+			height: auto;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+		}
+	</style>
 </head>
 <body class="body">
 	<div class="navbar" id="navbar">

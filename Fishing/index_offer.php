@@ -1,15 +1,18 @@
 <?php
-$img;
-if($row["Prof"]==true){
-	$ima=rand(1, 4).".jpg";
-	$img="Fishing/Img/professional".$ima;
-}else{
-	if($row["Use_Boat"]==true){
-		$ima=rand(1, 5).".jpg";
-		$img="Fishing/Img/boat".$ima;
+$img="";
+$img="Fishing/Img/Post_Img/".$row["Img"];
+if (!file_exists($img) || $img=="Fishing/Img/Post_Img/") {
+	if($row["Prof"]==true){
+		$ima=rand(1, 4).".jpg";
+		$img="Fishing/Img/professional".$ima;
 	}else{
-		$ima=rand(1, 5).".jpg";
-		$img="Fishing/Img/beach".$ima;
+		if($row["Use_Boat"]==true){
+			$ima=rand(1, 5).".jpg";
+			$img="Fishing/Img/boat".$ima;
+		}else{
+			$ima=rand(1, 5).".jpg";
+			$img="Fishing/Img/beach".$ima;
+		}
 	}
 }
 if($i%4==1){
@@ -18,8 +21,12 @@ if($i%4==1){
 <?php } ?>
 <div class="columna">
 	<div class="carda">
-		<img src=<?php echo $img;?> class="card_img" alt="Thubnail images">
-		<div class="card-body">
+		<div class="Img_Cont">
+			<a class="Img_In1" target="_blank" href=<?php echo $img;?>>
+				<img class="Img_In1" src=<?php echo $img;?> alt="Thubnail images">
+			</a>
+		</div>
+		<div class="card-body" style="margin: auto;">
 	        <?php
 			$date_time = new DateTime($row['Time']);
 			$time=$date_time->format('H:i');//get the hour and min

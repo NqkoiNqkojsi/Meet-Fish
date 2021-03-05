@@ -2,11 +2,63 @@
 // Start the session
 session_start();
 include "logging.php";
+?>
+<script src="JS/go_ajax.js"></script>
+<script>
+	function Send_FC1(date, ime, pic, mqsto, id) {
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function () {
+			if (this.readyState == 4 && this.status == 200) {
+				console.log("success");
+			}	
+		};
+		var str = "date1=" + date.toString() + "&ime=" + ime.toString() + "&pic=" + pic.toString() + "&mqsto=" + mqsto.toString() + "&id=" + id.toString();
+		console.log(str);
+		xmlhttp.open("GET", "Facebook_API/Make_Picture.php?"+str, true);//Delete Stelyo Branch at pull
+		xmlhttp.send();
+	}
+</script>
+<?php
 $f=false;
 $g=true;
 $mess="Nothing";
 include "towns.php";
 include "conn.php";
+function SaveImg($f, $conn, $last_id){
+	//*********************************Saving Photos****************************************
+	if (array_key_exists('my_file', $_FILES) && $f==true){
+		// Where the file is going to be stored
+		$target_dir = "Img/Post_Img/";
+		$file = $_FILES['my_file']['name'];
+		$path = pathinfo($file);
+		$filename = $path['filename'];
+		$ext = $path['extension'];
+		if($ext=="jpeg" || $ext=="png" || $ext=="gif" || $ext=="jpg" || $ext=="jpeg"){
+			//adding the new img
+			$temp_name = $_FILES['my_file']['tmp_name'];
+			$save_path = $target_dir.$filename.".".$ext;
+			$save_path_sql = $filename.".".$ext;
+			if (file_exists($save_path)) {
+				 $f=false;
+				$gres=9;
+				$messages="Моля променете името на снимката, сега то е".$save_path;
+			}else{
+				 move_uploaded_file($temp_name,$save_path);
+				 $sql = "UPDATE offer SET Img='".$save_path_sql."' WHERE ID='".$last_id."'";//sql for description
+				if (mysqli_query($conn, $sql)) {
+					$message= "Record updated successfully";
+				}else {
+					$message= "Error updating record: " . mysqli_error($conn);
+				}
+				 echo "Congratulations! File Uploaded Successfully.";
+			}
+		}else{
+			$f=false;
+			$gres=9;
+			$messages="Снимката трябва да бъде от типвете:jpg, jpeg, gif, png";
+		}
+	}
+}
 if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 	if(isset($_POST["submit"])){
 		$g="TRUE";
@@ -30,14 +82,16 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 		    }
 		}
 		$f=true;
-		if($f==true){/*make the query*/
+		//**************************************************************************************
+		//**************************************************************************************
+		if($f==true){/*make the query*/  //make the if($f==true)
 			$chng1=hndlcms($_POST['loc'], true);
 			$chng2=hndlcms($_POST['info'], true);
 			$place=intval($_POST['place'])-1;
 			$last_id;
 			$new_date=date_create_from_format("d-m-Y H:i", $_POST['time']);
 			$new_date=date_format($new_date,"Y-m-d H:i:s");
-			$now=date_format($now,"Y-m-d");
+			$now=date("Y/m/d");
 			console_log("now:".$now);
 			console_log($_POST['time']."; type:".gettype($_POST['time']));
 			console_log("new_date:".$new_date."; type:".gettype($new_date));
@@ -52,7 +106,7 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 				console_log($sql."; greshka");
 				console_log($mess);
 			}
-			$mess=$mess."<br>".$sql;
+			SaveImg($f, $conn, $last_id);
 			$sql="SELECT ID, Exp, Attend FROM customer WHERE ID=".$_SESSION["user_ID"];
 			$result =mysqli_query($conn, $sql);
 			$row=mysqli_fetch_assoc($result);
@@ -65,10 +119,11 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 			$sql = "UPDATE customer SET Exp=".$row['Exp'].", Attend='".$row["Attend"]."' WHERE ID=".$_SESSION["user_ID"];
 			if (mysqli_query($conn, $sql)) {
 				$sql=$sql.";  izprashta";
-				//error_log("sql:".$sql, 3, "/Log_files/sql.log");
+				error_log("sql:".$sql, 3, "/Log_files/sql.log");
 				console_log( $sql );
-				header("location:../index.php");
-                		die();
+				include "Facebook_API/Start_File.php";
+				//header("location:../index.php");
+                //die();
 			} else {
 				error_log("sql:".$sql.";  izprashta", 3, "/Log_files/sql.log");
 				error_log("error:".mysqli_error($conn), 3, "/Log_files/sql.log");
@@ -107,7 +162,7 @@ if(!isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 ?>
     <h3 style="color:#E85A4F;"><?php echo $mess; ?></h3>
 <?php } ?>    
-	<form action=<?php echo $_SERVER['REQUEST_URI']; ?> method="post">
+	<form action=<?php echo $_SERVER['REQUEST_URI']; ?> method="post" enctype="multipart/form-data">
 	<div class="row">
 		<div class="col-25">
 			<label for="time">Кога ще ходите за риба?</label>
@@ -150,6 +205,15 @@ if(!isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 		</div>
 		<div class="col-75">
 			<textarea id="info" name="info" placeholder="Напишите свойта информация.." style="height:200px"></textarea>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-25">
+			<label for="my_file"><b>Смени профилна снимка</b></label>
+		</div>
+		<div class="col-75">
+			<input type="file" name="my_file" id="my_file" /><br /><br />
 		</div>
 	</div>
 	<div id="coll">
@@ -200,7 +264,7 @@ if(!isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 ?>
     <?php
 	    include "footer.php";
-	?>
+    ?>
     <script>
 		function SendCust(){
 			window.location.replace("/Sign_Up.php");
