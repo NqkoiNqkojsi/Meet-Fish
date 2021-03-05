@@ -25,17 +25,20 @@ $chng2=hndlcms($row['Info'], false);
 //Getting the image
 $img="";
 $img="Img/Post_Img/".$row["Img"];
-if (!file_exists($img) || $img=="Img/Post_Img/") {
-	if($row["Prof"]==true){
-		$ima=rand(1, 4).".jpg";
-		$img="Img/professional".$ima;
-	}else{
-		if($row["Use_Boat"]==true){
-			$ima=rand(1, 5).".jpg";
-			$img="Img/boat".$ima;
+echo $img;
+if ($img=="Img/Post_Img/") {
+	if(!file_exists($img)){
+		if($row["Prof"]==true){
+			$ima=rand(1, 4).".jpg";
+			$img="Img/professional".$ima;
 		}else{
-			$ima=rand(1, 5).".jpg";
-			$img="Img/beach".$ima;
+			if($row["Use_Boat"]==true){
+				$ima=rand(1, 5).".jpg";
+				$img="Img/boat".$ima;
+			}else{
+				$ima=rand(1, 5).".jpg";
+				$img="Img/beach".$ima;
+			}
 		}
 	}
 }
@@ -102,7 +105,7 @@ function GetAllNames($need1, $need2, $why){
 	<div class="containerut">
 		<div class="Img_Cont">
 			<a target="_blank" href=<?php echo $img;?>>
-				<img src=<?php echo $img;?> class="Img_In1" alt="Thubnail images" style="max-height:500px;max-width:700px;">
+				<img src=<?php echo $img;?> class="Img_In1" alt="Thubnail images">
 			</a>
 		</div>
 			<h3>На <span><?php echo $used_time;?></span> ще се проведе споделен риболов.</h3><br>
