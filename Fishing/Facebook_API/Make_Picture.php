@@ -29,6 +29,15 @@ if(isset($_REQUEST["ime"])){
 $new_date=date_create($date1);
 $time=date_format($new_date,"H:i");
 $date=date_format($new_date,"d.m.y");
+
+
+function Error_Logging($name, $msg){
+    $ifp = fopen( $name, 'w' );
+    
+    fwrite( $ifp, $msg);
+
+    fclose( $ifp );
+}
 ?>
 <html>
 <head>
