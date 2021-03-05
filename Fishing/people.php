@@ -10,9 +10,11 @@ if(isset($_REQUEST["id"])){
 	header("location:profile.php");
     die();
 }
-if($_SESSION["user_ID"]==$id){
-	header("location:profile.php");
-    die();
+if(isset($_SESSION["user_ID"])){
+	if($_SESSION["user_ID"]==$id){
+		header("location:profile.php");
+		die();
+	}
 }
 $sql="SELECT * FROM customer WHERE ID=".$id;//get the db
 $result = mysqli_query($conn, $sql);
