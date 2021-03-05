@@ -47,7 +47,7 @@ if (isset($AccessToken)) {
     $sql = "UPDATE customer SET FB_ID='".$graphNode['id']."' WHERE ID=".$_REQUEST["link"];
 	mysqli_query($conn, $sql);
 
-    echo 'Photo ID: ' . $graphNode['id'];
+    echo 'Photo ID: ' . $graphNode['id']."<br>";
 
     if (!unlink('../Img/FB_Img/'.$Img)) {  
 		echo ($Img." cannot be deleted due to an error");  
