@@ -15,8 +15,8 @@ function MakeFbApiCall($endpoint, $params){
 	return array(
 		'endpoint' => $endpoint,
 		'params' => $params,
-		'has_errors' => isset($fbResponse['error']) ? TRUE : FALSE,
 		'fbResponse' => $fbResponse,
+		'has_errors' => isset($fbResponse['error']) ? TRUE : FALSE,
 		'error_message' => isset($fbResponse['error']) ? $fbResponse['error']['message'] : ''
 	);
 }
