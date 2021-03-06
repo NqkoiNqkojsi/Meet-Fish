@@ -41,6 +41,8 @@ function GetAccessTokenWithCode($code){
 		'redirect_uri' => RIDERECT_URI,
 		'code' => $code
 	);
-	MakeFbApiCall($endpoint, $params);
+	echo "first param=";
+	echo $params;
+	return MakeFbApiCall($endpoint, $params);
 }
 ?>
