@@ -165,7 +165,7 @@ Error_Logging("Log_files/picture_making.txt", $msg);
 
 		function saveAs(Img) {   
 			
-			var filename=<?php echo "'".$_REQUEST["id"].".png'"; ?>;
+			var filename=<?php echo "'".$link.".png'"; ?>;
 			var url = 'Facebook_API/add_Img.php';
 			$.ajax({ 
 				type: "POST", 
