@@ -517,6 +517,9 @@ if(isset($_POST["enter"])){
 	<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
         async defer>
     </script>
+	<script src="JS/data_picker.js">
+		Login_FB();
+	</script>
 	<script src="JS/data_picker.js"></script>
 	<script src="JS/collapse.js"></script>
 	<script src="JS/modal1.js"></script>
