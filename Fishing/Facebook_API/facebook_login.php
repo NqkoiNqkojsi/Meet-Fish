@@ -39,7 +39,7 @@ function GetAccessTokenWithCode($code){
 		'client_id' => APP_ID,
 		'client_secret' => APP_SECRET,
 		'redirect_uri' => RIDERECT_URI,
-		'code' => code
+		'code' => $code
 	);
 	MakeFbApiCall($endpoint, $params);
 }
