@@ -120,7 +120,7 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 			$sql = "UPDATE customer SET Exp=".$row['Exp'].", Attend='".$row["Attend"]."' WHERE ID=".$_SESSION["user_ID"];
 			if (mysqli_query($conn, $sql)) {
 				$sql=$sql.";  izprashta";
-				error_log("sql:".$sql, 3, "/Log_files/sql.log");
+				//error_log("sql:".$sql, 3, "/Log_files/sql.log");
 				console_log( $sql );
 				include "Facebook_API/Make_Picture.php";
 				$Is_Facebook=true;
