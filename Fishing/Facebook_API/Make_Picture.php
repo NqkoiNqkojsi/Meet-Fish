@@ -76,7 +76,7 @@ Error_Logging("Log_files/picture_making.txt", $msg);
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="CSS/fb_img.css">
 	<style>
-		.carda {
+		.carda1 {
 			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 			padding: 5px;
 			text-align: center;
@@ -103,7 +103,7 @@ Error_Logging("Log_files/picture_making.txt", $msg);
 			height: 300px;
 		}
 
-		.Img_In1 {
+		.Img_In1{
 			max-height: 90%;
 			max-width: 90%;
 			width: auto;
@@ -133,7 +133,7 @@ Error_Logging("Log_files/picture_making.txt", $msg);
 </head>
 <body>
 <div style="position: absolute; opacity: 0.0;">
-	<div class="carda" id="carda" style="display:none;" onload="takeScreenShot(<?php echo "'".$ime."'"; ?>, <?php echo "'".$link."'"; ?>);">
+	<div class="carda1" id="carda" style="display:none;" onload="takeScreenShot(<?php echo "'".$ime."'"; ?>, <?php echo "'".$link."'"; ?>);">
 		<div class="FB_Img">
 			<div class="Img_Cont">
 				<img src=<?php echo $prof_pic;?> class="Img_In1" alt="Thubnail images">
