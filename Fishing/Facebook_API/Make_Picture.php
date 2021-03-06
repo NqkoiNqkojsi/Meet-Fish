@@ -27,6 +27,13 @@ $ime="";
 if(isset($_REQUEST["ime"])){
 	$ime=$_REQUEST["ime"];
 }*/
+$filename="";
+if (array_key_exists('my_file', $_FILES)){
+	$path = pathinfo($_FILES['my_file']['name']);
+	$filename = $path['filename'].".".$path['extension'];
+}
+
+
 $date1=$new_date;
 $ime=$_SESSION["user_Nname"];
 $prof_pic="../Img/Post_Img/".$filename;
