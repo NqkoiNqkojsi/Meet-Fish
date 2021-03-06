@@ -57,8 +57,12 @@ if (isset($AccessToken)) {
     }
     $graphNode = $response->getGraphNode();
 
-    $sql = "UPDATE customer SET FB_ID='".$graphNode['id']."' WHERE ID=".$_REQUEST["link"];
-	mysqli_query($conn, $sql);
+    $sql = "UPDATE customer SET FB_ID=".$graphNode['id']." WHERE ID=".$_REQUEST["link"];
+	if (mysqli_query($conn, $sql)) {
+        echo "Record updated successfully";
+    }else{
+        echo "Error updating record: " . mysqli_error($conn);
+    }
 
     echo 'Photo ID: ' . $graphNode['id']."<br>";
     $msg='Photo ID: ' . $graphNode['id']."<br>";
