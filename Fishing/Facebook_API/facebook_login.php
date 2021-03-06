@@ -1,5 +1,5 @@
 <?php
-include config.php;
+include "Facebook_API/config.php";
 function GetFacebookLoginUrl(){
 	$endpoint = "https://www.facebook.com/".GRAPH_VERSION."/dialog/oauth";
 
