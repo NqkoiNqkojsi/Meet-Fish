@@ -147,7 +147,7 @@ Error_Logging("Log_files/picture_making.txt", $msg);
 	</div>
 </div>
 <div class="Img_In1" style="border-width:0px;">
-	<div class="Img_Cont" style="height:auto;">
+	<div class="Img_Cont" style="height:35%;">
 		<div class="bar"><!-- Loader until img ready -->
 			<div class="circle"></div>
 			<p>Зарежда се</p>
