@@ -1,5 +1,25 @@
 <?php
 include "Facebook_API/config.php";
+
+function MakeFbApiCall($endpoint, $params){
+	$ch=curl_init();
+	curl_setopt($ch, CURLOPT_URL, $endpoint."?".http_build_query($params));
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+
+	$fbResponse=curl_exec($ch);
+	$fbResponse=json_decode($fbResponse, TRUE);
+	curl_close($ch);
+	
+	return array(
+		'endpoint' => $endpoint,
+		'params' => $params,
+		'has_errors' => isset($fbResponse['error']) ? TRUE : FALSE,
+		'fbResponse' => $fbResponse,
+		'error_message' => isset($fbResponse['error']) ? $fbResponse['error']['message'] : ''
+	)
+}
+
 function GetFacebookLoginUrl(){
 	$endpoint = "https://www.facebook.com/".GRAPH_VERSION."/dialog/oauth";
 
@@ -11,5 +31,16 @@ function GetFacebookLoginUrl(){
 		'auth_type' => 'rerequest'
 	);
 	return $endpoint."?".http_build_query($params);
+}
+
+function GetAccessTokenWithCode($code){
+	$endpoint = "https://www.facebook.com/".GRAPH_VERSION."/oauth/access_token";
+	$params = array(
+		'client_id' => APP_ID,
+		'client_secret' => APP_SECRET,
+		'redirect_uri' => RIDERECT_URI,
+		'code' => code
+	);
+	MakeFbApiCall($endpoint, $params);
 }
 ?>
