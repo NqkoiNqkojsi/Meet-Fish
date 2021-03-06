@@ -11,7 +11,7 @@ $now = new DateTime();
 $now->modify('+2 hours');
 $izpishi = $now->format('Y-m-d H:i');
 ?>
-<script src="JS/FB_actions.js"></script>
+<script src="Fishing/JS/FB_action3.js"></script>
 <?php
 if ($result && mysqli_num_rows($result) > 0) {//look at the OFFERS
     while($row = mysqli_fetch_assoc($result)) {//cycle through ever offer 
@@ -42,13 +42,14 @@ foreach($delete_id as $a){
 }
 $br=0;
 foreach($delete_img as $img){
-	$path="Img/Post_Img/".$img;
-	if($path !="Img/Post_Img/"){
+	$path="Fishing/Img/Post_Img/".$img;
+	if($path !="Fishing/Img/Post_Img/"){
 		if (file_exists($path)) {
 			unlink($path);
 		}
-	}
-	echo "<script>Delete_FB(".$delete_fb[$br].");</script>";
+	}?>
+	<script>Delete_FB(<?php echo "'".$delete_fb[$br]."'"; ?>);</script>
+	<?php
 	$br++;
 }
 

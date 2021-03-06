@@ -209,7 +209,10 @@ Error_Logging("Log_files/picture_making.txt", $msg);
 			var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
-					window.location.replace("http://meetandfish.online/index.php");
+					console.log(this.responseText);
+					setTimeout(() => {
+						window.location.replace("http://meetandfish.online/index.php"); 
+					}, 2000);
 				}
 			};
 			console.log(myImage);
