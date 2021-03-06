@@ -20,6 +20,6 @@ function Delete_FB(id) {
     };
     var xmlhttp = new XMLHttpRequest();
     console.log(id);
-    xmlhttp.open("GET", "Facebook_API/delete_to_facebook.php?id="+id, true);
+    xmlhttp.open("GET", "Facebook_API/delete_to_facebook.php?id=" + id, true);
     xmlhttp.send();
 }
