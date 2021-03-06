@@ -251,7 +251,7 @@ include "passext.php";
 	<br>
 	<br>
 	<script src="JS/scroll.js"></script>
-	<div class="row">
+	<div class="row" onload="Login_FB()">
 <?php
 if(isset($_POST["submit"])){
     if($f==false){
@@ -480,7 +480,7 @@ if(isset($_POST["enter"])){
                     <div class="g-recaptcha" data-sitekey="6LckJ-wUAAAAAGpbh-Ryd343646rfcoKEdr3QmL6"></div>
 					<button type="submit" name="enter">Влез</button>
 					<br>
-					<a href="" class="fb connect">Sign in with Facebook</a>
+					<a href="" id="fb_butt" class="fb connect">Sign in with Facebook</a>
 				</div>
 			</form>
 			<?php include "chgpass.php"; ?>
@@ -505,7 +505,7 @@ if(isset($_POST["enter"])){
                     <div class="g-recaptcha" data-sitekey="6LckJ-wUAAAAAGpbh-Ryd343646rfcoKEdr3QmL6"></div>
 				    <button type="submit" name="enter">Влез</button>
 					<br>
-					<a href="" class="fb connect">Sign in with Facebook</a>
+					<a href="" id="fb_butt" class="fb connect">Sign in with Facebook</a>
 				</div>
 			</form>
 			<?php include "chgpass.php"; ?>
@@ -517,8 +517,20 @@ if(isset($_POST["enter"])){
 	<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
         async defer>
     </script>
-	<script src="JS/FB_Login.js">
-		Login_FB();
+	<script>
+	function Login_FB(str) {
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function () {
+			if (this.readyState == 4 && this.status == 200) {
+				console.log("Success");
+				var link = document.getElementById("fb_butt");
+				link.setAttribute('href', this.responseText);
+			}
+		};
+		console.log(str);
+		xmlhttp.open("GET", "Fishing/Facebook_API/facebook_login.php", true);
+		xmlhttp.send();
+	}
 	</script>
 	<script src="JS/data_picker.js"></script>
 	<script src="JS/collapse.js"></script>
