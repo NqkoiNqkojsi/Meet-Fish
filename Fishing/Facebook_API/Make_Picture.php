@@ -50,7 +50,7 @@ if (array_key_exists('my_file', $_FILES)){
 //assign the vars to the old names
 $date1=$new_date;
 $ime=$_SESSION["user_Nname"];
-$prof_pic="../Img/Post_Img/".$filename;
+$prof_pic="Img/Post_Img/".$filename;
 $link=$last_id;
 $mqsto=$towns[$place];
 
