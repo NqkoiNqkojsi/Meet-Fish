@@ -12,5 +12,4 @@ function GetFacebookLoginUrl(){
 	);
 	return $endpoint."?".http_build_query($params);
 }
-GetFacebookLoginUrl();
 ?>

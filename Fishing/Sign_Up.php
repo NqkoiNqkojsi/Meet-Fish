@@ -5,6 +5,7 @@ session_unset();
 include "logging.php";
 include "conn.php";
 include "towns.php";
+include "Facebook_API/facebook_login.php";
 $f=true;
 $g=true;
 $gres=0;
@@ -480,7 +481,7 @@ if(isset($_POST["enter"])){
                     <div class="g-recaptcha" data-sitekey="6LckJ-wUAAAAAGpbh-Ryd343646rfcoKEdr3QmL6"></div>
 					<button type="submit" name="enter">Влез</button>
 					<br>
-					<a href="" id="fb_butt" onload="Login_FB()" class="fb connect">Sign in with Facebook</a>
+					<a href="<?php echo GetFacebookLoginUrl();?>" id="fb_butt" class="fb connect">Sign in with Facebook</a>
 				</div>
 			</form>
 			<?php include "chgpass.php"; ?>
@@ -505,7 +506,7 @@ if(isset($_POST["enter"])){
                     <div class="g-recaptcha" data-sitekey="6LckJ-wUAAAAAGpbh-Ryd343646rfcoKEdr3QmL6"></div>
 				    <button type="submit" name="enter">Влез</button>
 					<br>
-					<a href="" id="fb_butt" onload="Login_FB()" class="fb connect">Sign in with Facebook</a>
+					<a href="<?php echo GetFacebookLoginUrl();?>" id="fb_butt" class="fb connect">Sign in with Facebook</a>
 				</div>
 			</form>
 			<?php include "chgpass.php"; ?>
