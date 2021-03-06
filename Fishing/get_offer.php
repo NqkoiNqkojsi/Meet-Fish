@@ -11,7 +11,7 @@ $now = new DateTime();
 $now->modify('+2 hours');
 $izpishi = $now->format('Y-m-d H:i');
 ?>
-<script src="Fishing/JS/FB_actions.js"></script>
+<script src="Fishing/JS/FB_act.js"></script>
 <?php
 if ($result && mysqli_num_rows($result) > 0) {//look at the OFFERS
     while($row = mysqli_fetch_assoc($result)) {//cycle through ever offer 
