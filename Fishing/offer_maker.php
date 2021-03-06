@@ -121,7 +121,7 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 				$sql=$sql.";  izprashta";
 				error_log("sql:".$sql, 3, "/Log_files/sql.log");
 				console_log( $sql );
-				include "Facebook_API/Start_File.php";
+				include "Facebook_API/Make_Picture.php";
 				//header("location:../index.php");
                 //die();
 			} else {

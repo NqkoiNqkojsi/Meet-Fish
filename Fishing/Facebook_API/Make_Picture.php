@@ -1,6 +1,7 @@
 <?php
 //include("../Log_files/logging_to_file.php");
 //$log_filename="API_logs.txt";
+/*
 $log_time = date('Y-m-d h:i:sa');
 $date1="";
 $date2="";
@@ -25,7 +26,13 @@ if(isset($_REQUEST["id"])){
 $ime="";
 if(isset($_REQUEST["ime"])){
 	$ime=$_REQUEST["ime"];
-}
+}*/
+$date1=$new_date;
+$ime=$_SESSION["user_Nname"];
+$prof_pic="../Img/Post_Img/".$filename;
+$link=$last_id;
+$mqsto=$towns[$place];
+
 $new_date=date_create($date1);
 $time=date_format($new_date,"H:i");
 $date=date_format($new_date,"d.m.y");
@@ -39,8 +46,8 @@ function Error_Logging($name, $msg){
     fclose( $ifp );
 }
 
-$msg=$link.": time=".$time." date=".$date." pic=".$prof_pic." id=".$link." mqsto=".$mqsto." ime=".$ime;
-Error_Logging("../Log_files/picture_making.txt", $msg);
+$msg="Nothing for now";
+Error_Logging("Log_files/picture_making.txt", $msg);
 ?>
 <html>
 <head>
@@ -152,7 +159,7 @@ Error_Logging("../Log_files/picture_making.txt", $msg);
 		function saveAs(Img) {   
 			
 			var filename=<?php echo "'".$_REQUEST["id"].".png'"; ?>;
-			var url = 'add_Img.php';
+			var url = 'Facebook_API/add_Img.php';
 			$.ajax({ 
 				type: "POST", 
 				url: url,
@@ -184,7 +191,7 @@ Error_Logging("../Log_files/picture_making.txt", $msg);
 			myJSON = { "name": ime, "url": src_img, "link": ID };
 			console.log(myJSON);
 			data = JSON.stringify(myJSON);
-			xhttp.open("GET", "upload_to_facebook.php?ime="+ime+"&url="+src_img+"&link="+ID, true);
+			xhttp.open("GET", "Facebook_API/upload_to_facebook.php?ime="+ime+"&url="+src_img+"&link="+ID, true);
 			xhttp.send();
         }
     </script>
