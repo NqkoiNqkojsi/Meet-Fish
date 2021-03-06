@@ -1,0 +1,119 @@
+.carda {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 5px;
+    text-align: center;
+    background-color: #DEF2F1;
+    width: 600px;
+    height: 600px;
+}
+
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+}
+
+.card_img {
+    height: 50%;
+}
+
+.txt {
+    color: white;
+    margin: 30px;
+}
+
+.Img_Cont {
+    position: relative;
+    width: 100%;
+    height: 300px;
+}
+
+.Img_In1 {
+    max-height: 90%;
+    max-width: 90%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-style: solid;
+    border-width: 2px;
+}
+
+.FB_Img {
+    /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7)), url("../Img/FB_Img/waves.jpg");
+    /* Set a specific height */
+    height: 100%;
+    /* Position and center the image to scale nicely on all screens */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+/* Loading screen*/
+html, body {
+    background: #347fc3;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.bar {
+    position: relative;
+    height: 2px;
+    width: 500px;
+    margin: 0 auto;
+    background: #fff;
+    margin-top: 150px;
+}
+
+.circle {
+    position: absolute;
+    top: -30px;
+    margin-left: -30px;
+    height: 60px;
+    width: 60px;
+    left: 0;
+    background: #fff;
+    border-radius: 30%;
+    -webkit-animation: move 5s infinite;
+}
+
+p {
+    position: absolute;
+    top: -35px;
+    right: -85px;
+    text-transform: uppercase;
+    color: #347fc3;
+    font-family: helvetica, sans-serif;
+    font-weight: bold;
+}
+
+@-webkit-keyframes move {
+    0% {
+        left: 0;
+    }
+
+    50% {
+        left: 100%;
+        -webkit-transform: rotate(450deg);
+        width: 150px;
+        height: 150px;
+    }
+
+    75% {
+        left: 100%;
+        -webkit-transform: rotate(450deg);
+        width: 150px;
+        height: 150px;
+    }
+
+    100% {
+        right: 100%;
+    }
+}

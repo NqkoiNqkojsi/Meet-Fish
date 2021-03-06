@@ -21,6 +21,7 @@ include "logging.php";
 <?php
 $f=false;
 $g=true;
+$Is_Facebook=false;
 $mess="Nothing";
 include "towns.php";
 include "conn.php";
@@ -46,11 +47,11 @@ function SaveImg($f, $conn, $last_id){
 				 move_uploaded_file($temp_name,$save_path);
 				 $sql = "UPDATE offer SET Img='".$save_path_sql."' WHERE ID='".$last_id."'";//sql for description
 				if (mysqli_query($conn, $sql)) {
-					$message= "Record updated successfully";
+					//$message= "Record updated successfully";
 				}else {
 					$message= "Error updating record: " . mysqli_error($conn);
 				}
-				 echo "Congratulations! File Uploaded Successfully.";
+				 //echo "Congratulations! File Uploaded Successfully.";
 			}
 		}else{
 			$f=false;
@@ -119,9 +120,10 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 			$sql = "UPDATE customer SET Exp=".$row['Exp'].", Attend='".$row["Attend"]."' WHERE ID=".$_SESSION["user_ID"];
 			if (mysqli_query($conn, $sql)) {
 				$sql=$sql.";  izprashta";
-				error_log("sql:".$sql, 3, "/Log_files/sql.log");
+				//error_log("sql:".$sql, 3, "/Log_files/sql.log");
 				console_log( $sql );
-				include "Facebook_API/Start_File.php";
+				include "Facebook_API/Make_Picture.php";
+				$Is_Facebook=true;
 				//header("location:../index.php");
                 //die();
 			} else {
@@ -135,6 +137,7 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 		}
 	}
 }
+if($Is_Facebook==false){
 ?>
 <html>
 <head>
@@ -146,9 +149,11 @@ include "navbar.php";
 	</div>
 	<br>
 <?php
+/*
 $direct=getcwd();
 console_log($direct."/Sign_Up.php");
 console_log($direct."/offer_maker.php");
+*/
 if(!isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 ?>
 	<h1 style="color:#E85A4F;">Моля запишете се или влезте в профила си за да пуснете оферта</h1>
@@ -274,3 +279,6 @@ if(!isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 	<script src="JS/data_picker.js"></script>
 </body>
 </html>
+<?php 
+} 
+?>

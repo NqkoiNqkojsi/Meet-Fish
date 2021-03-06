@@ -1,6 +1,7 @@
 <?php
 //include("../Log_files/logging_to_file.php");
 //$log_filename="API_logs.txt";
+/*
 $log_time = date('Y-m-d h:i:sa');
 $date1="";
 $date2="";
@@ -25,7 +26,34 @@ if(isset($_REQUEST["id"])){
 $ime="";
 if(isset($_REQUEST["ime"])){
 	$ime=$_REQUEST["ime"];
+}*/
+//Making the picture so it's not empty
+$filename="";
+if (array_key_exists('my_file', $_FILES)){
+	$path = pathinfo($_FILES['my_file']['name']);
+	$filename = $path['filename'].".".$path['extension'];
+}else{
+	if($h){
+		$ima=rand(1, 4).".jpg";
+		$img="Img/professional".$ima;
+	}else{
+		if($g){
+			$ima=rand(1, 5).".jpg";
+			$img="Img/boat".$ima;
+		}else{
+			$ima=rand(1, 5).".jpg";
+			$img="Img/beach".$ima;
+		}
+	}
 }
+
+//assign the vars to the old names
+$date1=$new_date;
+$ime=$_SESSION["user_Nname"];
+$prof_pic="Img/Post_Img/".$filename;
+$link=$last_id;
+$mqsto=$towns[$place];
+
 $new_date=date_create($date1);
 $time=date_format($new_date,"H:i");
 $date=date_format($new_date,"d.m.y");
@@ -39,16 +67,16 @@ function Error_Logging($name, $msg){
     fclose( $ifp );
 }
 
-$msg=$link.": time=".$time." date=".$date." pic=".$prof_pic." id=".$link." mqsto=".$mqsto." ime=".$ime;
-Error_Logging("../Log_files/picture_making.txt", $link.":Going to Making picture");
-Error_Logging("../Log_files/picture_making.txt", $msg);
+$msg="Nothing for now";
+Error_Logging("Log_files/picture_making.txt", $msg);
 ?>
 <html>
 <head>
 	<title>Facebook Api posting</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="CSS/fb_img.css">
 	<style>
-		.carda {
+		.carda1 {
 			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 			padding: 5px;
 			text-align: center;
@@ -75,7 +103,7 @@ Error_Logging("../Log_files/picture_making.txt", $msg);
 			height: 300px;
 		}
 
-		.Img_In1 {
+		.Img_In1{
 			max-height: 90%;
 			max-width: 90%;
 			width: auto;
@@ -92,7 +120,7 @@ Error_Logging("../Log_files/picture_making.txt", $msg);
 
 		.FB_Img {
 			/* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
-			background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7)), url("../Img/FB_Img/waves.jpg");
+			background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7)), url("Img/FB_Img/waves.jpg");
 			/* Set a specific height */
 			height: 100%;
 			/* Position and center the image to scale nicely on all screens */
@@ -104,20 +132,25 @@ Error_Logging("../Log_files/picture_making.txt", $msg);
 	</style>
 </head>
 <body>
-<div class="carda" id="carda" onload="takeScreenShot(<?php echo "'".$ime."'"; ?>, <?php echo "'".$link."'"; ?>);">
-	<div class="FB_Img">
-	<div class="Img_Cont">
-		<img src=<?php echo $prof_pic;?> class="Img_In1" alt="Thubnail images">
-	</div>
-	<div class="card-body" id="card">
-		<h3 class="txt" style="font-size: 50px;">В зоната на:<?php echo $mqsto;?></h3>
-		<h2 class="txt" style="font-size: 40px;"><b>Дата: <?php echo $date; ?></h2>
-		<h3 class="txt" style="font-size: 40px;"><b>Час: <?php echo $time; ?></h2>
+<div style="position: absolute; opacity: 0.0;">
+	<div class="carda1" id="carda" onload="takeScreenShot(<?php echo "'".$ime."'"; ?>, <?php echo "'".$link."'"; ?>);">
+		<div class="FB_Img">
+			<div class="Img_Cont">
+				<img src=<?php echo $prof_pic;?> class="Img_In1" alt="Thubnail images">
+			</div>
+			<div class="card-body" id="card">
+				<h3 class="txt" style="font-size: 50px;">В зоната на:<?php echo $mqsto;?></h3>
+				<h2 class="txt" style="font-size: 40px;"><b>Дата: <?php echo $date; ?></h2>
+				<h3 class="txt" style="font-size: 40px;"><b>Час: <?php echo $time; ?></h2>
+			</div>
 		</div>
 	</div>
 </div>
-	<p id="Error"></p>
-	<script type="text/javascript" src="html2canvas/dist/html2canvas.js"></script>
+<div style="margin-top: 35%;" class="bar"><!-- Loader until img ready -->
+	<div class="circle"></div>
+	<p>Зарежда се</p>
+</div>
+	<script type="text/javascript" src="Facebook_API/html2canvas/dist/html2canvas.js"></script>
     <script type="text/javascript">
 		var myImage;
 		var ime = "";
@@ -138,7 +171,6 @@ Error_Logging("../Log_files/picture_making.txt", $msg);
 			console.log("predi canvas");
 			try {
 				html2canvas(div).then(function(canvas){
-					document.body.appendChild(canvas);
 					myImage = canvas.toDataURL("image/png");
 					console.log(myImage);
 					saveAs(myImage);
@@ -152,9 +184,8 @@ Error_Logging("../Log_files/picture_making.txt", $msg);
 
 		function saveAs(Img) {   
 			
-			var filename=<?php echo "'".$_REQUEST["id"].".png'"; ?>;
-			var url = 'add_Img.php';
-
+			var filename=<?php echo "'".$link.".png'"; ?>;
+			var url = 'Facebook_API/add_Img.php';
 			$.ajax({ 
 				type: "POST", 
 				url: url,
@@ -178,15 +209,14 @@ Error_Logging("../Log_files/picture_making.txt", $msg);
 			var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
-					var myElement = document.getElementById("Error");
-					myElement.innerHTML = this.responseText;
+					window.location.replace("http://meetandfish.online/index.php");
 				}
 			};
 			console.log(myImage);
 			myJSON = { "name": ime, "url": src_img, "link": ID };
 			console.log(myJSON);
 			data = JSON.stringify(myJSON);
-			xhttp.open("GET", "upload_to_facebook.php?ime="+ime+"&url="+src_img+"&link="+ID, true);
+			xhttp.open("GET", "Facebook_API/upload_to_facebook.php?ime="+ime+"&url="+src_img+"&link="+ID, true);
 			xhttp.send();
         }
     </script>
