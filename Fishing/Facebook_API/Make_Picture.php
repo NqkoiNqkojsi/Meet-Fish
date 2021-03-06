@@ -133,7 +133,7 @@ Error_Logging("Log_files/picture_making.txt", $msg);
 </head>
 <body>
 <div style="position: absolute; opacity: 0.0;">
-	<div class="carda1" id="carda" style="display:none;" onload="takeScreenShot(<?php echo "'".$ime."'"; ?>, <?php echo "'".$link."'"; ?>);">
+	<div class="carda1" id="carda" onload="takeScreenShot(<?php echo "'".$ime."'"; ?>, <?php echo "'".$link."'"; ?>);">
 		<div class="FB_Img">
 			<div class="Img_Cont">
 				<img src=<?php echo $prof_pic;?> class="Img_In1" alt="Thubnail images">
