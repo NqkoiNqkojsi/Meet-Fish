@@ -149,9 +149,11 @@ include "navbar.php";
 	</div>
 	<br>
 <?php
+/*
 $direct=getcwd();
 console_log($direct."/Sign_Up.php");
 console_log($direct."/offer_maker.php");
+*/
 if(!isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 ?>
 	<h1 style="color:#E85A4F;">Моля запишете се или влезте в профила си за да пуснете оферта</h1>

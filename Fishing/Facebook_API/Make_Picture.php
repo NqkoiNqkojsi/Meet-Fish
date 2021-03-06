@@ -132,7 +132,7 @@ Error_Logging("Log_files/picture_making.txt", $msg);
 	</style>
 </head>
 <body>
-<div class="carda" id="carda" onload="takeScreenShot(<?php echo "'".$ime."'"; ?>, <?php echo "'".$link."'"; ?>);">
+<div class="carda" id="carda" style="display:none;" onload="takeScreenShot(<?php echo "'".$ime."'"; ?>, <?php echo "'".$link."'"; ?>);">
 	<div class="FB_Img">
 	<div class="Img_Cont">
 		<img src=<?php echo $prof_pic;?> class="Img_In1" alt="Thubnail images">
@@ -168,8 +168,11 @@ Error_Logging("Log_files/picture_making.txt", $msg);
 			console.log(mes);
 			console.log("predi canvas");
 			try {
-				html2canvas(div).then(function(canvas){
-					document.body.appendChild(canvas);
+				html2canvas(div, {
+					onclone: function (clonedDoc) {
+						clonedDoc.div.style.display = 'block';
+					}
+				}).then(function(canvas){
 					myImage = canvas.toDataURL("image/png");
 					console.log(myImage);
 					saveAs(myImage);
