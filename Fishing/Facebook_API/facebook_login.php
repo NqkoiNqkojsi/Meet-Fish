@@ -3,7 +3,7 @@ include "Facebook_API/config.php";
 
 function MakeFbApiCall($endpoint, $params){
 	$ch=curl_init();
-	curl_setopt($ch, CURLOPT_URL, $endpoint."?".http_build_query($params));
+	curl_setopt($ch, CURLOPT_URL, $endpoint.'?'.http_build_query($params));
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
 
@@ -11,6 +11,7 @@ function MakeFbApiCall($endpoint, $params){
 	$fbResponse=json_decode($fbResponse, TRUE);
 	curl_close($ch);
 	
+	echo $endpoint.'?'.http_build_query($params);
 	return array(
 		'endpoint' => $endpoint,
 		'params' => $params,
