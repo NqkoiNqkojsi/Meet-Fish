@@ -57,7 +57,7 @@ if (isset($AccessToken)) {
     }
     $graphNode = $response->getGraphNode();
 
-    $sql = "UPDATE customer SET FB_ID=".$graphNode['id']." WHERE ID=".$_REQUEST["link"];
+    $sql = "UPDATE offer SET FB_ID=".$graphNode['id']." WHERE ID=".$_REQUEST["link"];
 	if (mysqli_query($conn, $sql)) {
         echo "Record updated successfully";
     }else{
