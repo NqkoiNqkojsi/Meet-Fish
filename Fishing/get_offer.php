@@ -47,8 +47,9 @@ foreach($delete_img as $img){
 		if (file_exists($path)) {
 			unlink($path);
 		}
-	}
-	echo "<script>Delete_FB(".$delete_fb[$br].");</script>";
+	}?>
+	<script>Delete_FB("'"+<?php echo $delete_fb[$br]; ?>+"'");</script>
+	<?php
 	$br++;
 }
 
