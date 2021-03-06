@@ -528,7 +528,7 @@ if(isset($_POST["enter"])){
 			}
 		};
 		console.log(str);
-		xmlhttp.open("GET", "Fishing/Facebook_API/facebook_login.php", true);
+		xmlhttp.open("GET", "Facebook_API/facebook_login.php", true);
 		xmlhttp.send();
 	}
 	</script>
