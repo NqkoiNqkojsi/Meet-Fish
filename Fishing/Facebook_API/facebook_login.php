@@ -17,7 +17,7 @@ function MakeFbApiCall($endpoint, $params){
 		'has_errors' => isset($fbResponse['error']) ? TRUE : FALSE,
 		'fbResponse' => $fbResponse,
 		'error_message' => isset($fbResponse['error']) ? $fbResponse['error']['message'] : ''
-	)
+	);
 }
 
 function GetFacebookLoginUrl(){
