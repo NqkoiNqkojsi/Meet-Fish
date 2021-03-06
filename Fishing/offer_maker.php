@@ -47,11 +47,11 @@ function SaveImg($f, $conn, $last_id){
 				 move_uploaded_file($temp_name,$save_path);
 				 $sql = "UPDATE offer SET Img='".$save_path_sql."' WHERE ID='".$last_id."'";//sql for description
 				if (mysqli_query($conn, $sql)) {
-					$message= "Record updated successfully";
+					//$message= "Record updated successfully";
 				}else {
 					$message= "Error updating record: " . mysqli_error($conn);
 				}
-				 echo "Congratulations! File Uploaded Successfully.";
+				 //echo "Congratulations! File Uploaded Successfully.";
 			}
 		}else{
 			$f=false;

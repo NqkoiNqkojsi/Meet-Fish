@@ -146,9 +146,13 @@ Error_Logging("Log_files/picture_making.txt", $msg);
 		</div>
 	</div>
 </div>
-<div class="bar"><!-- Loader until img ready -->
-  <div class="circle"></div>
-  <p>Loading</p>
+<div class="Img_In1" style="border-width:0px;">
+	<div class="Img_Cont" style="height:auto;">
+		<div class="bar"><!-- Loader until img ready -->
+			<div class="circle"></div>
+			<p>Зарежда се</p>
+		</div>
+	</div>
 </div>
 	<script type="text/javascript" src="Facebook_API/html2canvas/dist/html2canvas.js"></script>
     <script type="text/javascript">
