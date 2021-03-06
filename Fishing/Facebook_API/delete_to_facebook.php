@@ -13,7 +13,7 @@ if (isset($AccessToken)) {
 
     try {
         $response = $fb->delete(
-            '/104356978172893_'.$id.'/',
+            '/'.$id.'/',
             array(),
             $AccessToken);
     }
