@@ -251,7 +251,7 @@ include "passext.php";
 	<br>
 	<br>
 	<script src="JS/scroll.js"></script>
-	<div class="row" onload="Login_FB()">
+	<div class="row">
 <?php
 if(isset($_POST["submit"])){
     if($f==false){
@@ -480,7 +480,7 @@ if(isset($_POST["enter"])){
                     <div class="g-recaptcha" data-sitekey="6LckJ-wUAAAAAGpbh-Ryd343646rfcoKEdr3QmL6"></div>
 					<button type="submit" name="enter">Влез</button>
 					<br>
-					<a href="" id="fb_butt" class="fb connect">Sign in with Facebook</a>
+					<a href="" id="fb_butt" onload="Login_FB()" class="fb connect">Sign in with Facebook</a>
 				</div>
 			</form>
 			<?php include "chgpass.php"; ?>
@@ -505,7 +505,7 @@ if(isset($_POST["enter"])){
                     <div class="g-recaptcha" data-sitekey="6LckJ-wUAAAAAGpbh-Ryd343646rfcoKEdr3QmL6"></div>
 				    <button type="submit" name="enter">Влез</button>
 					<br>
-					<a href="" id="fb_butt" class="fb connect">Sign in with Facebook</a>
+					<a href="" id="fb_butt" onload="Login_FB()" class="fb connect">Sign in with Facebook</a>
 				</div>
 			</form>
 			<?php include "chgpass.php"; ?>
@@ -518,7 +518,7 @@ if(isset($_POST["enter"])){
         async defer>
     </script>
 	<script>
-	function Login_FB(str) {
+	function Login_FB() {
 		var xmlhttp = new XMLHttpRequest();
 		xmlhttp.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
@@ -527,7 +527,7 @@ if(isset($_POST["enter"])){
 				link.setAttribute('href', this.responseText);
 			}
 		};
-		console.log(str);
+		console.log("Izprashta se");
 		xmlhttp.open("GET", "Facebook_API/facebook_login.php", true);
 		xmlhttp.send();
 	}
