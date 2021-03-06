@@ -105,7 +105,7 @@ Error_Logging("Log_files/picture_making.txt", $msg);
 
 		.FB_Img {
 			/* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
-			background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7)), url("../Img/FB_Img/waves.jpg");
+			background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7)), url("Img/FB_Img/waves.jpg");
 			/* Set a specific height */
 			height: 100%;
 			/* Position and center the image to scale nicely on all screens */
@@ -130,7 +130,7 @@ Error_Logging("Log_files/picture_making.txt", $msg);
 	</div>
 </div>
 	<p id="Error"></p>
-	<script type="text/javascript" src="html2canvas/dist/html2canvas.js"></script>
+	<script type="text/javascript" src="Facebook_API/html2canvas/dist/html2canvas.js"></script>
     <script type="text/javascript">
 		var myImage;
 		var ime = "";

@@ -21,6 +21,7 @@ include "logging.php";
 <?php
 $f=false;
 $g=true;
+$Is_Facebook=false;
 $mess="Nothing";
 include "towns.php";
 include "conn.php";
@@ -122,6 +123,7 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 				error_log("sql:".$sql, 3, "/Log_files/sql.log");
 				console_log( $sql );
 				include "Facebook_API/Make_Picture.php";
+				$Is_Facebook=true;
 				//header("location:../index.php");
                 //die();
 			} else {
@@ -135,6 +137,7 @@ if(isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 		}
 	}
 }
+if($Is_Facebook==false){
 ?>
 <html>
 <head>
@@ -274,3 +277,6 @@ if(!isset($_SESSION["user_ID"])){/*Stop user who haven't signed in*/
 	<script src="JS/data_picker.js"></script>
 </body>
 </html>
+<?php 
+} 
+?>
