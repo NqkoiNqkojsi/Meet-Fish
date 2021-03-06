@@ -35,7 +35,7 @@ function GetFacebookLoginUrl(){
 }
 
 function GetAccessTokenWithCode($code){
-	$endpoint = "https://www.facebook.com/".GRAPH_VERSION."/oauth/access_token";
+	$endpoint = "https://graph.facebook.com/".GRAPH_VERSION."/oauth/access_token";
 	$params = array(
 		'client_id' => APP_ID,
 		'client_secret' => APP_SECRET,
