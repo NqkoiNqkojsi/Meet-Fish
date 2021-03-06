@@ -209,7 +209,7 @@ Error_Logging("Log_files/picture_making.txt", $msg);
 			var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
-					//redirect to index
+					window.location.replace("http://meetandfish.online/index.php");
 				}
 			};
 			console.log(myImage);
