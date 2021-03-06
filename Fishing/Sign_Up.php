@@ -19,8 +19,9 @@ if(isset($_REQUEST["plan"])){
 
 if(isset($_GET["code"])){
 	$accessToken=GetAccessTokenWithCode($_GET['code']);
-	echo "what";
-	echo $accessToken;
+	echo "<pre>";
+	print_r($accessToken);
+	die;
 }
 
 //*************Functions**************
