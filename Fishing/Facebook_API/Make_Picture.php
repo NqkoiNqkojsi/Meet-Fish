@@ -74,6 +74,7 @@ Error_Logging("Log_files/picture_making.txt", $msg);
 <head>
 	<title>Facebook Api posting</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="CSS/fb_img.css">
 	<style>
 		.carda {
 			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -143,7 +144,10 @@ Error_Logging("Log_files/picture_making.txt", $msg);
 		</div>
 	</div>
 </div>
-	<p id="Error"></p>
+<div class="bar"><!-- Loader until img ready -->
+  <div class="circle"></div>
+  <p>Loading</p>
+</div>
 	<script type="text/javascript" src="Facebook_API/html2canvas/dist/html2canvas.js"></script>
     <script type="text/javascript">
 		var myImage;
@@ -204,8 +208,7 @@ Error_Logging("Log_files/picture_making.txt", $msg);
 			var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
-					var myElement = document.getElementById("Error");
-					myElement.innerHTML = this.responseText;
+					//redirect to index
 				}
 			};
 			console.log(myImage);
