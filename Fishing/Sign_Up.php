@@ -561,6 +561,7 @@ if(isset($_POST["enter"])){
 	<script scr="JS/modal1.js">
         OpCls(true);
     </script>
+	<br>
     <?php
 	}
 	    include "footer.php";
