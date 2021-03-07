@@ -94,7 +94,7 @@ function TryLoginWithFB($get, $conn){
 					Check_Exist("Email", $_SESSION['fb_user_info']["email"], $conn);
 
 					// check for user with email
-					Check_Exist("fb_user_id", $_SESSION['fb_user_info']["id"], $conn);
+					//Check_Exist("fb_user_id", $_SESSION['fb_user_info']["id"], $conn);
 					
 				} else {
 					$message = 'Invalid creds';
