@@ -255,7 +255,7 @@ include "passext.php";
 	<link rel="stylesheet" href="CSS/fb.css">
     <script src='https://www.google.com/recaptcha/api.js' async defer></script>
 <?php 
-	include "Design/register.php"
+	include "Design/register.php";
 	include "navbar.php";
 ?>
 	</div>
