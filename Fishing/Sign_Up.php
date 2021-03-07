@@ -249,9 +249,6 @@ include "passext.php";
 ?>
 <html>
 <head>
-<?php
-include "Design/register.php";
-?>
 	<title>Register</title>
 	<link rel="stylesheet" href="CSS/sign_up_style.css">
 	<link rel="stylesheet" href="CSS/pricing.css">
