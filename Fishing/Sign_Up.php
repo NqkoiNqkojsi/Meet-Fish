@@ -250,11 +250,12 @@ include "passext.php";
 <html>
 <head>
 	<title>Register</title>
-	<link rel="stylesheet" href="CSS/sign_up_style.css">
+	<!--<link rel="stylesheet" href="CSS/sign_up_style.css">-->
 	<link rel="stylesheet" href="CSS/pricing.css">
 	<link rel="stylesheet" href="CSS/fb.css">
     <script src='https://www.google.com/recaptcha/api.js' async defer></script>
 <?php 
+	include "Design/sign_up_style.php"
 	include "navbar.php";
 ?>
 	</div>
