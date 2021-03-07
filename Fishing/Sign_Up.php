@@ -24,7 +24,7 @@ $old_pr=false;
 include "Facebook_API/Signing_FB_User.php";
 include "Facebook_API/facebook_login.php";
 if(isset($_GET["state"]) && APP_STATE==$_GET["state"]){
-	tryAndLoginWithFacebook( $_GET );
+	TryLoginWithFB( $_GET );
 }
 if($old_pr==true){
 	Old_Profile();
