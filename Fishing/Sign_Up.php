@@ -267,7 +267,7 @@ include "passext.php";
 	<div class="row">
 <?php
 if($new_pr==true){
-	include "Facebook_API/New_FB_Prof.php"
+	include "Facebook_API/New_FB_Prof.php";
 }
 if(isset($_POST["submit"])){
     if($f==false){
