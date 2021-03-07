@@ -54,7 +54,11 @@ $prof_pic="Img/Post_Img/".$filename;
 $link=$last_id;
 $mqsto=$towns[$place];
 $directory=dirname(getcwd());
-echo $directory;
+if($directory=="/home/u157928248/domains/meetandfish.online/public_html/Stelyo_Branch"){
+	$directory="https://meetandfish.online/Stelyo_Branch/";
+}else{
+	$directory="https://meetandfish.online/";
+}
 
 $new_date=date_create($date1);
 $time=date_format($new_date,"H:i");
@@ -157,6 +161,7 @@ Error_Logging("Log_files/picture_making.txt", $msg);
 		var myImage;
 		var ime = "";
 		var ID;
+		var dir=<?php echo "'".$directory."'"; ?>;
 		var mes="посети го на https://meetandfish.online/Fishing/offer.php?id="+<?php echo $link; ?>;
 		var myJSON = Object();
 		var div = document.getElementById("carda");
@@ -221,7 +226,7 @@ Error_Logging("Log_files/picture_making.txt", $msg);
 			myJSON = { "name": ime, "url": src_img, "link": ID };
 			console.log(myJSON);
 			data = JSON.stringify(myJSON);
-			xhttp.open("GET", "Facebook_API/upload_to_facebook.php?ime="+ime+"&url="+src_img+"&link="+ID, true);
+			xhttp.open("GET", "Facebook_API/upload_to_facebook.php?ime="+ime+"&url="+src_img+"&link="+ID+"&dir="+dir, true);
 			xhttp.send();
         }
     </script>
