@@ -1,7 +1,7 @@
 <?php
 $Img_exists=false;
-$img="Fishing/Img/Post_Img/";
-$img0=$img.$row["Img"];
+$img="Fishing/Img/Post_Img/".$row["Img"];
+$img0=$img;
 if (file_exists($img0) && $img0!="Fishing/Img/Post_Img/") {
 	$Img_exists=true;
 }
@@ -14,7 +14,7 @@ if ( $Img_exists==false && file_exists($img1) && $img1!="Stelyo_Branch/Fishing/I
 
 $img2="../".$img;
 if ($Img_exists==false && file_exists($img2) && $img2!="../Fishing/Img/Post_Img/") {
-	$Img_exists=false;
+	$Img_exists=true;
 	$img0=$img2;
 }
 $img=$img0;
