@@ -50,8 +50,8 @@
 }
 /* The dropdown container */
 .dropbtn {
-  background-color: #17252A;
-  color: white;
+  background-color: #81b29a;
+  color: #f2cc8f;
   padding: 14px;
   font-size: 18px;
   border: none;
