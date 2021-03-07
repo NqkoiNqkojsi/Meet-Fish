@@ -77,17 +77,17 @@ function TryLoginWithFB($get){
 				$message = $accessTokenInfo['error_message'];
 			} else { // we have access token! :D
 				// set access token in the session
-				$_SESSION['fb_access_token'] = $accessTokenInfo['fb_response']['access_token'];
+				$_SESSION['fb_access_token'] = $accessTokenInfo['fbResponse']['access_token'];
 
 				// get facebook user info with the access token
 				$fbUserInfo = getFacebookUserInfo( $_SESSION['fb_access_token'] );
 
-				if ( !$fbUserInfo['has_errors'] && !empty( $fbUserInfo['fb_response']['id'] ) && !empty( $fbUserInfo['fb_response']['email'] ) ) { // facebook gave us the users id/email
+				if ( !$fbUserInfo['has_errors'] && !empty( $fbUserInfo['fbResponse']['id'] ) && !empty( $fbUserInfo['fbResponse']['email'] ) ) { // facebook gave us the users id/email
 					// 	all good!
 					$status = 'ok';
 
 					// save user info to session
-					$_SESSION['fb_user_info'] = $fbUserInfo['fb_response'];
+					$_SESSION['fb_user_info'] = $fbUserInfo['fbResponse'];
 
 					echo $_SESSION['fb_user_info']["email"];
 					// check for user with facebook id
