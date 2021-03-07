@@ -53,6 +53,8 @@ $ime=$_SESSION["user_Nname"];
 $prof_pic="Img/Post_Img/".$filename;
 $link=$last_id;
 $mqsto=$towns[$place];
+$directory=dirname(getcwd());
+echo $directory;
 
 $new_date=date_create($date1);
 $time=date_format($new_date,"H:i");

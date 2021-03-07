@@ -13,6 +13,10 @@ $Img="";
 if(isset($_REQUEST["url"])){
 	$Img=$_REQUEST["url"];
 }
+$directory="";
+if(isset($_REQUEST["dir"])){
+	$directory=$_REQUEST["dir"];
+}
 
 include("config.php");
 function Error_Logging($name, $msg){
