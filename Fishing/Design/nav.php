@@ -23,7 +23,7 @@
   float: left;
   text-align: center;
   padding: 14px;
-  color: #f2cc8f;
+  color: #323537;
   text-decoration: none;
   font-size: 18px;
    min-width: 0;
@@ -51,7 +51,7 @@
 /* The dropdown container */
 .dropbtn {
   background-color: #81b29a;
-  color: #f2cc8f;
+  color: #323537;
   padding: 14px;
   font-size: 18px;
   border: none;
