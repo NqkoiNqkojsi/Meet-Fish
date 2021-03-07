@@ -1,6 +1,7 @@
 ﻿<?php
 include "conn.php";
 $new_pr=false;
+echo $new_pr;
 $old_pr=false;
 function New_Profile(){
 	$sql = "SELECT NickName FROM customer WHERE NickName='".$_POST['nname']."'";
@@ -86,20 +87,19 @@ function Old_Profile(){
 	    $_SESSION["Verified"]=false;
 	    $_SESSION["Ver_id"]=$row["ID"];
 	}	
+	echo "Old profile got in nname:".$row["NickName"];
 	//header("Location:../index.php");
 	//die();
 }
 
 function Check_Exist($name, $data){
-	if($new_pr==false){
-		$sql = "SELECT ".$name." FROM customer WHERE ".$name."='".$data."'";
-		$result = mysqli_query($conn, $sql);
-		if($result && mysqli_num_rows($result) == 1){//check if there is the same email
-			$new_pr=true;
-			$old_pr=false;
-		}else{
-			$old_pr=true;
-		}
+	$sql = "SELECT ".$name." FROM customer WHERE ".$name."='".$data."'";
+	$result = mysqli_query($conn, $sql);
+	if($result && mysqli_num_rows($result) == 1){//check if there is the same email
+		$new_pr=true;
+	}else{
+		$old_pr=true;
+		Old_Profile();
 	}
 }
 

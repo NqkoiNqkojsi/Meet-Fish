@@ -26,9 +26,6 @@ include "Facebook_API/facebook_login.php";
 if(isset($_GET["state"]) && APP_STATE==$_GET["state"]){
 	TryLoginWithFB( $_GET );
 }
-if($old_pr==true){
-	Old_Profile();
-}
 //*************Functions**************
 function test_input($data) {//Clear the input
   $data = trim($data);
