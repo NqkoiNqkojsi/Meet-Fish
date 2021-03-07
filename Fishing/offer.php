@@ -4,12 +4,19 @@ $offer=0;
 $message="echo";
 if(isset($_REQUEST["id"])){
 	$offer=$_REQUEST["id"];
+}else{
+	header("location:../index.php");
+	die();
 }
 include "towns.php";
 include "conn.php";
 $sql = "SELECT * FROM offer WHERE ID=".$offer;//get the asked offer
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);//first db;
+if(!$result || mysqli_num_rows($result) == 0){
+	header("location:../index.php");
+	die();
+}
 $sql = "SELECT ID, NickName, FName, SName, Birth, Exp, Email, Description FROM customer WHERE ID=".$row["Sender"];//get the info of the the sender of the offer
 $result = mysqli_query($conn, $sql);
 $sender=mysqli_fetch_assoc($result);//second db
