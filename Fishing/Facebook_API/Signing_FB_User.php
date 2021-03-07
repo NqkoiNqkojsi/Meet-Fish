@@ -1,8 +1,22 @@
 ﻿<?php
-include "conn.php";
 $new_pr=false;
 echo $new_pr;
 $old_pr=false;
+
+$servername = "localhost";
+$username = "u157928248_fish";
+$password = "8!d/Xn9K=gJ";
+$dbname = "u157928248_fishing";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+
 function New_Profile(){
 	$sql = "SELECT NickName FROM customer WHERE NickName='".$_POST['nname']."'";
 	$result = mysqli_query($conn, $sql);
