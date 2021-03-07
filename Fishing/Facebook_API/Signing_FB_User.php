@@ -105,7 +105,9 @@ function Check_Exist($name, $data, $conn){
 	$result = mysqli_query($conn, $sql);
 	if($result && mysqli_num_rows($result) == 1){//check if there is the same email
 		$new_pr=true;
+		echo $result;
 	}else{
+		echo $result;
 		$old_pr=true;
 		Old_Profile($conn);
 	}
