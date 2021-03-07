@@ -94,7 +94,7 @@ function Old_Profile($conn){
 	    $_SESSION["Verified"]=false;
 	    $_SESSION["Ver_id"]=$row["ID"];
 	}
-	echo "Old profile"
+	echo "Old profile";
 	header("Location:../index.php");
 	die();
 }
