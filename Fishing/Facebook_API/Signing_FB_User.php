@@ -100,7 +100,7 @@ function Check_Exist($name, $data, $conn){
 		$new_pr=true;
 	}else{
 		$old_pr=true;
-		$Old_Profile($conn);
+		Old_Profile($conn);
 	}
 }
 
