@@ -58,7 +58,7 @@ function getFacebookUserInfo( $accessToken ) {
 	}
 
 
-function TryLoginWithFB($get){
+function TryLoginWithFB($get, $conn){
 	$status = 'fail';
 		$message = '';
 
@@ -91,10 +91,10 @@ function TryLoginWithFB($get){
 
 					echo $_SESSION['fb_user_info']["email"];
 					// check for user with facebook id
-					Check_Exist("Email", $_SESSION['fb_user_info']["email"]);
+					Check_Exist("Email", $_SESSION['fb_user_info']["email"], $conn);
 
 					// check for user with email
-					Check_Exist("fb_user_id", $_SESSION['fb_user_info']["id"]);
+					Check_Exist("fb_user_id", $_SESSION['fb_user_info']["id"], $conn);
 					
 				} else {
 					$message = 'Invalid creds';

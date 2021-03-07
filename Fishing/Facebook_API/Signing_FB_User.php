@@ -3,21 +3,9 @@ $new_pr=false;
 echo $new_pr;
 $old_pr=false;
 
-$servername = "localhost";
-$username = "u157928248_fish";
-$password = "8!d/Xn9K=gJ";
-$dbname = "u157928248_fishing";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 
 
-function New_Profile(){
+function New_Profile($conn){
 	$sql = "SELECT NickName FROM customer WHERE NickName='".$_POST['nname']."'";
 	$result = mysqli_query($conn, $sql);
 	if($result && mysqli_num_rows($result) == 1){//check if there is the same nname
@@ -85,7 +73,7 @@ function New_Profile(){
 	}
 }
 
-function Old_Profile(){
+function Old_Profile($conn){
 	$sql = $conn->prepare("SELECT Email, ID, Pass, NickName, Place, Verified FROM customer WHERE Email=?");
 	$sql->bind_param("s", $_SESSION['fb_user_info']["email"]);
 	$sql->execute();
@@ -106,7 +94,7 @@ function Old_Profile(){
 	//die();
 }
 
-function Check_Exist($name, $data){
+function Check_Exist($name, $data, $conn){
 	$sql = "SELECT ".$name." FROM customer WHERE ".$name."='".$data."'";
 	$result = mysqli_query($conn, $sql);
 	if($result && mysqli_num_rows($result) == 1){//check if there is the same email
@@ -118,6 +106,6 @@ function Check_Exist($name, $data){
 }
 
 if(isset($_POST["send3"])){
-	New_Profile();
+	New_Profile($conn);
 }
 ?>
