@@ -44,9 +44,9 @@ function New_Profile(){
 		$future_date=$onemonth->format('Y-m-d');
 	    //***************************Binding & Excecuting************************
 		try{
-            $sql="INSERT INTO customer (ID, NickName, FName, SName, Email, Pass, Birth, Place, Ship, Exp, Description, "."Creation, Verified, Plan, Plan_End, Img_name) "    ."VALUES (0, ?, ?, ?, ?, '".$pwd."', '".$_POST['birth']."', ".$plc.	", ?, 0, ?, '".$today."', 0, ".$_POST['submit'].", '".$future_date."', ?)";
+            $sql="INSERT INTO customer (ID, NickName, FName, SName, Email, Pass, Birth, Place, Ship, Exp, Description, "."Creation, Verified, Plan, Plan_End, Img_name, fb_access_token) "    ."VALUES (0, ?, ?, ?, ?, '".$pwd."', '".$_POST['birth']."', ".$plc.	", ?, 0, ?, '".$today."', 0, ".$_POST['submit'].", '".$future_date."', ?)";
             $stmt= $conn->prepare($sql);
-            $stmt->bind_param("sssssss", $_POST['nname'], $_SESSION['fb_user_info']["first_name"], $_SESSION['fb_user_info']["last_name"], $_SESSION['fb_user_info']["email"], $_POST['ship'], $_POST['Desc'], $save_path_sql);
+            $stmt->bind_param("ssssssss", $_POST['nname'], $_SESSION['fb_user_info']["first_name"], $_SESSION['fb_user_info']["last_name"], $_SESSION['fb_user_info']["email"], $_POST['ship'], $_POST['Desc'], $save_path_sql, $_SESSION['fb_access_token']);
             $stmt->execute();
         }catch(Exception $e){
             console_log("Error: " . $e->getMessage());
