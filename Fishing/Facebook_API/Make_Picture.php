@@ -211,7 +211,7 @@ Error_Logging("Log_files/picture_making.txt", $msg);
 				if (this.readyState == 4 && this.status == 200) {
 					console.log(this.responseText);
 					setTimeout(() => {
-						window.location.replace("http://meetandfish.online/index.php"); 
+						//window.location.replace("http://meetandfish.online/index.php"); 
 					}, 2000);
 				}
 			};
