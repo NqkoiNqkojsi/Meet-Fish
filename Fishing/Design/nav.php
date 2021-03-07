@@ -23,7 +23,7 @@
   float: left;
   text-align: center;
   padding: 14px;
-  color: white;
+  color: #f2cc8f;
   text-decoration: none;
   font-size: 18px;
    min-width: 0;
@@ -32,7 +32,8 @@
 
 /* Navbar links on mouse-over */
 .navbar a:hover {
-  background-color: #DEF2F1;
+  background-color: #e07a5f;
+  color: black;
 }
 
 /* Current/active navbar link */
