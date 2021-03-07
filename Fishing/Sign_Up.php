@@ -24,9 +24,11 @@ $old_pr=false;
 include "Facebook_API/Signing_FB_User.php";
 include "Facebook_API/facebook_login.php";
 if(isset($_GET["state"]) && APP_STATE==$_GET["state"]){
-	
+	tryAndLoginWithFacebook( $_GET );
 }
-
+if($old_pr==true){
+	Old_Profile();
+}
 //*************Functions**************
 function test_input($data) {//Clear the input
   $data = trim($data);
@@ -264,6 +266,9 @@ include "passext.php";
 	<script src="JS/scroll.js"></script>
 	<div class="row">
 <?php
+if($new_pr==true){
+	include "Facebook_API/New_FB_Prof.php"
+}
 if(isset($_POST["submit"])){
     if($f==false){
 ?>
