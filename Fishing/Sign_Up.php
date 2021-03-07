@@ -255,6 +255,7 @@ include "passext.php";
 	<link rel="stylesheet" href="CSS/fb.css">
     <script src='https://www.google.com/recaptcha/api.js' async defer></script>
 <?php 
+	include "Design/register.php"
 	include "navbar.php";
 ?>
 	</div>
@@ -479,7 +480,7 @@ if(isset($_POST["enter"])){
 ?>
 		<div class="column" style="padding: 10px; border-width: 0;">
 			<form action="Sign_Up.php" method="post">
-				<div class="container">
+				<div class="container"><div class="signin">
 					<h1>Влез в профила си</h1>
 					<h4 style="color:#E85A4F;"><?php echo $messages; ?></h4>
 					<hr>
@@ -494,7 +495,7 @@ if(isset($_POST["enter"])){
 					<button type="submit" name="enter">Влез</button>
 					<br>
 					<a href="<?php echo GetFacebookLoginUrl();?>" id="fb_butt" class="fb connect">Sign in with Facebook</a>
-				</div>
+				</div></div>
 			</form>
 			<?php include "chgpass.php"; ?>
 		</div>
@@ -504,7 +505,7 @@ if(isset($_POST["enter"])){
 ?>
 		<div class="column" style="padding: 10px; border-width: 0;">
 			<form action="Sign_Up.php" method="post">
-				<div class="container">
+				<div class="container"><div class="signin">
 					<h1>Влез в профила си</h1>
 					<hr>
 					
@@ -519,7 +520,7 @@ if(isset($_POST["enter"])){
 				    <button type="submit" name="enter">Влез</button>
 					<br>
 					<a href="<?php echo GetFacebookLoginUrl();?>" id="fb_butt" class="fb connect">Sign in with Facebook</a>
-				</div>
+				</div></div>
 			</form>
 			<?php include "chgpass.php"; ?>
 		</div>
