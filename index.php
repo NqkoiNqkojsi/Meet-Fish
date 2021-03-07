@@ -45,7 +45,7 @@ include "Fishing/towns.php";
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<link rel="shortcut icon" type="image/x-icon" href="Fishing/Img/logo2.ico">
 	<link rel="stylesheet" href="Fishing/CSS/content_style.css">
-	<link rel="stylesheet" href="Fishing/CSS/nav.css">
+	<!--<link rel="stylesheet" href="Fishing/CSS/nav.css">-->
 	<link rel="stylesheet" href="Fishing/CSS/form.css">
 	<!--<link rel="stylesheet" href="Fishing/CSS/img.css">-->
 	<script src="Fishing/JS/datedropper.pro.min.js"></script>
@@ -57,6 +57,7 @@ include "Fishing/towns.php";
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<?php include"Fishing/Design/nav.php"; ?>
 	<style>
 		.Img_Cont {
 			position: relative;
