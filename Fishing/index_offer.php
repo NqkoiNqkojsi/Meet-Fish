@@ -1,7 +1,24 @@
 <?php
-$img="";
-$img="Fishing/Img/Post_Img/".$row["Img"];
-if (!file_exists($img) || $img=="Fishing/Img/Post_Img/") {
+$Img_exists=false;
+$img="Fishing/Img/Post_Img/";
+$img0=$img.$row["Img"];
+if (file_exists($img0) && $img0!="Fishing/Img/Post_Img/") {
+	$Img_exists=true;
+}
+
+$img1="Stelyo_Branch/".$img;
+if ( $Img_exists==false && file_exists($img1) && $img1!="Stelyo_Branch/Fishing/Img/Post_Img/") {
+	$Img_exists=true;
+	$img0=$img1;
+}
+
+$img2="../".$img;
+if ($Img_exists==false && file_exists($img2) && $img2!="../Fishing/Img/Post_Img/") {
+	$Img_exists=false;
+	$img0=$img2;
+}
+$img=$img0;
+if($Img_exists==false){
 	if($row["Prof"]==true){
 		$ima=rand(1, 4).".jpg";
 		$img="Fishing/Img/professional".$ima;
@@ -15,6 +32,7 @@ if (!file_exists($img) || $img=="Fishing/Img/Post_Img/") {
 		}
 	}
 }
+
 if($i%4==1){
 ?>
 	<div class="rowa" id="food">
