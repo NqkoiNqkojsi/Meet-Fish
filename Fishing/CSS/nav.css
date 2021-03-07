@@ -95,13 +95,13 @@
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
 /* Footer */
-.footer{
-  width: 100%;
-  background-color: #DEF2F1;
-  overflow: visible;
-  z-index:90;
-  max-height: 15%; 
-  position: absolute;
-  margin-top: 15px;
-  bottom: 0;
+.footer {
+    width: 100%;
+    background: #3d405b;
+    overflow: visible;
+    z-index: 90;
+    max-height: 15%;
+    position: absolute;
+    margin-top: 15px;
+    bottom: 0;
 }

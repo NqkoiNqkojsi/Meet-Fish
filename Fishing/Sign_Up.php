@@ -11,11 +11,21 @@ $gres=0;
 $br=0;
 $messages="";
 $message2="";
+
+
 $plan=0;
 if(isset($_REQUEST["plan"])){
 	$plan=$_REQUEST["plan"];
 }
 
+//FB stuff
+$new_pr=false;
+$old_pr=false;
+include "Facebook_API/Signing_FB_User.php";
+include "Facebook_API/facebook_login.php";
+if(isset($_GET["state"]) && APP_STATE==$_GET["state"]){
+	TryLoginWithFB( $_GET, $conn );
+}
 //*************Functions**************
 function test_input($data) {//Clear the input
   $data = trim($data);
@@ -240,11 +250,12 @@ include "passext.php";
 <html>
 <head>
 	<title>Register</title>
-	<link rel="stylesheet" href="CSS/sign_up_style.css">
+	<!--<link rel="stylesheet" href="CSS/sign_up_style.css">-->
 	<link rel="stylesheet" href="CSS/pricing.css">
 	<link rel="stylesheet" href="CSS/fb.css">
     <script src='https://www.google.com/recaptcha/api.js' async defer></script>
 <?php 
+	include "Design/sign_up_style.php";
 	include "navbar.php";
 ?>
 	</div>
@@ -253,6 +264,9 @@ include "passext.php";
 	<script src="JS/scroll.js"></script>
 	<div class="row">
 <?php
+if($new_pr==true){
+	include "Facebook_API/New_FB_Prof.php";
+}
 if(isset($_POST["submit"])){
     if($f==false){
 ?>
@@ -466,7 +480,7 @@ if(isset($_POST["enter"])){
 ?>
 		<div class="column" style="padding: 10px; border-width: 0;">
 			<form action="Sign_Up.php" method="post">
-				<div class="container">
+				<div class="container"><div class="signin">
 					<h1>Влез в профила си</h1>
 					<h4 style="color:#E85A4F;"><?php echo $messages; ?></h4>
 					<hr>
@@ -480,8 +494,8 @@ if(isset($_POST["enter"])){
                     <div class="g-recaptcha" data-sitekey="6LckJ-wUAAAAAGpbh-Ryd343646rfcoKEdr3QmL6"></div>
 					<button type="submit" name="enter">Влез</button>
 					<br>
-					<a href="" class="fb connect">Sign in with Facebook</a>
-				</div>
+					<a href="<?php echo GetFacebookLoginUrl();?>" id="fb_butt" class="fb connect">Sign in with Facebook</a>
+				</div></div>
 			</form>
 			<?php include "chgpass.php"; ?>
 		</div>
@@ -491,7 +505,7 @@ if(isset($_POST["enter"])){
 ?>
 		<div class="column" style="padding: 10px; border-width: 0;">
 			<form action="Sign_Up.php" method="post">
-				<div class="container">
+				<div class="container"><div class="signin">
 					<h1>Влез в профила си</h1>
 					<hr>
 					
@@ -505,8 +519,8 @@ if(isset($_POST["enter"])){
                     <div class="g-recaptcha" data-sitekey="6LckJ-wUAAAAAGpbh-Ryd343646rfcoKEdr3QmL6"></div>
 				    <button type="submit" name="enter">Влез</button>
 					<br>
-					<a href="" class="fb connect">Sign in with Facebook</a>
-				</div>
+					<a href="<?php echo GetFacebookLoginUrl();?>" id="fb_butt" class="fb connect">Sign in with Facebook</a>
+				</div></div>
 			</form>
 			<?php include "chgpass.php"; ?>
 		</div>
@@ -517,6 +531,21 @@ if(isset($_POST["enter"])){
 	<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
         async defer>
     </script>
+	<script>
+	function Login_FB() {
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function () {
+			if (this.readyState == 4 && this.status == 200) {
+				console.log("Success");
+				var link = document.getElementById("fb_butt");
+				link.setAttribute('href', this.responseText);
+			}
+		};
+		console.log("Izprashta se");
+		xmlhttp.open("GET", "Facebook_API/facebook_login.php", true);
+		xmlhttp.send();
+	}
+	</script>
 	<script src="JS/data_picker.js"></script>
 	<script src="JS/collapse.js"></script>
 	<script src="JS/modal1.js"></script>
@@ -532,6 +561,7 @@ if(isset($_POST["enter"])){
 	<script scr="JS/modal1.js">
         OpCls(true);
     </script>
+	<br>
     <?php
 	}
 	    include "footer.php";

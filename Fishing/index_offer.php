@@ -20,13 +20,13 @@ if($i%4==1){
 	<div class="rowa" id="food">
 <?php } ?>
 <div class="columna">
-	<div class="carda">
+	<div class="carda" style="background:#f2cc8f">
 		<div class="Img_Cont">
 			<a class="Img_In1" target="_blank" href=<?php echo $img;?>>
 				<img class="Img_In1" src=<?php echo $img;?> alt="Thubnail images">
 			</a>
 		</div>
-		<div class="card-body" style="margin: auto;">
+		<div class="card-body" style=" margin: auto;">
 	        <?php
 			$date_time = new DateTime($row['Time']);
 			$time=$date_time->format('H:i');//get the hour and min
