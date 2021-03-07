@@ -54,7 +54,7 @@ function getFacebookUserInfo( $accessToken ) {
 		);
 
 		// make the api call
-		return makeFacebookApiCall( $endpoint, $params );
+		return MakeFbApiCall( $endpoint, $params );
 	}
 
 
