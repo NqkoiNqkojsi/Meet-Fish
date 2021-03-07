@@ -11,7 +11,6 @@ function MakeFbApiCall($endpoint, $params){
 	$fbResponse=json_decode($fbResponse, TRUE);
 	curl_close($ch);
 	
-	echo $endpoint.'?'.http_build_query($params);
 	return array(
 		'endpoint' => $endpoint,
 		'params' => $params,
@@ -43,5 +42,69 @@ function GetAccessTokenWithCode($code){
 		'code' => $code
 	);
 	return MakeFbApiCall($endpoint, $params);
+}
+
+function getFacebookUserInfo( $accessToken ) {
+		// endpoint for getting a users facebook info
+		$endpoint = "https://graph.facebook.com/" . 'me';
+
+		$params = array( // params for the endpoint
+			'fields' => 'first_name,last_name,email,picture',
+			'access_token' => $accessToken
+		);
+
+		// make the api call
+		return makeFacebookApiCall( $endpoint, $params );
+	}
+
+
+function TryLoginWithFB($get){
+	$status = 'fail';
+		$message = '';
+
+		// reset session vars
+		$_SESSION['fb_access_token'] = array();
+		$_SESSION['fb_user_info'] = array();
+		$_SESSION['eci_login_required_to_connect_facebook'] = false;
+
+		if ( isset( $get['error'] ) ) { // error comming from facebook GET vars
+			$message = $get['error_description'];
+		} else { // no error in facebook GET vars
+			// get an access token with the code facebook sent us
+			$accessTokenInfo = GetAccessTokenWithCode( $get['code'] );
+
+			if ( $accessTokenInfo['has_errors'] ) { // there was an error getting an access token with the code
+				$message = $accessTokenInfo['error_message'];
+			} else { // we have access token! :D
+				// set access token in the session
+				$_SESSION['fb_access_token'] = $accessTokenInfo['fb_response']['access_token'];
+
+				// get facebook user info with the access token
+				$fbUserInfo = getFacebookUserInfo( $_SESSION['fb_access_token'] );
+
+				if ( !$fbUserInfo['has_errors'] && !empty( $fbUserInfo['fb_response']['id'] ) && !empty( $fbUserInfo['fb_response']['email'] ) ) { // facebook gave us the users id/email
+					// 	all good!
+					$status = 'ok';
+
+					// save user info to session
+					$_SESSION['fb_user_info'] = $fbUserInfo['fb_response'];
+
+					echo $_SESSION['fb_user_info']["email"];
+					// check for user with facebook id
+					Check_Exist("Email", $_SESSION['fb_user_info']["email"])
+
+					// check for user with email
+					Check_Exist("fb_user_id", $_SESSION['fb_user_info']["id"])
+					
+				} else {
+					$message = 'Invalid creds';
+				}
+			}
+		}
+
+		return array( // return status and message of login
+			'status' => $status,
+			'message' => $message,
+		);
 }
 ?>

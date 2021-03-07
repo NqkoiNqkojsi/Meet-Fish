@@ -5,23 +5,26 @@ session_unset();
 include "logging.php";
 include "conn.php";
 include "towns.php";
-include "Facebook_API/facebook_login.php";
 $f=true;
 $g=true;
 $gres=0;
 $br=0;
 $messages="";
 $message2="";
+
+
 $plan=0;
 if(isset($_REQUEST["plan"])){
 	$plan=$_REQUEST["plan"];
 }
 
-if(isset($_GET["code"])){
-	$accessToken=GetAccessTokenWithCode($_GET['code']);
-	echo "<pre>";
-	print_r($accessToken);
-	die();
+//FB stuff
+$new_pr=false;
+$old_pr=false;
+include "Facebook_API/Signing_FB_User.php";
+include "Facebook_API/facebook_login.php";
+if(isset($_GET["state"]) && APP_STATE==$_GET["state"]){
+	
 }
 
 //*************Functions**************
