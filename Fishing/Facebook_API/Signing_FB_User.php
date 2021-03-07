@@ -1,5 +1,5 @@
 ﻿<?php
-include "conn.php"
+include "conn.php";
 $new_pr=false;
 $old_pr=false;
 function New_Profile(){
