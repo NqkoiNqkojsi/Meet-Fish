@@ -89,9 +89,8 @@ function Old_Profile($conn){
 	    $_SESSION["Verified"]=false;
 	    $_SESSION["Ver_id"]=$row["ID"];
 	}	
-	echo "Old profile got in nname:".$row["NickName"];
-	//header("Location:../index.php");
-	//die();
+	header("Location:../index.php");
+	die();
 }
 
 function Check_Exist($name, $data, $conn){
