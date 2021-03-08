@@ -31,8 +31,10 @@ if(isset($_REQUEST["ime"])){
 $filename="";
 $ima="";
 if (array_key_exists('my_file', $_FILES)){
-	$path = pathinfo($_FILES['my_file']['name']);
-	$filename = $path['filename'].".".$path['extension'];
+	$file = $_FILES['my_file']['name'];
+	$path = pathinfo($file);
+	$filename = $path['filename'];
+	$ext = $path['extension'];
 }else{
 	if($h){
 		$ima=rand(1, 4).".jpg";
