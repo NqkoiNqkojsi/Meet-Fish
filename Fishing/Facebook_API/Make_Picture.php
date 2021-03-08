@@ -29,20 +29,21 @@ if(isset($_REQUEST["ime"])){
 }*/
 //Making the picture so it's not empty
 $filename="";
+$ima="";
 if (array_key_exists('my_file', $_FILES)){
 	$path = pathinfo($_FILES['my_file']['name']);
 	$filename = $path['filename'].".".$path['extension'];
 }else{
 	if($h){
 		$ima=rand(1, 4).".jpg";
-		$img="Img/professional".$ima;
+		$filename="Img/professional".$ima;
 	}else{
 		if($g){
 			$ima=rand(1, 5).".jpg";
-			$img="Img/boat".$ima;
+			$filename="Img/boat".$ima;
 		}else{
 			$ima=rand(1, 5).".jpg";
-			$img="Img/beach".$ima;
+			$filename="Img/beach".$ima;
 		}
 	}
 }
