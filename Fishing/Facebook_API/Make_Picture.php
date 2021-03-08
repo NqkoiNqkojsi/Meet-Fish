@@ -32,6 +32,7 @@ $filename="";
 $ima="";
 if (array_key_exists('my_file', $_FILES)){
 	$file = $_FILES['my_file']['name'];
+	echo $file;
 	$path = pathinfo($file);
 	$filename = $path['filename'];
 	$ext = $path['extension'];
