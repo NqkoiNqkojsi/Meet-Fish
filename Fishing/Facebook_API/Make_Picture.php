@@ -32,10 +32,8 @@ $filename="";
 $ima="";
 if (array_key_exists('my_file', $_FILES)){
 	$file = $_FILES['my_file']['name'];
-	echo $file;
 	$path = pathinfo($file);
-	$filename = $path['filename'];
-	$ext = $path['extension'];
+	$filename = $path['filename'].".".$path['extension'];
 }else{
 	if($h){
 		$ima=rand(1, 4).".jpg";
@@ -59,9 +57,9 @@ $link=$last_id;
 $mqsto=$towns[$place];
 $directory=dirname(getcwd());
 if($directory=="/home/u157928248/domains/meetandfish.site/public_html/Stelyo_Branch"){
-	$directory="https://meetandfish.site/Stelyo_Branch/";
+	$directory="http://meetandfish.site/Stelyo_Branch/";
 }else{
-	$directory="https://meetandfish.site/";
+	$directory="http://meetandfish.site/";
 }
 
 $new_date=date_create($date1);
@@ -166,7 +164,7 @@ Error_Logging("Log_files/picture_making.txt", $msg);
 		var ime = "";
 		var ID;
 		var dir=<?php echo "'".$directory."'"; ?>;
-		var mes="посети го на https://meetandfish.site/Fishing/offer.php?id="+<?php echo $link; ?>;
+		var mes="посети го на http://meetandfish.site/Fishing/offer.php?id="+<?php echo $link; ?>;
 		var myJSON = Object();
 		var div = document.getElementById("carda");
 		window.onload = function() {
@@ -183,7 +181,6 @@ Error_Logging("Log_files/picture_making.txt", $msg);
 			try {
 				html2canvas(div).then(function(canvas){
 					myImage = canvas.toDataURL("image/png");
-					console.log(myImage);
 					saveAs(myImage);
 				});
 			} catch (error) {
@@ -226,7 +223,6 @@ Error_Logging("Log_files/picture_making.txt", $msg);
 					}, 2000);
 				}
 			};
-			console.log(myImage);
 			myJSON = { "name": ime, "url": src_img, "link": ID };
 			console.log(myJSON);
 			data = JSON.stringify(myJSON);
