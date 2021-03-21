@@ -1,13 +1,13 @@
 <?php
-define('FACEBOOK_SDK_V4_SRC_DIR', '/home/u157928248/domains/meetandfish.online/public_html/Stelyo_Branch/Fishing/Facebook_API/Facebook/Facebook/');
-require_once('/home/u157928248/domains/meetandfish.online/public_html/Stelyo_Branch/Fishing/Facebook_API/Facebook/Facebook/autoload.php');
-require_once('/home/u157928248/domains/meetandfish.online/public_html/Stelyo_Branch/Fishing/conn.php');
+define('FACEBOOK_SDK_V4_SRC_DIR', '/home/u157928248/domains/meetandfish.site/public_html/Stelyo_Branch/Fishing/Facebook_API/Facebook/Facebook/');
+require_once('/home/u157928248/domains/meetandfish.site/public_html/Stelyo_Branch/Fishing/Facebook_API/Facebook/Facebook/autoload.php');
+require_once('/home/u157928248/domains/meetandfish.site/public_html/Stelyo_Branch/Fishing/conn.php');
 ini_set('display_errors', 1);
 
 define('APP_ID', '198412948406802');
 define('APP_SECRET', '8f1a318c934afa4f244b3f48c37929b8');
 define('GRAPH_VERSION', 'v9.0');
-define('RIDERECT_URI', 'https://meetandfish.online/Stelyo_Branch/Fishing/Sign_Up.php');
+define('RIDERECT_URI', 'https://meetandfish.site/Stelyo_Branch/Fishing/Sign_Up.php');
 define('APP_STATE', 'eciphp');
 
 $fb = new \Facebook\Facebook([

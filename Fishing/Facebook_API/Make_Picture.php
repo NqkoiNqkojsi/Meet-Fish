@@ -58,10 +58,10 @@ $prof_pic="Img/Post_Img/".$filename;
 $link=$last_id;
 $mqsto=$towns[$place];
 $directory=dirname(getcwd());
-if($directory=="/home/u157928248/domains/meetandfish.online/public_html/Stelyo_Branch"){
-	$directory="https://meetandfish.online/Stelyo_Branch/";
+if($directory=="/home/u157928248/domains/meetandfish.site/public_html/Stelyo_Branch"){
+	$directory="https://meetandfish.site/Stelyo_Branch/";
 }else{
-	$directory="https://meetandfish.online/";
+	$directory="https://meetandfish.site/";
 }
 
 $new_date=date_create($date1);
@@ -166,7 +166,7 @@ Error_Logging("Log_files/picture_making.txt", $msg);
 		var ime = "";
 		var ID;
 		var dir=<?php echo "'".$directory."'"; ?>;
-		var mes="посети го на https://meetandfish.online/Fishing/offer.php?id="+<?php echo $link; ?>;
+		var mes="посети го на https://meetandfish.site/Fishing/offer.php?id="+<?php echo $link; ?>;
 		var myJSON = Object();
 		var div = document.getElementById("carda");
 		window.onload = function() {
@@ -222,7 +222,7 @@ Error_Logging("Log_files/picture_making.txt", $msg);
 				if (this.readyState == 4 && this.status == 200) {
 					console.log(this.responseText);
 					setTimeout(() => {
-						window.location.replace("http://meetandfish.online/index.php"); 
+						window.location.replace("http://meetandfish.site/index.php"); 
 					}, 2000);
 				}
 			};
