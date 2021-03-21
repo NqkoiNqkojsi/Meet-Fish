@@ -13,6 +13,10 @@ $Img="";
 if(isset($_REQUEST["url"])){
 	$Img=$_REQUEST["url"];
 }
+$directory="";
+if(isset($_REQUEST["dir"])){
+	$directory=$_REQUEST["dir"];
+}
 
 include("config.php");
 function Error_Logging($name, $msg){
@@ -32,7 +36,7 @@ if (isset($AccessToken)) {
 
     $My_message=$ime." Ви кани на риболов! Посетете офертата на ".$link;
     $data = [ 
-      'source' => $fb->fileToUpload('https://meetandfish.online/Fishing/Img/FB_Img/'.$Img),//remove Stelyo_Branch when pulling
+      'source' => $fb->fileToUpload($directory.'Fishing/Img/FB_Img/'.$Img),//remove Stelyo_Branch when pulling
       'message' => $My_message
     ];
 

@@ -29,20 +29,22 @@ if(isset($_REQUEST["ime"])){
 }*/
 //Making the picture so it's not empty
 $filename="";
+$ima="";
 if (array_key_exists('my_file', $_FILES)){
-	$path = pathinfo($_FILES['my_file']['name']);
+	$file = $_FILES['my_file']['name'];
+	$path = pathinfo($file);
 	$filename = $path['filename'].".".$path['extension'];
 }else{
 	if($h){
 		$ima=rand(1, 4).".jpg";
-		$img="Img/professional".$ima;
+		$filename="Img/professional".$ima;
 	}else{
 		if($g){
 			$ima=rand(1, 5).".jpg";
-			$img="Img/boat".$ima;
+			$filename="Img/boat".$ima;
 		}else{
 			$ima=rand(1, 5).".jpg";
-			$img="Img/beach".$ima;
+			$filename="Img/beach".$ima;
 		}
 	}
 }
@@ -53,6 +55,12 @@ $ime=$_SESSION["user_Nname"];
 $prof_pic="Img/Post_Img/".$filename;
 $link=$last_id;
 $mqsto=$towns[$place];
+$directory=dirname(getcwd());
+if($directory=="/home/u157928248/domains/meetandfish.site/public_html/Stelyo_Branch"){
+	$directory="http://meetandfish.site/Stelyo_Branch/";
+}else{
+	$directory="http://meetandfish.site/";
+}
 
 $new_date=date_create($date1);
 $time=date_format($new_date,"H:i");
@@ -155,7 +163,8 @@ Error_Logging("Log_files/picture_making.txt", $msg);
 		var myImage;
 		var ime = "";
 		var ID;
-		var mes="посети го на https://meetandfish.online/Fishing/offer.php?id="+<?php echo $link; ?>;
+		var dir=<?php echo "'".$directory."'"; ?>;
+		var mes="посети го на http://meetandfish.site/Fishing/offer.php?id="+<?php echo $link; ?>;
 		var myJSON = Object();
 		var div = document.getElementById("carda");
 		window.onload = function() {
@@ -172,7 +181,6 @@ Error_Logging("Log_files/picture_making.txt", $msg);
 			try {
 				html2canvas(div).then(function(canvas){
 					myImage = canvas.toDataURL("image/png");
-					console.log(myImage);
 					saveAs(myImage);
 				});
 			} catch (error) {
@@ -211,15 +219,14 @@ Error_Logging("Log_files/picture_making.txt", $msg);
 				if (this.readyState == 4 && this.status == 200) {
 					console.log(this.responseText);
 					setTimeout(() => {
-						window.location.replace("http://meetandfish.online/index.php"); 
+						window.location.replace("http://meetandfish.site/index.php"); 
 					}, 2000);
 				}
 			};
-			console.log(myImage);
 			myJSON = { "name": ime, "url": src_img, "link": ID };
 			console.log(myJSON);
 			data = JSON.stringify(myJSON);
-			xhttp.open("GET", "Facebook_API/upload_to_facebook.php?ime="+ime+"&url="+src_img+"&link="+ID, true);
+			xhttp.open("GET", "Facebook_API/upload_to_facebook.php?ime="+ime+"&url="+src_img+"&link="+ID+"&dir="+dir, true);
 			xhttp.send();
         }
     </script>
