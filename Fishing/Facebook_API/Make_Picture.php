@@ -48,6 +48,7 @@ if (array_key_exists('my_file', $_FILES)){
 		}
 	}
 }
+echo $filename;
 
 //assign the vars to the old names
 $date1=$new_date;
